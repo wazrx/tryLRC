@@ -24,14 +24,21 @@
 #pragma mark - initialize methods
 
 - (void)_xw_initailizeUI{
+    UIView *container = [UIView new];
+    container.backgroundColor = XWhiteC;
+    [self addSubview:container];
+    [container mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.equalTo(self);
+        make.centerY.equalTo(self).offset(widthRatio(-50));
+    }];
     UILabel *titlLabel = [UILabel new];
     NSMutableAttributedString *title = [[NSMutableAttributedString alloc] initWithString:@"歌词搜索" attributes:@{NSFontAttributeName : XFont(40)}];
     [title appendAttributedString:[[NSAttributedString alloc] initWithString:@" for Uta-Net" attributes:@{NSFontAttributeName : XFont(15)}]];
     titlLabel.attributedText = title;
     titlLabel.textColor = XSkyBlueC;
-    [self addSubview:titlLabel];
+    [container addSubview:titlLabel];
     [titlLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.centerX.equalTo(self);
+        make.top.centerX.equalTo(container);
     }];
     UITextField *searchField = [UITextField new];
     _searchField = searchField;
@@ -41,18 +48,18 @@
     searchField.layer.borderColor = XSkyBlueC.CGColor;
     searchField.layer.borderWidth = widthRatio(1.5);
     searchField.layer.cornerRadius = widthRatio(8);
-    [self addSubview:searchField];
+    [container addSubview:searchField];
     [searchField mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(titlLabel.mas_bottom).offset(widthRatio(30));
-        make.centerX.equalTo(self);
+        make.centerX.equalTo(container);
         make.width.mas_equalTo(widthRatio(300));
         make.height.mas_equalTo(widthRatio(50));
     }];
     NSArray *type = @[@"按曲名", @"按歌手", @"按作曲者"];
     UIView *typeButtonContainer = [UIView new];
     _typeButtonContainer = typeButtonContainer;
-    typeButtonContainer.backgroundColor = [UIColor whiteColor];
-    [self addSubview:typeButtonContainer];
+    typeButtonContainer.backgroundColor = XWhiteC;
+    [container addSubview:typeButtonContainer];
     [typeButtonContainer mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(searchField.mas_bottom).offset(widthRatio(6));
         make.centerX.equalTo(searchField);
@@ -90,12 +97,12 @@
     searchButton.layer.cornerRadius = widthRatio(10);
     searchButton.titleLabel.font = XFont(20);
     searchButton.backgroundColor = XSkyBlueC;
-    [self addSubview:searchButton];
+    [container addSubview:searchButton];
     [searchButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerX.equalTo(self);
+        make.centerX.equalTo(container);
         make.top.equalTo(typeButtonContainer.mas_bottom).offset(widthRatio(10));
         make.size.mas_equalTo(CGSizeMake(widthRatio(300), widthRatio(40)));
-        make.bottom.equalTo(self);
+        make.bottom.equalTo(container);
     }];
 }
 

@@ -18,6 +18,8 @@ CGFloat XWScreenHeightRatio();
 
 CGSize XWScreenSize();
 
+CGRect XWScreenBounds();
+
 
 
 static inline CGFloat widthRatio(CGFloat number){
@@ -40,6 +42,11 @@ static inline CGFloat RadiansToDegrees(CGFloat radians){
 // main screen's scale
 #ifndef kScreenScale
 #define kScreenScale XWScreenScale()
+#endif
+
+// main screen's bounds
+#ifndef kScreenBounds
+#define kScreenBounds XWScreenBounds()
 #endif
 
 // main screen's size (portrait)

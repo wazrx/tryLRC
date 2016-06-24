@@ -50,4 +50,13 @@ CGSize XWScreenSize() {
     return size;
 }
 
+CGRect XWScreenBounds(){
+    static CGRect bounds;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        bounds = [UIScreen mainScreen].bounds;
+    });
+    return bounds;
+}
+
 

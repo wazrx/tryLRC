@@ -7,8 +7,15 @@
 //
 
 #import "XWSearchResultModel.h"
+#import <MJExtension.h>
 
 @implementation XWSearchResultModel
+
+- (void)mj_keyValuesDidFinishConvertingToObject{
+    _artist = [NSString stringWithFormat:@"歌手:%@", _artist];
+    _composer = [NSString stringWithFormat:@"作曲:%@", _composer];
+    _lrcFirstLine = [NSString stringWithFormat:@"歌词:%@", _lrcFirstLine];
+}
 
 - (NSString *)description{
     return [NSString stringWithFormat:@"{\n歌ID = %@\n歌名 = %@\n艺术家 = %@\n作曲家 = %@\n 歌词 = %@\n}\n}", _songID, _songName, _artist, _composer, _lrcFirstLine];

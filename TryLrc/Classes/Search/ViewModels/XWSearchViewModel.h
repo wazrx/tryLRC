@@ -7,22 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
-@class XWSearchResultModel;
+#import "XWSearchNetTool.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-typedef NS_ENUM(NSUInteger, XWSearchViewModelSearchType) {
-    XWSearchViewModelSearchTypeSong,
-    XWSearchViewModelSearchTypeArtist,
-    XWSearchViewModelSearchTypeComposer,
-};
-
 @interface XWSearchViewModel : NSObject
-@property (nonatomic, readonly) NSArray<XWSearchResultModel *> *searchData;
-@property (nonatomic, assign) XWSearchViewModelSearchType searchType;
+@property (nonatomic, copy, readonly) NSArray<XWSearchResultModel *> *searchData;
+@property (nonatomic, assign) XWSearchNetToolSearchType searchType;
 
 - (void)xw_searchWithWord:(NSString *)word;
-
 - (void)xw_setSearchSuccessedConfig:(dispatch_block_t)successed failed:(dispatch_block_t)failed;
 @end
 
