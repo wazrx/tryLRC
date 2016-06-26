@@ -7,19 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "XWSearchTypeDefine.h"
 
 @class XWSearchResultModel;
-
-typedef NS_ENUM(NSUInteger, XWSearchNetToolSearchType) {
-    XWSearchViewModelSearchTypeSong,
-    XWSearchViewModelSearchTypeArtist,
-    XWSearchViewModelSearchTypeComposer,
-};
 
 @interface XWSearchNetTool : NSObject
 
 - (void)xw_requestSearchResultWithSearchWord:(NSString *)word
-                                  searchType:(XWSearchNetToolSearchType)type
+                                  searchType:(XWSearchSearchType)type
                                     pageCount:(NSInteger)count
                              successedConfig:(void(^)(NSArray<XWSearchResultModel *> *data))successed
                                 failedConfig:(dispatch_block_t)failed;

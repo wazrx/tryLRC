@@ -7,13 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "XWSearchNetTool.h"
+#import "XWSearchTypeDefine.h"
+@class XWSearchResultModel;
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface XWSearchViewModel : NSObject
 @property (nonatomic, copy, readonly) NSArray<XWSearchResultModel *> *searchData;
-@property (nonatomic, assign) XWSearchNetToolSearchType searchType;
+@property (nonatomic, assign) XWSearchSearchType searchType;
 
 - (void)xw_searchWithWord:(NSString *)word;
 - (void)xw_setSearchSuccessedConfig:(dispatch_block_t)successed failed:(dispatch_block_t)failed;

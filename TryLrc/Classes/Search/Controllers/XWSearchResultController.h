@@ -7,10 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "XWSearchTypeDefine.h"
 @class XWSearchViewModel;
 
 @interface XWSearchResultController : UIViewController
 
-@property (nonatomic, strong) XWSearchViewModel *searchViewModel;
+@property (nonatomic, copy) NSArray *searchedData;
+@property (nonatomic, copy) NSString *searchWord;
+@property (nonatomic, assign) XWSearchSearchType searchType;
 
 @end

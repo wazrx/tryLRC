@@ -17,7 +17,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self xwAdd_enableFullScreenGestureWithEdgeSpacing:0];
 }
 
 @end

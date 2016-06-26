@@ -95,6 +95,9 @@
     if (_needCancleLastRequest) {
         [_lastTask cancel];
     }
+    if (_supportcontentType) {
+        _manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:_supportcontentType];
+    }
     if (_supportTextHtml) {
         _manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
     }

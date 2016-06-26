@@ -20,6 +20,7 @@ typedef void(^XWNetConfig)(id object);
 /**3840错误解决*/
 @property (nonatomic, assign) BOOL support3840;
 @property (nonatomic, assign) BOOL supportTextHtml;
+@property (nonatomic, copy) NSString *supportcontentType;
 @property (nonatomic, strong, readonly) AFHTTPSessionManager *manager;
 /**请求头*/
 @property (nonatomic, copy) NSDictionary *requestHeader;

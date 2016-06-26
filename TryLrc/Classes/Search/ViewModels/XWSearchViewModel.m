@@ -9,6 +9,7 @@
 
 #import "XWSearchViewModel.h"
 #import "XWCatergory.h"
+#import "XWSearchNetTool.h"
 
 @interface XWSearchViewModel ()
 

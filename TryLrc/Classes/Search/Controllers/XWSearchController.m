@@ -19,9 +19,6 @@
 @interface XWSearchController ()
 @property (nonatomic, strong) XWSearchViewModel *viewModel;
 @property (nonatomic, strong) XWSearchView *view;
-@property (nonatomic, weak) UIView *typeButtonContainer;
-@property (nonatomic, weak) UITextField *searchField;
-@property (nonatomic, weak) UIButton *searchButton;
 @end
 
 @implementation XWSearchController
@@ -76,7 +73,7 @@
     NSString *searchWord = self.view.searchField.text;
     XWLog(@"searchWord = %@", searchWord);
     if (!searchWord.length) {
-        [_searchField.layer xwAdd_shakeInXWithDistace:3 repeatCount:2 duration:0.15];
+        [self.view.searchField.layer xwAdd_shakeInXWithDistace:3 repeatCount:2 duration:0.15];
         return;
     }
     self.view.searchButton.enabled = NO;
@@ -87,7 +84,10 @@
     self.view.searchButton.enabled = YES;
     XWCoolAnimator *animator = [XWCoolAnimator xw_animatorWithType:XWCoolTransitionAnimatorTypeExplode];
     XWSearchResultController *rVC = [XWSearchResultController new];
-    rVC.searchViewModel = _viewModel;
+    rVC.searchedData = _viewModel.searchData;
+    rVC.searchWord = self.view.searchField.text;
+    rVC.searchType = _viewModel.searchType;
+    self.view.searchField.text = @"";
     [self.navigationController xw_pushViewController:rVC withAnimator:animator];
 //    [self.navigationController pushViewController:rVC animated:YES];
 }

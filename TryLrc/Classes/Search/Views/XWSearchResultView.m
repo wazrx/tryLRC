@@ -25,6 +25,7 @@
 
 - (void)_xw_initailizeUI{
     UITableView *resultListView = [UITableView new];
+    resultListView.backgroundColor = XWhiteC;
     _resultListView = resultListView;
     resultListView.rowHeight = widthRatio(71);
     [self addSubview:resultListView];

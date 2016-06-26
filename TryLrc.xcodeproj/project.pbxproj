@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		70DC15EAF6DCB696B4452FF9 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 35A27C648ACAA86F79F09BDB /* libPods.a */; };
 		8B30DBCF1D1BC42D0018CB1A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B30DBCE1D1BC42D0018CB1A /* main.m */; };
-		8B30DBD21D1BC42D0018CB1A /* XWAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B30DBD11D1BC42D0018CB1A /* XWAppDelegate.m */; };
 		8B30DBD81D1BC42D0018CB1A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B30DBD61D1BC42D0018CB1A /* Main.storyboard */; };
 		8B30DBDA1D1BC42D0018CB1A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B30DBD91D1BC42D0018CB1A /* Assets.xcassets */; };
 		8B30DBDD1D1BC42D0018CB1A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B30DBDB1D1BC42D0018CB1A /* LaunchScreen.storyboard */; };
@@ -56,6 +55,13 @@
 		8B30DCF71D1BDA360018CB1A /* XWSearchViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B30DCF61D1BDA360018CB1A /* XWSearchViewModel.m */; };
 		8B30DCFA1D1BE8800018CB1A /* XWSearchResultModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B30DCF91D1BE8800018CB1A /* XWSearchResultModel.m */; };
 		8B30DCFE1D1BF3850018CB1A /* XWSearchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B30DCFD1D1BF3850018CB1A /* XWSearchView.m */; };
+		8B41A4271D1E17BF0034E10C /* XWUrlDefine.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B41A4261D1E17BF0034E10C /* XWUrlDefine.m */; };
+		8B41A42A1D1E19CD0034E10C /* XWLrcView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B41A4291D1E19CD0034E10C /* XWLrcView.m */; };
+		8B41A42D1D1E1A690034E10C /* XWLrcViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B41A42C1D1E1A690034E10C /* XWLrcViewModel.m */; };
+		8B41A4301D1E36270034E10C /* XWLrcCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B41A42F1D1E36270034E10C /* XWLrcCell.m */; };
+		8B41A4331D1E363F0034E10C /* XWLrcModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B41A4321D1E363F0034E10C /* XWLrcModel.m */; };
+		8B9102FA1D1E15C8000FA8F6 /* XWAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B9102F91D1E15C8000FA8F6 /* XWAppDelegate.m */; };
+		8B9102FD1D1E1663000FA8F6 /* XWLrcController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B9102FC1D1E1663000FA8F6 /* XWLrcController.m */; };
 		8B9AFFBF1D1D3CC70047352A /* XWSearchNetTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B9AFFBE1D1D3CC70047352A /* XWSearchNetTool.m */; };
 		8BFA9D2D1D1CCEA800878AF1 /* XWSearchResultController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BFA9D2C1D1CCEA800878AF1 /* XWSearchResultController.m */; };
 		8BFA9D301D1CCEC300878AF1 /* XWSearchReslutViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BFA9D2F1D1CCEC300878AF1 /* XWSearchReslutViewModel.m */; };
@@ -97,8 +103,6 @@
 		35A27C648ACAA86F79F09BDB /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B30DBCA1D1BC42D0018CB1A /* TryLrc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TryLrc.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B30DBCE1D1BC42D0018CB1A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		8B30DBD01D1BC42D0018CB1A /* XWAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = XWAppDelegate.h; path = ../../../XWAppDelegate.h; sourceTree = "<group>"; };
-		8B30DBD11D1BC42D0018CB1A /* XWAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = XWAppDelegate.m; path = ../../../XWAppDelegate.m; sourceTree = "<group>"; };
 		8B30DBD71D1BC42D0018CB1A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8B30DBD91D1BC42D0018CB1A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8B30DBDC1D1BC42D0018CB1A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -192,6 +196,21 @@
 		8B30DCFB1D1BE9A80018CB1A /* XWDataTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWDataTool.h; sourceTree = "<group>"; };
 		8B30DCFC1D1BF3850018CB1A /* XWSearchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWSearchView.h; sourceTree = "<group>"; };
 		8B30DCFD1D1BF3850018CB1A /* XWSearchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XWSearchView.m; sourceTree = "<group>"; };
+		8B41A4251D1E17BF0034E10C /* XWUrlDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XWUrlDefine.h; path = TryLrc/Classes/Search/Controllers/XWUrlDefine.h; sourceTree = SOURCE_ROOT; };
+		8B41A4261D1E17BF0034E10C /* XWUrlDefine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XWUrlDefine.m; path = TryLrc/Classes/Search/Controllers/XWUrlDefine.m; sourceTree = SOURCE_ROOT; };
+		8B41A4281D1E19CD0034E10C /* XWLrcView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWLrcView.h; sourceTree = "<group>"; };
+		8B41A4291D1E19CD0034E10C /* XWLrcView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XWLrcView.m; sourceTree = "<group>"; };
+		8B41A42B1D1E1A690034E10C /* XWLrcViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWLrcViewModel.h; sourceTree = "<group>"; };
+		8B41A42C1D1E1A690034E10C /* XWLrcViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XWLrcViewModel.m; sourceTree = "<group>"; };
+		8B41A42E1D1E36270034E10C /* XWLrcCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWLrcCell.h; sourceTree = "<group>"; };
+		8B41A42F1D1E36270034E10C /* XWLrcCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XWLrcCell.m; sourceTree = "<group>"; };
+		8B41A4311D1E363F0034E10C /* XWLrcModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWLrcModel.h; sourceTree = "<group>"; };
+		8B41A4321D1E363F0034E10C /* XWLrcModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XWLrcModel.m; sourceTree = "<group>"; };
+		8B9102F71D1E0925000FA8F6 /* XWSearchTypeDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XWSearchTypeDefine.h; sourceTree = "<group>"; };
+		8B9102F81D1E15C8000FA8F6 /* XWAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XWAppDelegate.h; path = TryLrc/XWAppDelegate.h; sourceTree = SOURCE_ROOT; };
+		8B9102F91D1E15C8000FA8F6 /* XWAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XWAppDelegate.m; path = TryLrc/XWAppDelegate.m; sourceTree = SOURCE_ROOT; };
+		8B9102FB1D1E1663000FA8F6 /* XWLrcController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWLrcController.h; sourceTree = "<group>"; };
+		8B9102FC1D1E1663000FA8F6 /* XWLrcController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XWLrcController.m; sourceTree = "<group>"; };
 		8B9AFFBD1D1D3CC70047352A /* XWSearchNetTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWSearchNetTool.h; sourceTree = "<group>"; };
 		8B9AFFBE1D1D3CC70047352A /* XWSearchNetTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XWSearchNetTool.m; sourceTree = "<group>"; };
 		8BFA9D2B1D1CCEA800878AF1 /* XWSearchResultController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWSearchResultController.h; sourceTree = "<group>"; };
@@ -390,8 +409,10 @@
 		8B30DC6A1D1BC7330018CB1A /* Others */ = {
 			isa = PBXGroup;
 			children = (
-				8B30DBD01D1BC42D0018CB1A /* XWAppDelegate.h */,
-				8B30DBD11D1BC42D0018CB1A /* XWAppDelegate.m */,
+				8B9102F81D1E15C8000FA8F6 /* XWAppDelegate.h */,
+				8B9102F91D1E15C8000FA8F6 /* XWAppDelegate.m */,
+				8B41A4251D1E17BF0034E10C /* XWUrlDefine.h */,
+				8B41A4261D1E17BF0034E10C /* XWUrlDefine.m */,
 			);
 			path = Others;
 			sourceTree = "<group>";
@@ -514,6 +535,8 @@
 				8B30DCEA1D1BD1420018CB1A /* XWSearchController.m */,
 				8BFA9D2B1D1CCEA800878AF1 /* XWSearchResultController.h */,
 				8BFA9D2C1D1CCEA800878AF1 /* XWSearchResultController.m */,
+				8B9102FB1D1E1663000FA8F6 /* XWLrcController.h */,
+				8B9102FC1D1E1663000FA8F6 /* XWLrcController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -523,6 +546,8 @@
 			children = (
 				8B30DCF81D1BE8800018CB1A /* XWSearchResultModel.h */,
 				8B30DCF91D1BE8800018CB1A /* XWSearchResultModel.m */,
+				8B41A4311D1E363F0034E10C /* XWLrcModel.h */,
+				8B41A4321D1E363F0034E10C /* XWLrcModel.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -534,8 +559,11 @@
 				8B30DCF61D1BDA360018CB1A /* XWSearchViewModel.m */,
 				8BFA9D2E1D1CCEC300878AF1 /* XWSearchReslutViewModel.h */,
 				8BFA9D2F1D1CCEC300878AF1 /* XWSearchReslutViewModel.m */,
+				8B41A42B1D1E1A690034E10C /* XWLrcViewModel.h */,
+				8B41A42C1D1E1A690034E10C /* XWLrcViewModel.m */,
 				8B9AFFBD1D1D3CC70047352A /* XWSearchNetTool.h */,
 				8B9AFFBE1D1D3CC70047352A /* XWSearchNetTool.m */,
+				8B9102F71D1E0925000FA8F6 /* XWSearchTypeDefine.h */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -545,10 +573,14 @@
 			children = (
 				8B30DCFC1D1BF3850018CB1A /* XWSearchView.h */,
 				8B30DCFD1D1BF3850018CB1A /* XWSearchView.m */,
+				8B41A4281D1E19CD0034E10C /* XWLrcView.h */,
+				8B41A4291D1E19CD0034E10C /* XWLrcView.m */,
 				8BFA9D311D1CCEE600878AF1 /* XWSearchResultView.h */,
 				8BFA9D321D1CCEE600878AF1 /* XWSearchResultView.m */,
 				8BFA9D951D1CDB1100878AF1 /* XWSearchResultCell.h */,
 				8BFA9D961D1CDB1100878AF1 /* XWSearchResultCell.m */,
+				8B41A42E1D1E36270034E10C /* XWLrcCell.h */,
+				8B41A42F1D1E36270034E10C /* XWLrcCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -723,6 +755,7 @@
 				TargetAttributes = {
 					8B30DBC91D1BC42D0018CB1A = {
 						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = 4TH838523D;
 					};
 				};
 			};
@@ -818,12 +851,15 @@
 				8B30DCCE1D1BC7510018CB1A /* UIActivityIndicatorView+XWAdd.m in Sources */,
 				8BFA9D831D1CD96600878AF1 /* XWCoolAnimator.m in Sources */,
 				8BFA9D851D1CD96600878AF1 /* XWFilterAnimator+XWBarSwipe.m in Sources */,
+				8B41A42D1D1E1A690034E10C /* XWLrcViewModel.m in Sources */,
 				8B30DCD81D1BC7510018CB1A /* UIImage+XWAdd.m in Sources */,
 				8B30DCE01D1BC7510018CB1A /* UIView+XWAdd.m in Sources */,
 				8B30DCCF1D1BC7510018CB1A /* UIAlertView+XWAdd.m in Sources */,
 				8B30DCF71D1BDA360018CB1A /* XWSearchViewModel.m in Sources */,
+				8B41A4331D1E363F0034E10C /* XWLrcModel.m in Sources */,
 				8BFA9D7F1D1CD96600878AF1 /* XWCoolAnimator+XWMiddlePageFlip.m in Sources */,
 				8BFA9D8F1D1CD96600878AF1 /* XWFilterTransitionView.m in Sources */,
+				8B41A4271D1E17BF0034E10C /* XWUrlDefine.m in Sources */,
 				8BFA9D821D1CD96600878AF1 /* XWCoolAnimator+XWScanning.m in Sources */,
 				8BFA9D811D1CD96600878AF1 /* XWCoolAnimator+XWPortal.m in Sources */,
 				8B30DCC91D1BC7510018CB1A /* NSNotificationCenter+XWAdd.m in Sources */,
@@ -849,11 +885,11 @@
 				8B30DCFE1D1BF3850018CB1A /* XWSearchView.m in Sources */,
 				8BFA9D751D1CD96600878AF1 /* UIViewController+XWTransition.m in Sources */,
 				8BFA9D881D1CD96600878AF1 /* XWFilterAnimator+XWFlash.m in Sources */,
+				8B9102FD1D1E1663000FA8F6 /* XWLrcController.m in Sources */,
 				8BFA9D8C1D1CD96600878AF1 /* XWFilterAnimator+XWRipple.m in Sources */,
 				8BFA9D7D1D1CD96600878AF1 /* XWCoolAnimator+XWFold.m in Sources */,
 				8BFA9D761D1CD96600878AF1 /* XWInteractiveTransition.m in Sources */,
 				8BFA9D861D1CD96600878AF1 /* XWFilterAnimator+XWBoxBlur.m in Sources */,
-				8B30DBD21D1BC42D0018CB1A /* XWAppDelegate.m in Sources */,
 				8B30DCCB1D1BC7510018CB1A /* NSObject+XWAdd.m in Sources */,
 				8B30DCC11D1BC7510018CB1A /* CALayer+XWAddForFrame.m in Sources */,
 				8BFA9D8A1D1CD96600878AF1 /* XWFilterAnimator+XWMod.m in Sources */,
@@ -861,6 +897,7 @@
 				8B30DCC61D1BC7510018CB1A /* NSDictionary+XWAdd.m in Sources */,
 				8BFA9D901D1CD96600878AF1 /* XWMagicMoveAnimator.m in Sources */,
 				8B30DCC01D1BC7510018CB1A /* CALayer+XWAdd.m in Sources */,
+				8B41A42A1D1E19CD0034E10C /* XWLrcView.m in Sources */,
 				8B30DCC81D1BC7510018CB1A /* NSMutableDictionary+XWAdd.m in Sources */,
 				8BFA9D8E1D1CD96600878AF1 /* XWFilterAnimator.m in Sources */,
 				8B30DCD01D1BC7510018CB1A /* UIApplication+XWAdd.m in Sources */,
@@ -876,6 +913,7 @@
 				8B30DCFA1D1BE8800018CB1A /* XWSearchResultModel.m in Sources */,
 				8BFA9D301D1CCEC300878AF1 /* XWSearchReslutViewModel.m in Sources */,
 				8BFA9D2D1D1CCEA800878AF1 /* XWSearchResultController.m in Sources */,
+				8B9102FA1D1E15C8000FA8F6 /* XWAppDelegate.m in Sources */,
 				8B30DC741D1BC7490018CB1A /* XWNetTool.m in Sources */,
 				8B30DBCF1D1BC42D0018CB1A /* main.m in Sources */,
 				8B30DCD61D1BC7510018CB1A /* UIDevice+XWAdd.m in Sources */,
@@ -885,6 +923,7 @@
 				8B30DCDA1D1BC7510018CB1A /* UILabel+XWAdd.m in Sources */,
 				8B30DCCC1D1BC7510018CB1A /* NSString+XWAdd.m in Sources */,
 				8B30DCD71D1BC7510018CB1A /* UIFont+XWAdd.m in Sources */,
+				8B41A4301D1E36270034E10C /* XWLrcCell.m in Sources */,
 				8B30DCC51D1BC7510018CB1A /* NSDate+XWAdd.m in Sources */,
 				8B30DCCD1D1BC7510018CB1A /* NSTimer+XWAdd.m in Sources */,
 				8BFA9D331D1CCEE600878AF1 /* XWSearchResultView.m in Sources */,
@@ -1000,6 +1039,7 @@
 			baseConfigurationReference = 9E55AE5126A3F3BDC45AE324 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = TryLrc/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1013,6 +1053,7 @@
 			baseConfigurationReference = EB892BA625C97A756B9C62A5 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = TryLrc/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

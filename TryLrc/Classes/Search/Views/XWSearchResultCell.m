@@ -32,7 +32,8 @@ static NSString *XWSearchResultCellIdentifier = @"XWSearchResultCellIdentifier";
 
 #pragma mark - initialize methods
 
-- (void)_xw_initailizeUI{//175 50
+- (void)_xw_initailizeUI{
+    self.backgroundColor = XWhiteC;
     UILabel *songNameLabel = [UILabel new];
     _songNameLabel = songNameLabel;
     songNameLabel.font = XFont(14);
