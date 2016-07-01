@@ -13,7 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface UIControl (XWAdd)
 
 
-- (void)xwAdd_addConfig:(void(^)(UIControl *control))config forControlEvents:(UIControlEvents)controlEvents;
+- (void)xw_addConfig:(void(^)(UIControl *control))config forControlEvents:(UIControlEvents)controlEvents;
 
 @end
 

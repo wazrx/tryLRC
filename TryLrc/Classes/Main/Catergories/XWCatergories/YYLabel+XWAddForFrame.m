@@ -13,7 +13,7 @@
 @implementation YYLabel (XWAddForFrame)
 
 - (CGSize)xw_contentSize{
-    return [self.text  xwAdd_sizeWithfont:self.font maxSize:CGSizeMake(MAXFLOAT, MAXFLOAT)];
+    return [self.text  xw_sizeWithfont:self.font maxSize:CGSizeMake(MAXFLOAT, MAXFLOAT)];
 }
 
 @end

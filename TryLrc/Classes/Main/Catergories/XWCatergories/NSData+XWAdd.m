@@ -163,7 +163,7 @@ XWSYNTH_DUMMY_CLASS(NSData_XWAdd)
     return (uint32_t)result;
 }
 
-- (NSString *)xwAdd_hmacStringUsingAlg:(CCHmacAlgorithm)alg withKey:(NSString *)key {
+- (NSString *)xw_hmacStringUsingAlg:(CCHmacAlgorithm)alg withKey:(NSString *)key {
     size_t size;
     switch (alg) {
         case kCCHmacAlgMD5: size = CC_MD5_DIGEST_LENGTH; break;
@@ -184,7 +184,7 @@ XWSYNTH_DUMMY_CLASS(NSData_XWAdd)
     return hash;
 }
 
-- (NSData *)xwAdd_hmacDataUsingAlg:(CCHmacAlgorithm)alg withKey:(NSData *)key {
+- (NSData *)xw_hmacDataUsingAlg:(CCHmacAlgorithm)alg withKey:(NSData *)key {
     size_t size;
     switch (alg) {
         case kCCHmacAlgMD5: size = CC_MD5_DIGEST_LENGTH; break;
@@ -200,55 +200,55 @@ XWSYNTH_DUMMY_CLASS(NSData_XWAdd)
     return [NSData dataWithBytes:result length:size];
 }
 
-- (NSString *)xwAdd_hmacMD5StringWithKey:(NSString *)key {
-    return [self xwAdd_hmacStringUsingAlg:kCCHmacAlgMD5 withKey:key];
+- (NSString *)xw_hmacMD5StringWithKey:(NSString *)key {
+    return [self xw_hmacStringUsingAlg:kCCHmacAlgMD5 withKey:key];
 }
 
-- (NSData *)xwAdd_hmacMD5DataWithKey:(NSData *)key {
-    return [self xwAdd_hmacDataUsingAlg:kCCHmacAlgMD5 withKey:key];
+- (NSData *)xw_hmacMD5DataWithKey:(NSData *)key {
+    return [self xw_hmacDataUsingAlg:kCCHmacAlgMD5 withKey:key];
 }
 
-- (NSString *)xwAdd_hmacSHA1StringWithKey:(NSString *)key {
-    return [self xwAdd_hmacStringUsingAlg:kCCHmacAlgSHA1 withKey:key];
+- (NSString *)xw_hmacSHA1StringWithKey:(NSString *)key {
+    return [self xw_hmacStringUsingAlg:kCCHmacAlgSHA1 withKey:key];
 }
 
-- (NSData *)xwAdd_hmacSHA1DataWithKey:(NSData *)key {
-    return [self xwAdd_hmacDataUsingAlg:kCCHmacAlgSHA1 withKey:key];
+- (NSData *)xw_hmacSHA1DataWithKey:(NSData *)key {
+    return [self xw_hmacDataUsingAlg:kCCHmacAlgSHA1 withKey:key];
 }
 
-- (NSString *)xwAdd_hmacSHA224StringWithKey:(NSString *)key {
-    return [self xwAdd_hmacStringUsingAlg:kCCHmacAlgSHA224 withKey:key];
+- (NSString *)xw_hmacSHA224StringWithKey:(NSString *)key {
+    return [self xw_hmacStringUsingAlg:kCCHmacAlgSHA224 withKey:key];
 }
 
-- (NSData *)xwAdd_hmacSHA224DataWithKey:(NSData *)key {
-    return [self xwAdd_hmacDataUsingAlg:kCCHmacAlgSHA224 withKey:key];
+- (NSData *)xw_hmacSHA224DataWithKey:(NSData *)key {
+    return [self xw_hmacDataUsingAlg:kCCHmacAlgSHA224 withKey:key];
 }
 
-- (NSString *)xwAdd_hmacSHA256StringWithKey:(NSString *)key {
-    return [self xwAdd_hmacStringUsingAlg:kCCHmacAlgSHA256 withKey:key];
+- (NSString *)xw_hmacSHA256StringWithKey:(NSString *)key {
+    return [self xw_hmacStringUsingAlg:kCCHmacAlgSHA256 withKey:key];
 }
 
-- (NSData *)xwAdd_hmacSHA256DataWithKey:(NSData *)key {
-    return [self xwAdd_hmacDataUsingAlg:kCCHmacAlgSHA256 withKey:key];
+- (NSData *)xw_hmacSHA256DataWithKey:(NSData *)key {
+    return [self xw_hmacDataUsingAlg:kCCHmacAlgSHA256 withKey:key];
 }
 
-- (NSString *)xwAdd_hmacSHA384StringWithKey:(NSString *)key {
-    return [self xwAdd_hmacStringUsingAlg:kCCHmacAlgSHA384 withKey:key];
+- (NSString *)xw_hmacSHA384StringWithKey:(NSString *)key {
+    return [self xw_hmacStringUsingAlg:kCCHmacAlgSHA384 withKey:key];
 }
 
-- (NSData *)xwAdd_hmacSHA384DataWithKey:(NSData *)key {
-    return [self xwAdd_hmacDataUsingAlg:kCCHmacAlgSHA384 withKey:key];
+- (NSData *)xw_hmacSHA384DataWithKey:(NSData *)key {
+    return [self xw_hmacDataUsingAlg:kCCHmacAlgSHA384 withKey:key];
 }
 
-- (NSString *)xwAdd_hmacSHA512StringWithKey:(NSString *)key {
-    return [self xwAdd_hmacStringUsingAlg:kCCHmacAlgSHA512 withKey:key];
+- (NSString *)xw_hmacSHA512StringWithKey:(NSString *)key {
+    return [self xw_hmacStringUsingAlg:kCCHmacAlgSHA512 withKey:key];
 }
 
-- (NSData *)xwAdd_hmacSHA512DataWithKey:(NSData *)key {
-    return [self xwAdd_hmacDataUsingAlg:kCCHmacAlgSHA512 withKey:key];
+- (NSData *)xw_hmacSHA512DataWithKey:(NSData *)key {
+    return [self xw_hmacDataUsingAlg:kCCHmacAlgSHA512 withKey:key];
 }
 
-- (NSData *)xwAdd_aes256EncryptWithKey:(NSData *)key iv:(NSData *)iv {
+- (NSData *)xw_aes256EncryptWithKey:(NSData *)key iv:(NSData *)iv {
     if (key.length != 16 && key.length != 24 && key.length != 32) {
         return nil;
     }
@@ -282,7 +282,7 @@ XWSYNTH_DUMMY_CLASS(NSData_XWAdd)
     }
 }
 
-- (NSData *)xwAdd_aes256DecryptWithkey:(NSData *)key iv:(NSData *)iv {
+- (NSData *)xw_aes256DecryptWithkey:(NSData *)key iv:(NSData *)iv {
     if (key.length != 16 && key.length != 24 && key.length != 32) {
         return nil;
     }
@@ -333,7 +333,7 @@ XWSYNTH_DUMMY_CLASS(NSData_XWAdd)
     return result;
 }
 
-+ (NSData *)xwAdd_dataWithHexString:(NSString *)hexStr {
++ (NSData *)xw_dataWithHexString:(NSString *)hexStr {
     hexStr = [hexStr stringByReplacingOccurrencesOfString:@" " withString:@""];
     hexStr = [hexStr lowercaseString];
     NSUInteger len = hexStr.length;
@@ -415,7 +415,7 @@ static const short base64DecodingTable[256] = {
     return base64;
 }
 
-+ (NSData *)xwAdd_dataWithBase64EncodedString:(NSString *)base64EncodedString {
++ (NSData *)xw_dataWithBase64EncodedString:(NSString *)base64EncodedString {
     NSInteger length = base64EncodedString.length;
     const char *string = [base64EncodedString cStringUsingEncoding:NSASCIIStringEncoding];
     if (string  == NULL)
@@ -464,7 +464,7 @@ static const short base64DecodingTable[256] = {
     return value;
 }
 
-- (NSData *)xwAdd_gzipDecompress {
+- (NSData *)xw_gzipDecompress {
     if ([self length] == 0) return self;
     
     unsigned full_length = (unsigned)[self length];
@@ -505,7 +505,7 @@ static const short base64DecodingTable[256] = {
 	
 }
 
-- (NSData *)xwAdd_gzipComperss {
+- (NSData *)xw_gzipComperss {
     if ([self length] == 0) return self;
     
     z_stream strm;
@@ -547,7 +547,7 @@ static const short base64DecodingTable[256] = {
     return [NSData dataWithData:compressed];
 }
 
-- (NSData *)xwAdd_zlibDecompress {
+- (NSData *)xw_zlibDecompress {
     if ([self length] == 0) return self;
     
     NSUInteger full_length = [self length];
@@ -588,7 +588,7 @@ static const short base64DecodingTable[256] = {
     } else return nil;
 }
 
-- (NSData *)xwAdd_zlibComperss {
+- (NSData *)xw_zlibComperss {
     if ([self length] == 0) return self;
     
     z_stream strm;
@@ -628,7 +628,7 @@ static const short base64DecodingTable[256] = {
     return [NSData dataWithData:compressed];
 }
 
-+ (NSData *)xwAdd_dataNamed:(NSString *)name {
++ (NSData *)xw_dataNamed:(NSString *)name {
     NSString *path = [[NSBundle mainBundle] pathForResource:name ofType:@""];
     if (!path) return nil;
     NSData *data = [NSData dataWithContentsOfFile:path];

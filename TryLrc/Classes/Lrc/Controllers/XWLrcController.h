@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+@class XWSearchResultModel;
 
 @interface XWLrcController : UIViewController
-@property (nonatomic, copy) NSString *songID;
+@property (nonatomic, strong) XWSearchResultModel *searchResultModel;
 @end

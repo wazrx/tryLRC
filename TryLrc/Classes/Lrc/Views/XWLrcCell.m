@@ -32,18 +32,18 @@ static NSString *const XWLrcCellIdentifier = @"XWLrcCellIdentifier";
     self.backgroundColor = XWhiteC;
     UILabel *lrcLabel = [UILabel new];
     _lrcLabel = lrcLabel;
-    lrcLabel.font = XFont(14);
-    lrcLabel.textColor = XSkyBlueC;
+    lrcLabel.numberOfLines = 0;
     [self.contentView addSubview:lrcLabel];
-    [lrcLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerY.equalTo(self);
-        make.left.equalTo(self).offset(widthRatio(10));
-    }];
+//    [lrcLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.centerY.equalTo(self);
+//        make.left.equalTo(self).offset(widthRatio(10));
+//    }];
 }
 
 - (void)setData:(XWLrcModel *)data{
     _data = data;
-    _lrcLabel.text = data.lrc;
+    _lrcLabel.frame = data.lrcLabelFrame;
+    _lrcLabel.attributedText = data.timeLrcString;
 }
 
 @end

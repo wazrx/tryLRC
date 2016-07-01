@@ -15,24 +15,24 @@ XWSYNTH_DUMMY_CLASS(UILabel_XWAdd)
 @implementation UILabel (XWAdd)
 
 + (void)load{
-    [self xwAdd_swizzleInstanceMethod:@selector(setText:) with:@selector(_xwAdd_setText:)];
+    [self xw_swizzleInstanceMethod:@selector(setText:) with:@selector(_xw_setText:)];
 }
 
 - (BOOL)textChangeWithAnimaiton{
-    return [[self xwAdd_getAssociatedValueForKey:"xwAdd_textAnimation"] boolValue];
+    return [[self xw_getAssociatedValueForKey:"xw_textAnimation"] boolValue];
 }
 
 - (void)setTextChangeWithAnimaiton:(BOOL)textChangeWithAnimaiton{
-    [self xwAdd_setAssociateValue: @(textChangeWithAnimaiton) withKey:"xwAdd_textAnimation"];
+    [self xw_setAssociateValue: @(textChangeWithAnimaiton) withKey:"xw_textAnimation"];
 }
 
-- (void)_xwAdd_setText:(NSString *)text{
+- (void)_xw_setText:(NSString *)text{
     if (self.textChangeWithAnimaiton) {
         [UIView transitionWithView:self duration:1 options:UIViewAnimationOptionTransitionCrossDissolve animations:^{
-            [self _xwAdd_setText:text];
+            [self _xw_setText:text];
         } completion:nil];
     }else{
-        [self _xwAdd_setText:text];
+        [self _xw_setText:text];
     }
 }
 

@@ -37,7 +37,7 @@ typedef NS_ENUM (NSUInteger, XWGradientStyle) {
 #endif
 
 #ifndef HexColor
-#define HexColor(_hex_)   [UIColor xwAdd_colorWithHexString:((__bridge NSString *)CFSTR(#_hex_))]
+#define HexColor(_hex_)   [UIColor xw_colorWithHexString:((__bridge NSString *)CFSTR(#_hex_))]
 #endif
 
 @interface UIColor (XWAdd)
@@ -63,26 +63,26 @@ typedef NS_ENUM (NSUInteger, XWGradientStyle) {
 
 
 /**Color With HSL*/
-+ (UIColor *)xwAdd_colorWithHue:(CGFloat)hue
++ (UIColor *)xw_colorWithHue:(CGFloat)hue
                saturation:(CGFloat)saturation
                 lightness:(CGFloat)lightness
                     alpha:(CGFloat)alpha;
 
 
 /**Color With CMYB*/
-+ (UIColor *)xwAdd_colorWithCyan:(CGFloat)cyan
++ (UIColor *)xw_colorWithCyan:(CGFloat)cyan
                    magenta:(CGFloat)magenta
                     yellow:(CGFloat)yellow
                      black:(CGFloat)black
                      alpha:(CGFloat)alpha;
 
 /**Color with hex value*/
-+ (UIColor *)xwAdd_colorWithRGB:(uint32_t)rgbValue;
-+ (UIColor *)xwAdd_colorWithRGBA:(uint32_t)rgbaValue;
-+ (UIColor *)xwAdd_colorWithRGB:(uint32_t)rgbValue alpha:(CGFloat)alpha;
++ (UIColor *)xw_colorWithRGB:(uint32_t)rgbValue;
++ (UIColor *)xw_colorWithRGBA:(uint32_t)rgbaValue;
++ (UIColor *)xw_colorWithRGB:(uint32_t)rgbValue alpha:(CGFloat)alpha;
 
 /**Color with hex string*/
-+ (nullable UIColor *)xwAdd_colorWithHexString:(NSString *)hexStr;
++ (nullable UIColor *)xw_colorWithHexString:(NSString *)hexStr;
 
 #pragma mark - color change (颜色改变相关)
 
@@ -94,10 +94,10 @@ typedef NS_ENUM (NSUInteger, XWGradientStyle) {
  *
  *  @return 混合后的颜色
  */
-- (UIColor *)xwAdd_colorByAddColor:(UIColor *)add blendMode:(CGBlendMode)blendMode;
+- (UIColor *)xw_colorByAddColor:(UIColor *)add blendMode:(CGBlendMode)blendMode;
 
 /**改变颜色的HSB*/
-- (UIColor *)xwAdd_colorByChangeHue:(CGFloat)hueDelta
+- (UIColor *)xw_colorByChangeHue:(CGFloat)hueDelta
                    saturation:(CGFloat)saturationDelta
                    brightness:(CGFloat)brightnessDelta
                         alpha:(CGFloat)alphaDelta;
@@ -112,13 +112,13 @@ typedef NS_ENUM (NSUInteger, XWGradientStyle) {
  *
  *  @return 插值色
  */
-+ (UIColor *)xwAdd_colorWithInterpolationFromValue:(UIColor *)from toValue:(UIColor *)to ratio:(CGFloat)ratio;
++ (UIColor *)xw_colorWithInterpolationFromValue:(UIColor *)from toValue:(UIColor *)to ratio:(CGFloat)ratio;
 
 #pragma mark - randomColor (随机色)
 
-+ (UIColor *)xwAdd_randomColor;
++ (UIColor *)xw_randomColor;
 
-+ (UIColor *)xwAdd_randomColorInColorArray:(NSArray *)colorArray;
++ (UIColor *)xw_randomColorInColorArray:(NSArray *)colorArray;
 
 #pragma mark - more color (更多颜色)
 
@@ -222,7 +222,7 @@ typedef NS_ENUM (NSUInteger, XWGradientStyle) {
 
 #pragma mark - Gradient Color (渐变色相关)
 
-+ (UIColor *)xwAdd_colorWithGradientStyle:(XWGradientStyle)gradientStyle withFrame:(CGRect)frame andColors:(NSArray *)colors;
++ (UIColor *)xw_colorWithGradientStyle:(XWGradientStyle)gradientStyle withFrame:(CGRect)frame andColors:(NSArray *)colors;
 
 #pragma mark - Color Macro (颜色宏)
 

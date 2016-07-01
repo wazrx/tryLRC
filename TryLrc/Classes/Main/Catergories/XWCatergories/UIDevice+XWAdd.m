@@ -292,7 +292,7 @@ XWSYNTH_DUMMY_CLASS(UIDevice_XWAdd)
              @"cpuNumber" :[NSString stringWithFormat:@"%zd", device.cpuNumber],};
 }
 
-+ (void)xwAdd_openSystemAddressSettingPage{
++ (void)xw_openSystemAddressSettingPage{
     if ([UIDevice currentDevice].systemVersionValue >= 8.0 ) {
         NSURL*url =[NSURL URLWithString:UIApplicationOpenSettingsURLString];
         if([[UIApplication sharedApplication] canOpenURL:url]){
@@ -337,21 +337,22 @@ XWSYNTH_DUMMY_CLASS(UIDevice_XWAdd)
 }
 
 - (BOOL)allowNotification{
-    if ([UIDevice currentDevice].systemVersionValue >= 8.0) {
-        UIUserNotificationSettings *setting = [[UIApplication sharedApplication] currentUserNotificationSettings];
-        if (UIUserNotificationTypeNone != setting.types) {
-            return YES;
-        }
-    }else{
-        UIRemoteNotificationType type = [[UIApplication sharedApplication] enabledRemoteNotificationTypes];
-        if (UIRemoteNotificationTypeNone != type) {
-            return YES;
-        }
+    
+#if __IPHONE_OS_VERSION_MIN_REQUIRED >= __IPHONE_8_0
+    UIUserNotificationSettings *setting = [[UIApplication sharedApplication] currentUserNotificationSettings];
+    if (UIUserNotificationTypeNone != setting.types) {
+        return YES;
     }
+#else
+    UIUserNotificationSettings *setting = [[UIApplication sharedApplication] currentUserNotificationSettings];
+    if (UIUserNotificationTypeNone != setting.types) {
+        return YES;
+    }
+#endif
     return NO;
 }
 
-+ (void)xwAdd_openSystemNotificationSettingPageWithCompleteHandle:(void(^)(BOOL isAllowed))completeBlock {
++ (void)xw_openSystemNotificationSettingPageWithCompleteHandle:(void(^)(BOOL isAllowed))completeBlock {
     if ([UIDevice currentDevice].systemVersionValue >= 8.0 ) {
         NSURL*url =[NSURL URLWithString:UIApplicationOpenSettingsURLString];
         if([[UIApplication sharedApplication] canOpenURL:url]){

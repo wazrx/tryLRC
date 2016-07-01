@@ -10,9 +10,11 @@
 #import "XWSearchResultModel.h"
 #import "XWSearchNetTool.h"
 #import "XWCatergory.h"
+#import <objc/runtime.h>
+#import <objc/message.h>
 
 @interface XWSearchReslutViewModel ()
-@property (nonatomic, strong, readwrite) NSArray *data;
+@property (readwrite) NSArray *data;
 @end
 
 @implementation XWSearchReslutViewModel{
@@ -24,6 +26,10 @@
     XWSearchNetTool *_netTool;
 }
 @dynamic data;
+
+- (void)dealloc{
+    NSLog(@"viewmodel销毁了");
+}
 
 - (void)xw_updateData:(NSArray<XWSearchResultModel *> *)dataArray {
     self.data = dataArray;

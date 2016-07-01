@@ -16,7 +16,7 @@ XWSYNTH_DUMMY_CLASS(UIBezierPath_XWAdd)
 
 @implementation UIBezierPath (XWAdd)
 
-+ (UIBezierPath *)xwAdd_bezierPathWithText:(NSString *)text font:(UIFont *)font {
++ (UIBezierPath *)xw_bezierPathWithText:(NSString *)text font:(UIFont *)font {
     
     CTFontRef ctFont = font.ctFontRef;
     if (!ctFont) return nil;

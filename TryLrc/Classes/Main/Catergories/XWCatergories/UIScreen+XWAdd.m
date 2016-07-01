@@ -15,7 +15,7 @@ XWSYNTH_DUMMY_CLASS(UIScreen_XWAdd)
 
 
 
-+ (CGFloat)xwAdd_screenScale {
++ (CGFloat)xw_screenScale {
     static CGFloat screenScale = 0.0;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
@@ -30,7 +30,7 @@ XWSYNTH_DUMMY_CLASS(UIScreen_XWAdd)
     return screenScale;
 }
 
-- (CGRect)xwAdd_boundsForOrientation:(UIInterfaceOrientation)orientation {
+- (CGRect)xw_boundsForOrientation:(UIInterfaceOrientation)orientation {
     CGRect bounds = [self bounds];
     
     if (UIInterfaceOrientationIsLandscape(orientation)) {
@@ -41,7 +41,7 @@ XWSYNTH_DUMMY_CLASS(UIScreen_XWAdd)
     return bounds;
 }
 
-+ (CGFloat)xwAdd_WidthRatioForIphone6 {
++ (CGFloat)xw_WidthRatioForIphone6 {
     static CGFloat ratio = 1.0f;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
@@ -50,7 +50,7 @@ XWSYNTH_DUMMY_CLASS(UIScreen_XWAdd)
     return ratio;
 }
 
-+ (CGFloat)xwAdd_heightRatioForIphone6 {
++ (CGFloat)xw_heightRatioForIphone6 {
     static CGFloat ratio = 1.0f;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{

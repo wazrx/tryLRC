@@ -29,6 +29,10 @@
 
 @dynamic view;
 
+- (void)dealloc{
+    NSLog(@"销毁了");
+}
+
 - (void)loadView{
     self.view = [XWSearchResultView new];
     self.view.frame = kScreenBounds;
@@ -59,7 +63,7 @@
     if (!_viewModel) {
         XWSearchReslutViewModel *viewModel = [XWSearchReslutViewModel xw_viewModelWithSearchedData:_searchedData searchWord:_searchWord type:_searchType];
         weakify(viewModel);
-        [viewModel xw_configCell:^XWSearchResultCell * _Nonnull(UITableView * _Nonnull tableView, NSIndexPath * _Nonnull indexPath) {
+        [viewModel xw_configTableviewCell:^XWSearchResultCell * _Nonnull(UITableView * _Nonnull tableView, NSIndexPath * _Nonnull indexPath) {
             strongify(viewModel);
             XWSearchResultCell *cell = [XWSearchResultCell xw_cellWithTableView:tableView];
             cell.data = viewModel.data[indexPath.row];
@@ -70,6 +74,7 @@
             strongify(self);
             [self xw_refreshDataSuccessed];
         } failed:^{
+            strongify(self);
             [self xw_refreshDataFailed];
         }];
         _viewModel = viewModel;
@@ -104,7 +109,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     XWSearchResultModel *model = _viewModel.data[indexPath.row];
     XWLrcController *lrcVC = [XWLrcController new];
-    lrcVC.songID = model.songID;
+    lrcVC.searchResultModel = model;
     [self.navigationController xw_pushViewController:lrcVC withAnimator:[XWCoolAnimator xw_animatorWithType:XWCoolTransitionAnimatorTypeFoldFromRight]];
 }
 

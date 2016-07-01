@@ -59,7 +59,7 @@ XWSYNTH_DUMMY_CLASS(UIFont_XWAdd)
     return [UIFont fontWithDescriptor:[self.fontDescriptor fontDescriptorWithSymbolicTraits:0] size:self.pointSize];
 }
 
-+ (UIFont *)xwAdd_fontWithCTFont:(CTFontRef)CTFont {
++ (UIFont *)xw_fontWithCTFont:(CTFontRef)CTFont {
     if (!CTFont) return nil;
     CFStringRef name = CTFontCopyPostScriptName(CTFont);
     if (!name) return nil;
@@ -69,7 +69,7 @@ XWSYNTH_DUMMY_CLASS(UIFont_XWAdd)
     return font;
 }
 
-+ (UIFont *)xwAdd_fontWithCGFont:(CGFontRef)CGFont size:(CGFloat)size {
++ (UIFont *)xw_fontWithCGFont:(CGFontRef)CGFont size:(CGFloat)size {
     if (!CGFont) return nil;
     CFStringRef name = CGFontCopyPostScriptName(CGFont);
     if (!name) return nil;
@@ -88,7 +88,7 @@ XWSYNTH_DUMMY_CLASS(UIFont_XWAdd)
     return font;
 }
 
-+ (BOOL)xwAdd_loadFontFromPath:(NSString *)path {
++ (BOOL)xw_loadFontFromPath:(NSString *)path {
     NSURL *url = [NSURL fileURLWithPath:path];
     CFErrorRef error;
     BOOL suc = CTFontManagerRegisterFontsForURL((__bridge CFTypeRef)url, kCTFontManagerScopeNone, &error);
@@ -98,12 +98,12 @@ XWSYNTH_DUMMY_CLASS(UIFont_XWAdd)
     return suc;
 }
 
-+ (void)xwAdd_unloadFontFromPath:(NSString *)path {
++ (void)xw_unloadFontFromPath:(NSString *)path {
     NSURL *url = [NSURL fileURLWithPath:path];
     CTFontManagerUnregisterFontsForURL((__bridge CFTypeRef)url, kCTFontManagerScopeNone, NULL);
 }
 
-+ (UIFont *)xwAdd_loadFontFromData:(NSData *)data {
++ (UIFont *)xw_loadFontFromData:(NSData *)data {
     CGDataProviderRef provider = CGDataProviderCreateWithCFData((__bridge CFDataRef)data);
     if (!provider) return nil;
     CGFontRef fontRef = CGFontCreateWithDataProvider(provider);
@@ -125,7 +125,7 @@ XWSYNTH_DUMMY_CLASS(UIFont_XWAdd)
     }
 }
 
-+ (BOOL)xwAdd_unloadFontFromData:(UIFont *)font {
++ (BOOL)xw_unloadFontFromData:(UIFont *)font {
     CGFontRef fontRef = CGFontCreateWithFontName((__bridge CFStringRef)font.fontName);
     if (!fontRef) return NO;
     CFErrorRef errorRef;

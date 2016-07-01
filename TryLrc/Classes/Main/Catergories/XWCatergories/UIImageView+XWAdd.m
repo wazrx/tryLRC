@@ -15,24 +15,24 @@ XWSYNTH_DUMMY_CLASS(UIImageView_XWAdd)
 @implementation UIImageView (XWAdd)
 
 + (void)load{
-    [self xwAdd_swizzleInstanceMethod:@selector(setImage:) with:@selector(_xwAdd_setImage:)];
+    [self xw_swizzleInstanceMethod:@selector(setImage:) with:@selector(_xw_setImage:)];
 }
 
 - (BOOL)imageChangeWithAnimaiton{
-    return [[self xwAdd_getAssociatedValueForKey:"xwAdd_imageAnimation"] boolValue];
+    return [[self xw_getAssociatedValueForKey:"xw_imageAnimation"] boolValue];
 }
 
 - (void)setImageChangeWithAnimaiton:(BOOL)imageChangeWithAnimaiton{
-    [self xwAdd_setAssociateValue: @(imageChangeWithAnimaiton) withKey:"xwAdd_imageAnimation"];
+    [self xw_setAssociateValue: @(imageChangeWithAnimaiton) withKey:"xw_imageAnimation"];
 }
 
-- (void)_xwAdd_setImage:(NSString *)image{
+- (void)_xw_setImage:(NSString *)image{
     if (self.imageChangeWithAnimaiton) {
         [UIView transitionWithView:self duration:1 options:UIViewAnimationOptionTransitionCrossDissolve animations:^{
-            [self _xwAdd_setImage:image];
+            [self _xw_setImage:image];
         } completion:nil];
     }else{
-        [self _xwAdd_setImage:image];
+        [self _xw_setImage:image];
     }
 }
 

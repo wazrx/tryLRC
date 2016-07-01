@@ -46,19 +46,19 @@ XWSYNTH_DUMMY_CLASS(UIAlertView_XWAdd)
 
 @implementation UIAlertView (XWAdd)
 
-+(void)xwAdd_showAlertViewWith:(NSString *)title message:(NSString *)message leftButtonTitle:(NSString *)leftButtonTitle leftButtonClickedConfig:(dispatch_block_t)leftBlock rightButtonTitle:(NSString *)rightButtonTitle rightButtonClickedConfig:(dispatch_block_t)rightBlock{
++(void)xw_showAlertViewWith:(NSString *)title message:(NSString *)message leftButtonTitle:(NSString *)leftButtonTitle leftButtonClickedConfig:(dispatch_block_t)leftBlock rightButtonTitle:(NSString *)rightButtonTitle rightButtonClickedConfig:(dispatch_block_t)rightBlock{
     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:title message:message delegate:nil cancelButtonTitle:nil otherButtonTitles:leftButtonTitle, rightButtonTitle, nil];
     _XWAlertDelegateObject *obj = [_XWAlertDelegateObject xw_initWithLeftBlock:leftBlock rightBlock:rightBlock];
     alertView.delegate = obj;
-    [alertView xwAdd_setAssociateValue:obj withKey:"_XWAlertDelegateObject"];
+    [alertView xw_setAssociateValue:obj withKey:"_XWAlertDelegateObject"];
     [alertView show];
 }
 
-+ (void)xwAdd_showOneAlertViewWith:(NSString *)title message:(NSString *)message buttonTitle:(NSString *)buttonTitle buttonClickedConfig:(dispatch_block_t)block{
++ (void)xw_showOneAlertViewWith:(NSString *)title message:(NSString *)message buttonTitle:(NSString *)buttonTitle buttonClickedConfig:(dispatch_block_t)block{
     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:title message:message delegate:nil cancelButtonTitle:nil otherButtonTitles:buttonTitle, nil];
     _XWAlertDelegateObject *obj = [_XWAlertDelegateObject xw_initWithLeftBlock:block rightBlock:nil];
     alertView.delegate = obj;
-    [alertView xwAdd_setAssociateValue:obj withKey:"_XWAlertDelegateObject"];
+    [alertView xw_setAssociateValue:obj withKey:"_XWAlertDelegateObject"];
     [alertView show];
 }
 

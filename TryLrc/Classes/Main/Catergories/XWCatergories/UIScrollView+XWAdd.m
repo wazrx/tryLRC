@@ -14,41 +14,41 @@ XWSYNTH_DUMMY_CLASS(UIScrollView_XWAdd)
 
 @implementation UIScrollView (XWAdd)
 
-- (void)xwAdd_scrollToTop {
-    [self xwAdd_scrollToTopAnimated:YES];
+- (void)xw_scrollToTop {
+    [self xw_scrollToTopAnimated:YES];
 }
 
-- (void)xwAdd_scrollToBottom {
-    [self xwAdd_scrollToBottomAnimated:YES];
+- (void)xw_scrollToBottom {
+    [self xw_scrollToBottomAnimated:YES];
 }
 
-- (void)xwAdd_scrollToLeft {
-    [self xwAdd_scrollToLeftAnimated:YES];
+- (void)xw_scrollToLeft {
+    [self xw_scrollToLeftAnimated:YES];
 }
 
-- (void)xwAdd_scrollToRight {
-    [self xwAdd_scrollToRightAnimated:YES];
+- (void)xw_scrollToRight {
+    [self xw_scrollToRightAnimated:YES];
 }
 
-- (void)xwAdd_scrollToTopAnimated:(BOOL)animated {
+- (void)xw_scrollToTopAnimated:(BOOL)animated {
     CGPoint off = self.contentOffset;
     off.y = 0 - self.contentInset.top;
     [self setContentOffset:off animated:animated];
 }
 
-- (void)xwAdd_scrollToBottomAnimated:(BOOL)animated {
+- (void)xw_scrollToBottomAnimated:(BOOL)animated {
     CGPoint off = self.contentOffset;
     off.y = self.contentSize.height - self.bounds.size.height + self.contentInset.bottom;
     [self setContentOffset:off animated:animated];
 }
 
-- (void)xwAdd_scrollToLeftAnimated:(BOOL)animated {
+- (void)xw_scrollToLeftAnimated:(BOOL)animated {
     CGPoint off = self.contentOffset;
     off.x = 0 - self.contentInset.left;
     [self setContentOffset:off animated:animated];
 }
 
-- (void)xwAdd_scrollToRightAnimated:(BOOL)animated {
+- (void)xw_scrollToRightAnimated:(BOOL)animated {
     CGPoint off = self.contentOffset;
     off.x = self.contentSize.width - self.bounds.size.width + self.contentInset.right;
     [self setContentOffset:off animated:animated];

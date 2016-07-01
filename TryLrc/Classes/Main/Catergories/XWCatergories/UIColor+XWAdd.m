@@ -293,14 +293,14 @@ void XW_HSL2HSB(CGFloat h, CGFloat s, CGFloat l,
 
 
 - (NSString *)hexString {
-    return [self _xwAdd_hexStringWithAlpha:NO];
+    return [self _xw_hexStringWithAlpha:NO];
 }
 
 - (NSString *)hexStringWithAlpha {
-    return [self _xwAdd_hexStringWithAlpha:YES];
+    return [self _xw_hexStringWithAlpha:YES];
 }
 
-+ (UIColor *)xwAdd_colorWithHue:(CGFloat)hue
++ (UIColor *)xw_colorWithHue:(CGFloat)hue
                saturation:(CGFloat)saturation
                 lightness:(CGFloat)lightness
                     alpha:(CGFloat)alpha {
@@ -310,7 +310,7 @@ void XW_HSL2HSB(CGFloat h, CGFloat s, CGFloat l,
 	
 }
 
-+ (UIColor *)xwAdd_colorWithCyan:(CGFloat)cyan
++ (UIColor *)xw_colorWithCyan:(CGFloat)cyan
                    magenta:(CGFloat)magenta
                     yellow:(CGFloat)yellow
                      black:(CGFloat)black
@@ -321,14 +321,14 @@ void XW_HSL2HSB(CGFloat h, CGFloat s, CGFloat l,
 	
 }
 
-+ (UIColor *)xwAdd_colorWithRGB:(uint32_t)rgbValue {
++ (UIColor *)xw_colorWithRGB:(uint32_t)rgbValue {
     return [UIColor colorWithRed:((rgbValue & 0xFF0000) >> 16) / 255.0f
                            green:((rgbValue & 0xFF00) >> 8) / 255.0f
                             blue:(rgbValue & 0xFF) / 255.0f
                            alpha:1];
 }
 
-+ (UIColor *)xwAdd_colorWithRGBA:(uint32_t)rgbaValue {
++ (UIColor *)xw_colorWithRGBA:(uint32_t)rgbaValue {
     return [UIColor colorWithRed:((rgbaValue & 0xFF000000) >> 24) / 255.0f
                            green:((rgbaValue & 0xFF0000) >> 16) / 255.0f
                             blue:((rgbaValue & 0xFF00) >> 8) / 255.0f
@@ -336,7 +336,7 @@ void XW_HSL2HSB(CGFloat h, CGFloat s, CGFloat l,
 	
 }
 
-+ (UIColor *)xwAdd_colorWithRGB:(uint32_t)rgbValue alpha:(CGFloat)alpha {
++ (UIColor *)xw_colorWithRGB:(uint32_t)rgbValue alpha:(CGFloat)alpha {
     return [UIColor colorWithRed:((rgbValue & 0xFF0000) >> 16) / 255.0f
                            green:((rgbValue & 0xFF00) >> 8) / 255.0f
                             blue:(rgbValue & 0xFF) / 255.0f
@@ -344,7 +344,7 @@ void XW_HSL2HSB(CGFloat h, CGFloat s, CGFloat l,
 	
 }
 
-+ (UIColor *)xwAdd_colorWithHexString:(NSString *)hexStr {
++ (UIColor *)xw_colorWithHexString:(NSString *)hexStr {
     NSString *cString = [[hexStr stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] uppercaseString];
     
     if ([cString length] < 6)
@@ -371,7 +371,7 @@ void XW_HSL2HSB(CGFloat h, CGFloat s, CGFloat l,
                            alpha:1.0f];
 }
 
-- (UIColor *)xwAdd_colorByAddColor:(UIColor *)add blendMode:(CGBlendMode)blendMode {
+- (UIColor *)xw_colorByAddColor:(UIColor *)add blendMode:(CGBlendMode)blendMode {
     CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
     CGBitmapInfo bitmapInfo = kCGImageAlphaPremultipliedLast | kCGBitmapByteOrder32Big;
     uint8_t pixel[4] = { 0 };
@@ -386,7 +386,7 @@ void XW_HSL2HSB(CGFloat h, CGFloat s, CGFloat l,
     return [UIColor colorWithRed:pixel[0] / 255.0f green:pixel[1] / 255.0f blue:pixel[2] / 255.0f alpha:pixel[3] / 255.0f];
 }
 
-- (UIColor *)xwAdd_colorByChangeHue:(CGFloat)hueDelta
+- (UIColor *)xw_colorByChangeHue:(CGFloat)hueDelta
                    saturation:(CGFloat)saturationDelta
                    brightness:(CGFloat)brightnessDelta
                         alpha:(CGFloat)alphaDelta {
@@ -406,17 +406,17 @@ void XW_HSL2HSB(CGFloat h, CGFloat s, CGFloat l,
     return [UIColor colorWithHue:hh saturation:ss brightness:bb alpha:aa];
 }
 
-+ (UIColor *)xwAdd_colorWithInterpolationFromValue:(UIColor *)from toValue:(UIColor *)to ratio:(CGFloat)ratio{
-    CGFloat red = [self _xwAdd_interpolationFromValue:from.red toValue:to.red ratio:ratio];
-    CGFloat green = [self _xwAdd_interpolationFromValue:from.green toValue:to.green ratio:ratio];
-    CGFloat blue = [self _xwAdd_interpolationFromValue:from.blue toValue:to.blue ratio:ratio];
++ (UIColor *)xw_colorWithInterpolationFromValue:(UIColor *)from toValue:(UIColor *)to ratio:(CGFloat)ratio{
+    CGFloat red = [self _xw_interpolationFromValue:from.red toValue:to.red ratio:ratio];
+    CGFloat green = [self _xw_interpolationFromValue:from.green toValue:to.green ratio:ratio];
+    CGFloat blue = [self _xw_interpolationFromValue:from.blue toValue:to.blue ratio:ratio];
     return [UIColor colorWithRed:red green:green blue:blue alpha:1.0f];
     
 }
 
 #pragma mark - private methods
 
-- (NSString *)_xwAdd_hexStringWithAlpha:(BOOL)withAlpha {
+- (NSString *)_xw_hexStringWithAlpha:(BOOL)withAlpha {
     CGColorRef color = self.CGColor;
     size_t count = CGColorGetNumberOfComponents(color);
     const CGFloat *components = CGColorGetComponents(color);
@@ -439,11 +439,11 @@ void XW_HSL2HSB(CGFloat h, CGFloat s, CGFloat l,
     return hex;
 }
 
-+ (CGFloat)_xwAdd_interpolationFromValue:(CGFloat)from toValue:(CGFloat)to ratio:(CGFloat)ratio{
++ (CGFloat)_xw_interpolationFromValue:(CGFloat)from toValue:(CGFloat)to ratio:(CGFloat)ratio{
     return from + (to - from) * ratio;
 }
 
-+ (UIColor *)xwAdd_randomColor {
++ (UIColor *)xw_randomColor {
     int r = arc4random() % 255;
     int g = arc4random() % 255;
     int b = arc4random() % 255;
@@ -451,7 +451,7 @@ void XW_HSL2HSB(CGFloat h, CGFloat s, CGFloat l,
 	
 }
 
-+ (UIColor *)xwAdd_randomColorInColorArray:(NSArray *)colorArray {
++ (UIColor *)xw_randomColorInColorArray:(NSArray *)colorArray {
     if (!colorArray.count)return [UIColor whiteColor];
     return colorArray[arc4random() % colorArray.count];
 }
@@ -652,7 +652,7 @@ void XW_HSL2HSB(CGFloat h, CGFloat s, CGFloat l,
     return hsb(40, 100, 100);
 }
 
-+ (UIColor *)xwAdd_colorWithGradientStyle:(XWGradientStyle)gradientStyle withFrame:(CGRect)frame andColors:(NSArray *)colors {
++ (UIColor *)xw_colorWithGradientStyle:(XWGradientStyle)gradientStyle withFrame:(CGRect)frame andColors:(NSArray *)colors {
     CAGradientLayer *backgroundGradientLayer = [CAGradientLayer layer];
     backgroundGradientLayer.frame = frame;
     NSMutableArray *cgColors = [[NSMutableArray alloc] init];

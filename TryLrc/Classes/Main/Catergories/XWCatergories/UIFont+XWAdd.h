@@ -36,8 +36,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - create font
 
-+ (nullable UIFont *)xwAdd_fontWithCTFont:(CTFontRef)CTFont;
-+ (nullable UIFont *)xwAdd_fontWithCGFont:(CGFontRef)CGFont size:(CGFloat)size;
++ (nullable UIFont *)xw_fontWithCTFont:(CTFontRef)CTFont;
++ (nullable UIFont *)xw_fontWithCGFont:(CGFontRef)CGFont size:(CGFloat)size;
 
 
 @property (nullable, nonatomic, readonly) CTFontRef ctFontRef CF_RETURNS_RETAINED;
@@ -45,10 +45,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Load and unload font
 
-+ (BOOL)xwAdd_loadFontFromPath:(NSString *)path;
-+ (void)xwAdd_unloadFontFromPath:(NSString *)path;
-+ (nullable UIFont *)xwAdd_loadFontFromData:(NSData *)data;
-+ (BOOL)xwAdd_unloadFontFromData:(UIFont *)font;
++ (BOOL)xw_loadFontFromPath:(NSString *)path;
++ (void)xw_unloadFontFromPath:(NSString *)path;
++ (nullable UIFont *)xw_loadFontFromData:(NSData *)data;
++ (BOOL)xw_unloadFontFromData:(UIFont *)font;
 
 @end
 

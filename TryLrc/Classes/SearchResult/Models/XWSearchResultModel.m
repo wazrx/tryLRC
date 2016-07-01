@@ -11,11 +11,16 @@
 
 @implementation XWSearchResultModel
 
+- (void)dealloc{
+    NSLog(@"olddealloc");
+}
+
 - (void)mj_keyValuesDidFinishConvertingToObject{
     _songID = [_songID componentsSeparatedByString:@"/"][2];
     _artist = [NSString stringWithFormat:@"歌手:%@", _artist];
     _composer = [NSString stringWithFormat:@"作曲:%@", _composer];
-    _lrcFirstLine = [NSString stringWithFormat:@"歌词:%@", _lrcFirstLine];
+    _lyricist = [NSString stringWithFormat:@"作詞:%@", _lyricist];
+    _lrcFirstLine = [NSString stringWithFormat:@"歌詞:%@", _lrcFirstLine];
 }
 
 - (NSString *)description{

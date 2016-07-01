@@ -15,8 +15,8 @@ XWSYNTH_DUMMY_CLASS(NSNumber_XWAdd)
 @implementation NSNumber (XWAdd)
 
 
-+ (NSNumber *)xwAdd_numberWithString:(NSString *)string {
-    NSString *str = [[string xwAdd_stringByTrim] lowercaseString];
++ (NSNumber *)xw_numberWithString:(NSString *)string {
+    NSString *str = [[string xw_stringByTrim] lowercaseString];
     if (!str || !str.length) {
         return nil;
     }

@@ -16,6 +16,7 @@
 - (void)xw_pushViewController:(UIViewController *)viewController withAnimator:(XWTransitionAnimator *)animator {
     if (!viewController) return;
     if (!animator) animator = [XWTransitionAnimator new];
+    //如果存在代理则保存在新的效果器中
     if (self.delegate) {
         [animator setValue:self.delegate forKey:@"lastDelegate"];
     }

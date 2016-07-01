@@ -12,8 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface UIActivityIndicatorView (XWAdd)
 
-+ (void)xwAdd_showAnimationInView:(UIView *)view indicatorColor:(UIColor *)color;
-+ (void)xwAdd_stopAnimationInView:(UIView *)view;
++ (void)xw_showAnimationInView:(UIView *)view indicatorColor:(UIColor *)color;
++ (void)xw_stopAnimationInView:(UIView *)view;
 @end
 
 NS_ASSUME_NONNULL_END

@@ -16,40 +16,40 @@ XWSYNTH_DUMMY_CLASS(NSMutableArray_XWAdd)
 @implementation NSMutableArray (XWAdd)
 
 
-- (void)xwAdd_removeFirstObject {
+- (void)xw_removeFirstObject {
     if (self.count) {
         [self removeObjectAtIndex:0];
     }
 }
 
-- (void)xwAdd_removeLastObject {
+- (void)xw_removeLastObject {
     if (self.count) {
         [self removeObjectAtIndex:self.count - 1];
     }
 }
 
-- (id)xwAdd_popFirstObject {
+- (id)xw_popFirstObject {
     id obj = nil;
     if (self.count) {
         obj = self.firstObject;
-        [self xwAdd_removeFirstObject];
+        [self xw_removeFirstObject];
     }
     return obj;
 }
 
-- (id)xwAdd_popLastObject {
+- (id)xw_popLastObject {
     id obj = nil;
     if (self.count) {
         obj = self.lastObject;
-        [self xwAdd_removeLastObject];
+        [self xw_removeLastObject];
     }
     return obj;
 }
 
-- (id)xwAdd_popObjectAtIndexPath:(NSUInteger)index {
+- (id)xw_popObjectAtIndexPath:(NSUInteger)index {
     id obj = nil;
     if (self.count) {
-        obj = [self xwAdd_objectOrNilAtIndex:index];
+        obj = [self xw_objectOrNilAtIndex:index];
         if (obj) {
             [self removeObjectAtIndex:index];
         }
@@ -57,14 +57,14 @@ XWSYNTH_DUMMY_CLASS(NSMutableArray_XWAdd)
     return obj;
 }
 
-- (void)xwAdd_insertObjects:(NSArray *)objects atIndex:(NSUInteger)index {
+- (void)xw_insertObjects:(NSArray *)objects atIndex:(NSUInteger)index {
     NSUInteger i = index;
     for (id obj in objects) {
         [self insertObject:obj atIndex:i++];
     }
 }
 
-- (void)xwAdd_reverse {
+- (void)xw_reverse {
     NSUInteger count = self.count;
     int mid = floor(count / 2.0);
     for (NSUInteger i = 0; i < mid; i++) {
@@ -72,7 +72,7 @@ XWSYNTH_DUMMY_CLASS(NSMutableArray_XWAdd)
     }
 }
 
-- (void)xwAdd_random {
+- (void)xw_random {
     for (NSUInteger i = self.count; i > 1; i--) {
         [self exchangeObjectAtIndex:(i - 1)
                   withObjectAtIndex:arc4random_uniform((u_int32_t)i)];

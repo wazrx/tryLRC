@@ -17,28 +17,28 @@ typedef id(^XWWeakReferencesBlock)(void);
 
 @implementation NSMutableDictionary (XWAdd)
 
-- (void)xwAdd_weakSetObject:(id)object key:(id<NSCopying>)key{
+- (void)xw_weakSetObject:(id)object key:(id<NSCopying>)key{
     if (!key) {
         return;
     }
-    [self setObject:[self _xwAdd_makeWeakReferencesObjectBlockWithObject:object] forKey:key];
+    [self setObject:[self _xw_makeWeakReferencesObjectBlockWithObject:object] forKey:key];
 }
 
-- (void)xwAdd_weakSetDictionary:(NSDictionary *)otherDictionary{
+- (void)xw_weakSetDictionary:(NSDictionary *)otherDictionary{
     if (!otherDictionary.count) {
         return;
     }
     [otherDictionary enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
-        [self setObject:[self _xwAdd_makeWeakReferencesObjectBlockWithObject:obj] forKey:key];
+        [self setObject:[self _xw_makeWeakReferencesObjectBlockWithObject:obj] forKey:key];
     }];
 }
 
-- (id)xwAdd_weakObjectForKey:(id<NSCopying>)key{
+- (id)xw_weakObjectForKey:(id<NSCopying>)key{
     XWWeakReferencesBlock weakReferencesObjectBlock = self[key];
     return weakReferencesObjectBlock ? weakReferencesObjectBlock() : nil;
 }
 
-- (XWWeakReferencesBlock)_xwAdd_makeWeakReferencesObjectBlockWithObject:(id)object{
+- (XWWeakReferencesBlock)_xw_makeWeakReferencesObjectBlockWithObject:(id)object{
     if (!object) {
         return nil;
     }
@@ -49,14 +49,14 @@ typedef id(^XWWeakReferencesBlock)(void);
     };
 }
 
-- (id)xwAdd_popObjectForKey:(id)aKey {
+- (id)xw_popObjectForKey:(id)aKey {
     if (!aKey) return nil;
     id value = self[aKey];
     [self removeObjectForKey:aKey];
     return value;
 }
 
-- (NSDictionary *)xwAdd_popEntriesForKeys:(NSArray *)keys {
+- (NSDictionary *)xw_popEntriesForKeys:(NSArray *)keys {
     NSMutableDictionary *dic = [NSMutableDictionary new];
     for (id key in keys) {
         id value = self[key];

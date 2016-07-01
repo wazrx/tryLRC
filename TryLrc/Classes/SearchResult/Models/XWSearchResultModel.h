@@ -10,9 +10,10 @@
 
 @interface XWSearchResultModel : NSObject
 
-@property (nonatomic, readonly) NSString *songName;
+@property (nonatomic, copy) NSString *songName;
 @property (nonatomic, readonly) NSString *songID;
 @property (nonatomic, readonly) NSString *artist;
+@property (nonatomic, readonly) NSString *lyricist;
 @property (nonatomic, readonly) NSString *composer;
 @property (nonatomic, readonly) NSString *lrcFirstLine;
 

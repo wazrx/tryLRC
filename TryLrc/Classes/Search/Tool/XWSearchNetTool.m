@@ -76,11 +76,14 @@
             NSString *composer = e2.text;
             TFHppleElement *e3 = XWValidateArrayObjAtIdx(element.children, 4);
             NSString *lrcFirstLine = e3.text;
+            TFHppleElement *e4 = XWValidateArrayObjAtIdx(element.children, 2);
+            NSString *lyricist = e4.text;
             NSMutableDictionary *temp = @{}.mutableCopy;
             [temp setObject:songID forKey:@"songID"];
             [temp setObject:songName forKey:@"songName"];
             if (artist.length) [temp setObject:artist forKey:@"artist"];
             if (composer.length) [temp setObject:composer forKey:@"composer"];
+            if (lyricist.length) [temp setObject:lyricist forKey:@"lyricist"];
             if (lrcFirstLine.length) [temp setObject:lrcFirstLine forKey:@"lrcFirstLine"];
             XWSearchResultModel *model = [XWSearchResultModel mj_objectWithKeyValues:temp.copy];
             [tempArray addObject:model];

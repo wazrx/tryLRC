@@ -11,5 +11,8 @@
 @interface XWLrcView : UIView
 
 @property (nonatomic, weak, readonly) UITableView *lrcListView;
+@property (nonatomic, weak, readonly) UIButton *editButton;
+@property (nonatomic, weak, readonly) UIButton *duplicateButton;
+@property (nonatomic, weak, readonly) UIButton *saveButton;
 
 @end

@@ -26,7 +26,7 @@ XWSYNTH_DUMMY_CLASS(UIImage_XWAdd)
             alpha == kCGImageAlphaPremultipliedLast);
 }
 
-- (UIImage *)xwAdd_boxblurWithBlurNumber:(CGFloat)blur{
+- (UIImage *)xw_boxblurWithBlurNumber:(CGFloat)blur{
     //如果遇到加模糊后图片偏红，可以打开下面这一句，使用newImage来加模糊
 //    UIImage *newImage = [UIImage imageWithData:UIImagePNGRepresentation(self)];
     if (blur < 0.f || blur > 1.f) {
@@ -71,15 +71,15 @@ XWSYNTH_DUMMY_CLASS(UIImage_XWAdd)
 }
 
 
-+ (UIImage *)xwAdd_imageWithPDF:(id)dataOrPath {
++ (UIImage *)xw_imageWithPDF:(id)dataOrPath {
     return [self _xw_imageWithPDF:dataOrPath resize:NO size:CGSizeZero];
 }
 
-+ (UIImage *)xwAdd_imageWithPDF:(id)dataOrPath size:(CGSize)size {
++ (UIImage *)xw_imageWithPDF:(id)dataOrPath size:(CGSize)size {
     return [self _xw_imageWithPDF:dataOrPath resize:YES size:size];
 }
 
-+ (UIImage *)xwAdd_imageWithEmoji:(NSString *)emoji size:(CGFloat)size {
++ (UIImage *)xw_imageWithEmoji:(NSString *)emoji size:(CGFloat)size {
     if (emoji.length == 0) return nil;
     if (size < 1) return nil;
     
@@ -108,12 +108,12 @@ XWSYNTH_DUMMY_CLASS(UIImage_XWAdd)
 	
 }
 
-+ (UIImage *)xwAdd_imageWithColor:(UIColor *)color {
-    return [self xwAdd_imageWithColor:color size:CGSizeMake(1, 1)];
++ (UIImage *)xw_imageWithColor:(UIColor *)color {
+    return [self xw_imageWithColor:color size:CGSizeMake(1, 1)];
 	
 }
 
-+ (UIImage *)xwAdd_imageWithColor:(UIColor *)color size:(CGSize)size {
++ (UIImage *)xw_imageWithColor:(UIColor *)color size:(CGSize)size {
     if (!color || size.width <= 0 || size.height <= 0) return nil;
     CGRect rect = CGRectMake(0.0f, 0.0f, size.width, size.height);
     UIGraphicsBeginImageContextWithOptions(rect.size, NO, 0);
@@ -126,7 +126,7 @@ XWSYNTH_DUMMY_CLASS(UIImage_XWAdd)
 	
 }
 
-+ (UIImage *)xwAdd_imageWithSize:(CGSize)size drawBlock:(void (^)(CGContextRef context))drawBlock {
++ (UIImage *)xw_imageWithSize:(CGSize)size drawBlock:(void (^)(CGContextRef context))drawBlock {
     if (!drawBlock) return nil;
     UIGraphicsBeginImageContextWithOptions(size, NO, 0);
     CGContextRef context = UIGraphicsGetCurrentContext();
@@ -137,7 +137,7 @@ XWSYNTH_DUMMY_CLASS(UIImage_XWAdd)
     return image;
 }
 
-- (UIImage *)xwAdd_imageByResizeToSize:(CGSize)size {
+- (UIImage *)xw_imageByResizeToSize:(CGSize)size {
     if (size.width <= 0 || size.height <= 0) return nil;
     UIGraphicsBeginImageContextWithOptions(size, NO, self.scale);
     [self drawInRect:CGRectMake(0, 0, size.width, size.height)];
@@ -146,7 +146,7 @@ XWSYNTH_DUMMY_CLASS(UIImage_XWAdd)
     return image;
 }
 
-- (UIImage *)xwAdd_imageByCropToRect:(CGRect)rect {
+- (UIImage *)xw_imageByCropToRect:(CGRect)rect {
     rect.origin.x *= self.scale;
     rect.origin.y *= self.scale;
     rect.size.width *= self.scale;
@@ -158,7 +158,7 @@ XWSYNTH_DUMMY_CLASS(UIImage_XWAdd)
     return image;
 }
 
-- (UIImage *)xwAdd_imageByInsetEdge:(UIEdgeInsets)insets withColor:(UIColor *)color {
+- (UIImage *)xw_imageByInsetEdge:(UIEdgeInsets)insets withColor:(UIColor *)color {
     CGSize size = self.size;
     size.width += insets.left + insets.right;
     size.height += insets.top + insets.bottom;
@@ -181,15 +181,15 @@ XWSYNTH_DUMMY_CLASS(UIImage_XWAdd)
     return image;
 }
 
-- (UIImage *)xwAdd_imageByRoundCornerRadius:(CGFloat)radius {
-    return [self xwAdd_imageByRoundCornerRadius:radius borderWidth:0 borderColor:nil];
+- (UIImage *)xw_imageByRoundCornerRadius:(CGFloat)radius {
+    return [self xw_imageByRoundCornerRadius:radius borderWidth:0 borderColor:nil];
 	
 }
 
-- (UIImage *)xwAdd_imageByRoundCornerRadius:(CGFloat)radius
+- (UIImage *)xw_imageByRoundCornerRadius:(CGFloat)radius
                                    borderWidth:(CGFloat)borderWidth
                                 borderColor:(UIColor *)borderColor {
-    return [self xwAdd_imageByRoundCornerRadius:radius
+    return [self xw_imageByRoundCornerRadius:radius
                                   corners:UIRectCornerAllCorners
                               borderWidth:borderWidth
                               borderColor:borderColor
@@ -197,7 +197,7 @@ XWSYNTH_DUMMY_CLASS(UIImage_XWAdd)
 	
 }
 
-- (UIImage *)xwAdd_imageByRoundCornerRadius:(CGFloat)radius
+- (UIImage *)xw_imageByRoundCornerRadius:(CGFloat)radius
                                        corners:(UIRectCorner)corners
                                    borderWidth:(CGFloat)borderWidth
                                    borderColor:(UIColor *)borderColor
@@ -249,7 +249,7 @@ XWSYNTH_DUMMY_CLASS(UIImage_XWAdd)
 	
 }
 
-- (UIImage *)xwAdd_imageByRotate:(CGFloat)radians fitSize:(BOOL)fitSize {
+- (UIImage *)xw_imageByRotate:(CGFloat)radians fitSize:(BOOL)fitSize {
     size_t width = (size_t)CGImageGetWidth(self.CGImage);
     size_t height = (size_t)CGImageGetHeight(self.CGImage);
     CGRect newRect = CGRectApplyAffineTransform(CGRectMake(0., 0., width, height),
@@ -282,32 +282,32 @@ XWSYNTH_DUMMY_CLASS(UIImage_XWAdd)
 	
 }
 
-- (UIImage *)xwAdd_imageByRotateLeft90 {
-    return [self xwAdd_imageByRotate:DegreesToRadians(90) fitSize:YES];
+- (UIImage *)xw_imageByRotateLeft90 {
+    return [self xw_imageByRotate:DegreesToRadians(90) fitSize:YES];
 	
 }
 
-- (UIImage *)xwAdd_imageByRotateRight90 {
-    return [self xwAdd_imageByRotate:DegreesToRadians(-90) fitSize:YES];
+- (UIImage *)xw_imageByRotateRight90 {
+    return [self xw_imageByRotate:DegreesToRadians(-90) fitSize:YES];
 	
 }
 
-- (UIImage *)xwAdd_imageByRotate180 {
+- (UIImage *)xw_imageByRotate180 {
     return [self _xw_flipHorizontal:YES vertical:YES];
 	
 }
 
-- (UIImage *)xwAdd_imageByFlipVertical {
+- (UIImage *)xw_imageByFlipVertical {
     return [self _xw_flipHorizontal:NO vertical:YES];
 	
 }
 
-- (UIImage *)xwAdd_imageByFlipHorizontal {
+- (UIImage *)xw_imageByFlipHorizontal {
     return [self _xw_flipHorizontal:YES vertical:NO];
 	
 }
 
-- (UIImage *)xwAdd_imageByTintColor:(UIColor *)color {
+- (UIImage *)xw_imageByTintColor:(UIColor *)color {
     UIGraphicsBeginImageContextWithOptions(self.size, NO, self.scale);
     CGRect rect = CGRectMake(0, 0, self.size.width, self.size.height);
     [color set];
@@ -318,28 +318,28 @@ XWSYNTH_DUMMY_CLASS(UIImage_XWAdd)
     return newImage;
 }
 
-- (UIImage *)xwAdd_imageByGrayscale {
-    return [self xwAdd_imageByBlurRadius:0 tintColor:nil tintMode:0 saturation:0 maskImage:nil];
+- (UIImage *)xw_imageByGrayscale {
+    return [self xw_imageByBlurRadius:0 tintColor:nil tintMode:0 saturation:0 maskImage:nil];
 }
 
-- (UIImage *)xwAdd_imageByBlurSoft {
-        return [self xwAdd_imageByBlurRadius:60 tintColor:[UIColor colorWithWhite:0.84 alpha:0.36] tintMode:kCGBlendModeNormal saturation:1.8 maskImage:nil];
+- (UIImage *)xw_imageByBlurSoft {
+        return [self xw_imageByBlurRadius:60 tintColor:[UIColor colorWithWhite:0.84 alpha:0.36] tintMode:kCGBlendModeNormal saturation:1.8 maskImage:nil];
 	
 }
 
-- (UIImage *)xwAdd_imageByBlurLight {
-    return [self xwAdd_imageByBlurRadius:60 tintColor:[UIColor colorWithWhite:1.0 alpha:0.3] tintMode:kCGBlendModeNormal saturation:1.8 maskImage:nil];
+- (UIImage *)xw_imageByBlurLight {
+    return [self xw_imageByBlurRadius:60 tintColor:[UIColor colorWithWhite:1.0 alpha:0.3] tintMode:kCGBlendModeNormal saturation:1.8 maskImage:nil];
 }
 
-- (UIImage *)xwAdd_imageByBlurExtraLight {
-    return [self xwAdd_imageByBlurRadius:40 tintColor:[UIColor colorWithWhite:0.97 alpha:0.82] tintMode:kCGBlendModeNormal saturation:1.8 maskImage:nil];
+- (UIImage *)xw_imageByBlurExtraLight {
+    return [self xw_imageByBlurRadius:40 tintColor:[UIColor colorWithWhite:0.97 alpha:0.82] tintMode:kCGBlendModeNormal saturation:1.8 maskImage:nil];
 }
 
-- (UIImage *)xwAdd_imageByBlurDark {
-    return [self xwAdd_imageByBlurRadius:40 tintColor:[UIColor colorWithWhite:0.11 alpha:0.73] tintMode:kCGBlendModeNormal saturation:1.8 maskImage:nil];
+- (UIImage *)xw_imageByBlurDark {
+    return [self xw_imageByBlurRadius:40 tintColor:[UIColor colorWithWhite:0.11 alpha:0.73] tintMode:kCGBlendModeNormal saturation:1.8 maskImage:nil];
 }
 
-- (UIImage *)xwAdd_imageByBlurWithTint:(UIColor *)tintColor {
+- (UIImage *)xw_imageByBlurWithTint:(UIColor *)tintColor {
     const CGFloat EffectColorAlpha = 0.6;
     UIColor *effectColor = tintColor;
     size_t componentCount = CGColorGetNumberOfComponents(tintColor.CGColor);
@@ -354,11 +354,11 @@ XWSYNTH_DUMMY_CLASS(UIImage_XWAdd)
             effectColor = [UIColor colorWithRed:r green:g blue:b alpha:EffectColorAlpha];
         }
     }
-    return [self xwAdd_imageByBlurRadius:20 tintColor:effectColor tintMode:kCGBlendModeNormal saturation:-1.0 maskImage:nil];
+    return [self xw_imageByBlurRadius:20 tintColor:effectColor tintMode:kCGBlendModeNormal saturation:-1.0 maskImage:nil];
 	
 }
 
-- (UIImage *)xwAdd_imageByBlurRadius:(CGFloat)blurRadius
+- (UIImage *)xw_imageByBlurRadius:(CGFloat)blurRadius
                               tintColor:(UIColor *)tintColor
                                tintMode:(CGBlendMode)tintBlendMode
                              saturation:(CGFloat)saturation

@@ -53,17 +53,17 @@ XWSYNTH_DUMMY_CLASS(NSString_XWAdd)
     return [[self dataUsingEncoding:NSUTF8StringEncoding] crc32String];
 }
 
-- (CGSize)xwAdd_sizeWithfont:(UIFont *)font maxSize:(CGSize)maxSize{
+- (CGSize)xw_sizeWithfont:(UIFont *)font maxSize:(CGSize)maxSize{
     
     NSDictionary *attrs = @{NSFontAttributeName : font};
     return [self boundingRectWithSize:maxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:attrs context:nil].size;
 }
 
-- (CGSize)xwAdd_sizeWithAttrs:(NSDictionary *)attrs maxSize:(CGSize)maxSize{
+- (CGSize)xw_sizeWithAttrs:(NSDictionary *)attrs maxSize:(CGSize)maxSize{
     return [self boundingRectWithSize:maxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:attrs context:nil].size;
 }
 
-- (NSString *)xwAdd_insertCommaFornumberString{
+- (NSString *)xw_insertCommaFornumberString{
     
     NSString *new = [[self componentsSeparatedByString:@","] componentsJoinedByString:@""];
     NSUInteger pointIndex = [new rangeOfString:@"."].location == NSNotFound ? new.length : [new rangeOfString:@"."].location;
@@ -78,20 +78,20 @@ XWSYNTH_DUMMY_CLASS(NSString_XWAdd)
     return reslutStr.copy;
 }
 
-- (float)xwAdd_deleteCommaFornumberValue{
+- (float)xw_deleteCommaFornumberValue{
     NSMutableString *temp = [NSMutableString stringWithString:self];
     [temp replaceOccurrencesOfString:@"," withString:@"" options:NSCaseInsensitiveSearch range:NSMakeRange(0, temp.length)];
     return [temp floatValue];
 }
 
-- (NSString *)xwAdd_getPinYinWithChineseString{
+- (NSString *)xw_getPinYinWithChineseString{
     NSMutableString *ms = self.mutableCopy;
     CFStringTransform((__bridge CFMutableStringRef)ms, 0, kCFStringTransformMandarinLatin, NO);
     CFStringTransform((__bridge CFMutableStringRef)ms, 0, kCFStringTransformStripDiacritics, NO);
     return ms.copy;
 }
 
-- (NSString *)xwAdd_addSeperatorForPhoneString{
+- (NSString *)xw_addSeperatorForPhoneString{
     NSMutableString *temp = [NSMutableString stringWithString:self];
     if (self.length > 7) {
         [temp insertString:@" " atIndex:3];
@@ -102,43 +102,43 @@ XWSYNTH_DUMMY_CLASS(NSString_XWAdd)
     return temp.copy;
 }
 
-- (NSString *)xwAdd_hmacMD5StringWithKey:(NSString *)key {
+- (NSString *)xw_hmacMD5StringWithKey:(NSString *)key {
     return [[self dataUsingEncoding:NSUTF8StringEncoding]
-            xwAdd_hmacMD5StringWithKey:key];
+            xw_hmacMD5StringWithKey:key];
 }
 
-- (NSString *)xwAdd_hmacSHA1StringWithKey:(NSString *)key {
+- (NSString *)xw_hmacSHA1StringWithKey:(NSString *)key {
     return [[self dataUsingEncoding:NSUTF8StringEncoding]
-            xwAdd_hmacSHA1StringWithKey:key];
+            xw_hmacSHA1StringWithKey:key];
 	
 }
 
-- (NSString *)xwAdd_hmacSHA224StringWithKey:(NSString *)key {
+- (NSString *)xw_hmacSHA224StringWithKey:(NSString *)key {
     return [[self dataUsingEncoding:NSUTF8StringEncoding]
-            xwAdd_hmacSHA224StringWithKey:key];
+            xw_hmacSHA224StringWithKey:key];
 	
 }
 
-- (NSString *)xwAdd_hmacSHA256StringWithKey:(NSString *)key {
+- (NSString *)xw_hmacSHA256StringWithKey:(NSString *)key {
     return [[self dataUsingEncoding:NSUTF8StringEncoding]
-            xwAdd_hmacSHA256StringWithKey:key];
+            xw_hmacSHA256StringWithKey:key];
 	
 }
 
-- (NSString *)xwAdd_hmacSHA384StringWithKey:(NSString *)key {
+- (NSString *)xw_hmacSHA384StringWithKey:(NSString *)key {
     return [[self dataUsingEncoding:NSUTF8StringEncoding]
-            xwAdd_hmacSHA384StringWithKey:key];
+            xw_hmacSHA384StringWithKey:key];
 	
 }
 
-- (NSString *)xwAdd_hmacSHA512StringWithKey:(NSString *)key {
+- (NSString *)xw_hmacSHA512StringWithKey:(NSString *)key {
     return [[self dataUsingEncoding:NSUTF8StringEncoding]
-            xwAdd_hmacSHA512StringWithKey:key];
+            xw_hmacSHA512StringWithKey:key];
 	
 }
 
 - (NSString *)base64DecodedString{
-    NSData *data = [NSData xwAdd_dataWithBase64EncodedString:self];
+    NSData *data = [NSData xw_dataWithBase64EncodedString:self];
     return [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
 }
 
@@ -239,13 +239,13 @@ XWSYNTH_DUMMY_CLASS(NSString_XWAdd)
     
 }
 
-- (BOOL)xwAdd_matchesRegex:(NSString *)regex options:(NSRegularExpressionOptions)options {
+- (BOOL)xw_matchesRegex:(NSString *)regex options:(NSRegularExpressionOptions)options {
     NSRegularExpression *pattern = [NSRegularExpression regularExpressionWithPattern:regex options:options error:NULL];
     if (!pattern) return NO;
     return ([pattern numberOfMatchesInString:self options:0 range:NSMakeRange(0, self.length)] > 0);
 }
 
-- (void)xwAdd_enumerateRegexMatches:(NSString *)regex
+- (void)xw_enumerateRegexMatches:(NSString *)regex
                       options:(NSRegularExpressionOptions)options
                          usingBlock:(void (^)(NSString *match, NSRange matchRange, BOOL *stop))block {
     if (regex.length == 0 || !block) return;
@@ -256,7 +256,7 @@ XWSYNTH_DUMMY_CLASS(NSString_XWAdd)
     }];
 }
 
-- (NSString *)xwAdd_stringByReplacingRegex:(NSString *)regex
+- (NSString *)xw_stringByReplacingRegex:(NSString *)regex
                              options:(NSRegularExpressionOptions)options
                                 withString:(NSString *)replacement {
     NSRegularExpression *pattern = [NSRegularExpression regularExpressionWithPattern:regex options:options error:nil];
@@ -264,7 +264,7 @@ XWSYNTH_DUMMY_CLASS(NSString_XWAdd)
     return [pattern stringByReplacingMatchesInString:self options:0 range:NSMakeRange(0, [self length]) withTemplate:replacement];
 }
 - (NSNumber *)numberValue {
-    return [NSNumber xwAdd_numberWithString:self];
+    return [NSNumber xw_numberWithString:self];
 }
 
 
@@ -304,18 +304,18 @@ XWSYNTH_DUMMY_CLASS(NSString_XWAdd)
     return self.numberValue.unsignedIntegerValue;
 }
 
-+ (NSString *)xwAdd_stringWithUTF32Char:(UTF32Char)char32 {
++ (NSString *)xw_stringWithUTF32Char:(UTF32Char)char32 {
     char32 = NSSwapHostIntToLittle(char32);
     return [[NSString alloc] initWithBytes:&char32 length:4 encoding:NSUTF32LittleEndianStringEncoding];
 }
 
-+ (NSString *)xwAdd_stringWithUTF32Chars:(const UTF32Char *)char32 length:(NSUInteger)length {
++ (NSString *)xw_stringWithUTF32Chars:(const UTF32Char *)char32 length:(NSUInteger)length {
     return [[NSString alloc] initWithBytes:(const void *)char32
                                     length:length * 4
                                   encoding:NSUTF32LittleEndianStringEncoding];
 }
 
-- (void)xwAdd_enumerateUTF32CharInRange:(NSRange)range usingBlock:(void (^)(UTF32Char char32, NSRange range, BOOL *stop))block {
+- (void)xw_enumerateUTF32CharInRange:(NSRange)range usingBlock:(void (^)(UTF32Char char32, NSRange range, BOOL *stop))block {
     NSString *str = self;
     if (range.location != 0 || range.length != self.length) {
         str = [self substringWithRange:range];
@@ -338,12 +338,12 @@ XWSYNTH_DUMMY_CLASS(NSString_XWAdd)
     }
 }
 
-- (NSString *)xwAdd_stringByAppendingNameScale:(CGFloat)scale {
+- (NSString *)xw_stringByAppendingNameScale:(CGFloat)scale {
     if (fabs(scale - 1) <= __FLT_EPSILON__ || self.length == 0 || [self hasSuffix:@"/"]) return self.copy;
     return [self stringByAppendingFormat:@"@%@x", @(scale)];
 }
 
-- (NSString *)xwAdd_stringByAppendingPathScale:(CGFloat)scale {
+- (NSString *)xw_stringByAppendingPathScale:(CGFloat)scale {
     if (fabs(scale - 1) <= __FLT_EPSILON__ || self.length == 0 || [self hasSuffix:@"/"]) return self.copy;
     NSString *ext = self.pathExtension;
     NSRange extRange = NSMakeRange(self.length - ext.length, 0);
@@ -352,12 +352,12 @@ XWSYNTH_DUMMY_CLASS(NSString_XWAdd)
     return [self stringByReplacingCharactersInRange:extRange withString:scaleStr];
 }
 
-- (NSString *)xwAdd_scaledNameWithType:(NSString *)type{
-    NSArray *scales = [NSString _xwAdd_preferredScales];
+- (NSString *)xw_scaledNameWithType:(NSString *)type{
+    NSArray *scales = [NSString _xw_preferredScales];
     __block NSString *scaledName = nil;
     __block NSString *path = nil;
     [scales enumerateObjectsUsingBlock:^(NSNumber *scale, NSUInteger idx, BOOL * _Nonnull stop) {
-        NSString *name = [self xwAdd_stringByAppendingNameScale:scale.floatValue];
+        NSString *name = [self xw_stringByAppendingNameScale:scale.floatValue];
         path = [[NSBundle mainBundle] pathForResource:name ofType:type];
         if (path) {
             scaledName = [name stringByAppendingString:[NSString stringWithFormat:@".%@", type]];
@@ -367,12 +367,12 @@ XWSYNTH_DUMMY_CLASS(NSString_XWAdd)
     return scaledName;
 }
 
-- (NSString *)xwAdd_stringByTrim {
+- (NSString *)xw_stringByTrim {
     NSCharacterSet *set = [NSCharacterSet whitespaceAndNewlineCharacterSet];
     return [self stringByTrimmingCharactersInSet:set];
 }
 
-- (BOOL)xwAdd_isNotBlank {
+- (BOOL)xw_isNotBlank {
     NSCharacterSet *blank = [NSCharacterSet whitespaceAndNewlineCharacterSet];
     for (NSInteger i = 0; i < self.length; ++i) {
         unichar c = [self characterAtIndex:i];
@@ -383,17 +383,17 @@ XWSYNTH_DUMMY_CLASS(NSString_XWAdd)
     return NO;
 }
 
-- (BOOL)xwAdd_containsString:(NSString *)string {
+- (BOOL)xw_containsString:(NSString *)string {
     if (string == nil) return NO;
     return [self rangeOfString:string].location != NSNotFound;
 }
 
-- (BOOL)xwAdd_containsCharacterSet:(NSCharacterSet *)set {
+- (BOOL)xw_containsCharacterSet:(NSCharacterSet *)set {
     if (set == nil) return NO;
     return [self rangeOfCharacterFromSet:set].location != NSNotFound;
 }
 
-+ (NSString *)xwAdd_stringWithUUID {
++ (NSString *)xw_stringWithUUID {
     CFUUIDRef uuid = CFUUIDCreate(NULL);
     CFStringRef string = CFUUIDCreateString(NULL, uuid);
     CFRelease(uuid);
@@ -423,7 +423,7 @@ XWSYNTH_DUMMY_CLASS(NSString_XWAdd)
 
 #pragma mark - private methods
 
-+ (NSArray *)_xwAdd_preferredScales {
++ (NSArray *)_xw_preferredScales {
     static NSArray *scales;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
@@ -437,6 +437,20 @@ XWSYNTH_DUMMY_CLASS(NSString_XWAdd)
         }
     });
     return scales;
+}
+
+- (NSString *)xw_hexStringToString {
+    NSMutableString * newString = [[NSMutableString alloc] init];
+    int i = 0;
+    while (i < [self length]){
+        NSString * hexChar = [self substringWithRange: NSMakeRange(i, 2)];
+        int value = 0;
+        
+        sscanf([hexChar cStringUsingEncoding:NSASCIIStringEncoding], "%x", &value);
+        [newString appendFormat:@"%c", (char)value];
+        i+=2;
+    }
+    return newString.copy;
 }
 
 

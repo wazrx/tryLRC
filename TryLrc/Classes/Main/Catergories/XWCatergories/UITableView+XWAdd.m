@@ -13,7 +13,7 @@ XWSYNTH_DUMMY_CLASS(UITableView_XWAdd)
 
 @implementation UITableView (XWAdd)
 
-- (void)xwAdd_updateWithBlock:(void (^)(UITableView *tableView))block {
+- (void)xw_updateWithBlock:(void (^)(UITableView *tableView))block {
     [self beginUpdates];
     block(self);
     [self endUpdates];

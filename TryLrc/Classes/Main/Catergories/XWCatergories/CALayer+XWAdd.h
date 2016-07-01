@@ -15,53 +15,53 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - snapShot(截图相关)
 
-- (UIImage *)xwAdd_snapshotImage;
+- (UIImage *)xw_snapshotImage;
 
-- (NSData *)xwAdd_snapshotPDF;
+- (NSData *)xw_snapshotPDF;
 
 #pragma mark- shadow(阴影相关)
 
-- (void)xwAdd_shadowWithColor:(UIColor*)color offset:(CGSize)offset radius:(CGFloat)radius;
+- (void)xw_shadowWithColor:(UIColor*)color offset:(CGSize)offset radius:(CGFloat)radius;
 
 #pragma mark - animation(动画相关)
 
-- (void)xwAdd_shakeInXWithDistace:(CGFloat)distance repeatCount:(NSUInteger)count duration:(NSTimeInterval)duration;
+- (void)xw_shakeInXWithDistace:(CGFloat)distance repeatCount:(NSUInteger)count duration:(NSTimeInterval)duration;
 
-- (void)xwAdd_shakeInYWithDistace:(CGFloat)distance repeatCount:(NSUInteger)count duration:(NSTimeInterval)duration;
+- (void)xw_shakeInYWithDistace:(CGFloat)distance repeatCount:(NSUInteger)count duration:(NSTimeInterval)duration;
 
-- (void)xwAdd_rotationInZWithAngle:(CGFloat)angle repeatCount:(NSUInteger)count duration:(NSTimeInterval)duration;
+- (void)xw_rotationInZWithAngle:(CGFloat)angle repeatCount:(NSUInteger)count duration:(NSTimeInterval)duration;
 
 #pragma mark - anchorPoint(锚点相关)
 
-- (void)xwAdd_anchorPointChangedToPoint:(CGPoint)point;
+- (void)xw_anchorPointChangedToPoint:(CGPoint)point;
 
-- (void)xwAdd_anchorPointChangedTotopLeft;
-- (void)xwAdd_anchorPointChangedTotopCenter;
-- (void)xwAdd_anchorPointChangedToTopRight;
-- (void)xwAdd_anchorPointChangedToMidLeft;
-- (void)xwAdd_anchorPointChangedToMidCenter;
-- (void)xwAdd_anchorPointChangedToMidRight;
-- (void)xwAdd_anchorPointChangedToBottomLeft;
-- (void)xwAdd_anchorPointChangedToBottomCenter;
-- (void)xwAdd_anchorPointChangedToBottomRight;
+- (void)xw_anchorPointChangedTotopLeft;
+- (void)xw_anchorPointChangedTotopCenter;
+- (void)xw_anchorPointChangedToTopRight;
+- (void)xw_anchorPointChangedToMidLeft;
+- (void)xw_anchorPointChangedToMidCenter;
+- (void)xw_anchorPointChangedToMidRight;
+- (void)xw_anchorPointChangedToBottomLeft;
+- (void)xw_anchorPointChangedToBottomCenter;
+- (void)xw_anchorPointChangedToBottomRight;
 
 #pragma mark - ohter
 
-- (void)xwAdd_removeAllSublayers;
+- (void)xw_removeAllSublayers;
 
 #pragma mark -  fast property
 
-//@property (nonatomic) CGFloat x;        ///< Shortcut for frame.origin.x.
-//@property (nonatomic) CGFloat y;         ///< Shortcut for frame.origin.y
-//@property (nonatomic) CGFloat right;       ///< Shortcut for frame.origin.x + frame.size.width
-//@property (nonatomic) CGFloat bottom;      ///< Shortcut for frame.origin.y + frame.size.height
-//@property (nonatomic) CGFloat width;       ///< Shortcut for frame.size.width.
-//@property (nonatomic) CGFloat height;      ///< Shortcut for frame.size.height.
-//@property (nonatomic) CGPoint center;      ///< Shortcut for center.
-//@property (nonatomic) CGFloat centerX;     ///< Shortcut for center.x
-//@property (nonatomic) CGFloat centerY;     ///< Shortcut for center.y
-//@property (nonatomic) CGPoint origin;      ///< Shortcut for frame.origin.
-//@property (nonatomic) CGSize  size; ///< Shortcut for frame.size.
+@property (nonatomic) CGFloat x;        ///< Shortcut for frame.origin.x.
+@property (nonatomic) CGFloat y;         ///< Shortcut for frame.origin.y
+@property (nonatomic) CGFloat right;       ///< Shortcut for frame.origin.x + frame.size.width
+@property (nonatomic) CGFloat bottom;      ///< Shortcut for frame.origin.y + frame.size.height
+@property (nonatomic) CGFloat width;       ///< Shortcut for frame.size.width.
+@property (nonatomic) CGFloat height;      ///< Shortcut for frame.size.height.
+@property (nonatomic) CGPoint center;      ///< Shortcut for center.
+@property (nonatomic) CGFloat centerX;     ///< Shortcut for center.x
+@property (nonatomic) CGFloat centerY;     ///< Shortcut for center.y
+@property (nonatomic) CGPoint origin;      ///< Shortcut for frame.origin.
+@property (nonatomic) CGSize  size; ///< Shortcut for frame.size.
 
 
 @property (nonatomic) CGFloat transformRotation;     ///< key path "tranform.rotation"

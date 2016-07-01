@@ -37,29 +37,29 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - hmac (HMAC 加密相关，通过一个Key值进行加密)
 
-- (NSString *)xwAdd_hmacMD5StringWithKey:(NSString *)key;
+- (NSString *)xw_hmacMD5StringWithKey:(NSString *)key;
 
-- (NSData *)xwAdd_hmacMD5DataWithKey:(NSData *)key;
+- (NSData *)xw_hmacMD5DataWithKey:(NSData *)key;
 
-- (NSString *)xwAdd_hmacSHA1StringWithKey:(NSString *)key;
+- (NSString *)xw_hmacSHA1StringWithKey:(NSString *)key;
 
-- (NSData *)xwAdd_hmacSHA1DataWithKey:(NSData *)key;
+- (NSData *)xw_hmacSHA1DataWithKey:(NSData *)key;
 
-- (NSString *)xwAdd_hmacSHA224StringWithKey:(NSString *)key;
+- (NSString *)xw_hmacSHA224StringWithKey:(NSString *)key;
 
-- (NSData *)xwAdd_hmacSHA224DataWithKey:(NSData *)key;
+- (NSData *)xw_hmacSHA224DataWithKey:(NSData *)key;
 
-- (NSString *)xwAdd_hmacSHA256StringWithKey:(NSString *)key;
+- (NSString *)xw_hmacSHA256StringWithKey:(NSString *)key;
 
-- (NSData *)xwAdd_hmacSHA256DataWithKey:(NSData *)key;
+- (NSData *)xw_hmacSHA256DataWithKey:(NSData *)key;
 
-- (NSString *)xwAdd_hmacSHA384StringWithKey:(NSString *)key;
+- (NSString *)xw_hmacSHA384StringWithKey:(NSString *)key;
 
-- (NSData *)xwAdd_hmacSHA384DataWithKey:(NSData *)key;
+- (NSData *)xw_hmacSHA384DataWithKey:(NSData *)key;
 
-- (NSString *)xwAdd_hmacSHA512StringWithKey:(NSString *)key;
+- (NSString *)xw_hmacSHA512StringWithKey:(NSString *)key;
 
-- (NSData *)xwAdd_hmacSHA512DataWithKey:(NSData *)key;
+- (NSData *)xw_hmacSHA512DataWithKey:(NSData *)key;
 
 #pragma mark - aes256 (AES-256 加密相关)
 
@@ -73,7 +73,7 @@ NS_ASSUME_NONNULL_BEGIN
  
  @return      An NSData encrypted, or nil if an error occurs.
  */
-- (NSData *)xwAdd_aes256EncryptWithKey:(NSData *)key iv:(NSData *)iv;
+- (NSData *)xw_aes256EncryptWithKey:(NSData *)key iv:(NSData *)iv;
 
 /**
  Returns an decrypted NSData using AES.
@@ -85,7 +85,7 @@ NS_ASSUME_NONNULL_BEGIN
  
  @return      An NSData decrypted, or nil if an error occurs.
  */
-- (NSData *)xwAdd_aes256DecryptWithkey:(NSData *)key iv:(NSData *)iv;
+- (NSData *)xw_aes256DecryptWithkey:(NSData *)key iv:(NSData *)iv;
 
 #pragma mark - encode and decode (编码或者解码相关)
 
@@ -95,8 +95,8 @@ NS_ASSUME_NONNULL_BEGIN
 /**将data转成JSON数组或者字典*/
 @property (nonatomic, readonly) id jsonValue;
 
-+ (NSData *)xwAdd_dataWithHexString:(NSString *)hexString;
-+ (NSData *)xwAdd_dataWithBase64EncodedString:(NSString *)base64EncodedString;
++ (NSData *)xw_dataWithHexString:(NSString *)hexString;
++ (NSData *)xw_dataWithBase64EncodedString:(NSString *)base64EncodedString;
 
 #pragma mark - comperss and decompress(数据压缩或者解压缩相关)
 
@@ -105,27 +105,27 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  Decompress data from gzip data.
  */
-- (NSData *)xwAdd_gzipDecompress;
+- (NSData *)xw_gzipDecompress;
 
 /**
  Comperss data to gzip in default compresssion level.
  */
-- (NSData *)xwAdd_gzipComperss;
+- (NSData *)xw_gzipComperss;
 
 /**
  Decompress data from zlib-compressed data.
  */
-- (NSData *)xwAdd_zlibDecompress;
+- (NSData *)xw_zlibDecompress;
 
 /**
  Comperss data to zlib-compressed in default compresssion level.
  */
-- (NSData *)xwAdd_zlibComperss;
+- (NSData *)xw_zlibComperss;
 
 #pragma mark - other
 
 /**加载main bundle 对应文件名的数据并转成NSData，类似于[UIImage imageNamed:]*/
-+ (NSData *)xwAdd_dataNamed:(NSString *)name;
++ (NSData *)xw_dataNamed:(NSString *)name;
 
 @end
 

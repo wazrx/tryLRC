@@ -67,10 +67,10 @@ NS_ASSUME_NONNULL_BEGIN
  *
  *  @param completeBlock 回到app后的回调
  */
-+ (void)xwAdd_openSystemNotificationSettingPageWithCompleteHandle:(void(^)(BOOL isAllowed))completeBlock;
++ (void)xw_openSystemNotificationSettingPageWithCompleteHandle:(void(^)(BOOL isAllowed))completeBlock;
 
 /**打开定位设置界面*/
-+ (void)xwAdd_openSystemAddressSettingPage;
++ (void)xw_openSystemAddressSettingPage;
 
 + (NSDictionary *)xw_getAllDeviceInfo;
 

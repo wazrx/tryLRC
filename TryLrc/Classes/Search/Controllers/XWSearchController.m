@@ -15,6 +15,7 @@
 #import "XWCircleSpreadAnimator.h"
 #import "UINavigationController+XWTransition.h"
 #import <Masonry.h>
+#import <TFHpple.h>
 
 @interface XWSearchController ()
 @property (nonatomic, strong) XWSearchViewModel *viewModel;
@@ -73,7 +74,7 @@
     NSString *searchWord = self.view.searchField.text;
     XWLog(@"searchWord = %@", searchWord);
     if (!searchWord.length) {
-        [self.view.searchField.layer xwAdd_shakeInXWithDistace:3 repeatCount:2 duration:0.15];
+        [self.view.searchField.layer xw_shakeInXWithDistace:3 repeatCount:2 duration:0.15];
         return;
     }
     self.view.searchButton.enabled = NO;

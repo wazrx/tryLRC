@@ -16,7 +16,7 @@ XWSYNTH_DUMMY_CLASS(UILabel_XWAddForFrame)
 @implementation UILabel (XWAddForFrame)
 
 - (CGSize)xw_contentSize{
-    return [self.text  xwAdd_sizeWithfont:self.font maxSize:CGSizeMake(self.xw_width, MAXFLOAT)];
+    return [self.text  xw_sizeWithfont:self.font maxSize:CGSizeMake(self.xw_width, MAXFLOAT)];
 }
 
 

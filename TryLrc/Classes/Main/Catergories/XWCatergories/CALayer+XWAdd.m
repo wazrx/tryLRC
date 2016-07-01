@@ -13,7 +13,7 @@ XWSYNTH_DUMMY_CLASS(CALayer_XWAdd)
 
 @implementation CALayer (XWAdd)
 
-- (UIImage *)xwAdd_snapshotImage{
+- (UIImage *)xw_snapshotImage{
     UIGraphicsBeginImageContextWithOptions(self.bounds.size, self.opaque, 0);
     CGContextRef context = UIGraphicsGetCurrentContext();
     [self renderInContext:context];
@@ -22,7 +22,7 @@ XWSYNTH_DUMMY_CLASS(CALayer_XWAdd)
     return image;
 }
 
-- (NSData *)xwAdd_snapshotPDF{
+- (NSData *)xw_snapshotPDF{
     CGRect bounds = self.bounds;
     NSMutableData* data = [NSMutableData data];
     CGDataConsumerRef consumer = CGDataConsumerCreateWithCFData((__bridge CFMutableDataRef)data);
@@ -39,7 +39,7 @@ XWSYNTH_DUMMY_CLASS(CALayer_XWAdd)
     return data;
 }
 
-- (void)xwAdd_shadowWithColor:(UIColor*)color offset:(CGSize)offset radius:(CGFloat)radius{
+- (void)xw_shadowWithColor:(UIColor*)color offset:(CGSize)offset radius:(CGFloat)radius{
     self.shadowColor = color.CGColor;
     self.shadowOffset = offset;
     self.shadowRadius = radius;
@@ -48,38 +48,38 @@ XWSYNTH_DUMMY_CLASS(CALayer_XWAdd)
     self.rasterizationScale = [UIScreen mainScreen].scale;
 }
 
-- (void)xwAdd_removeAllSublayers{
+- (void)xw_removeAllSublayers{
     [self.sublayers makeObjectsPerformSelector:@selector(removeFromSuperlayer)];
 }
 
-- (void)xwAdd_shakeInXWithDistace:(CGFloat)distance repeatCount:(NSUInteger)count duration:(NSTimeInterval)duration{
-    [self removeAnimationForKey:@"xwAdd_shakeInXWithDistace"];
+- (void)xw_shakeInXWithDistace:(CGFloat)distance repeatCount:(NSUInteger)count duration:(NSTimeInterval)duration{
+    [self removeAnimationForKey:@"xw_shakeInXWithDistace"];
     CAKeyframeAnimation* anim=[CAKeyframeAnimation animation];
     anim.keyPath=@"transform.translation.x";
     anim.values=@[@(0), @(distance),@(0),@(-distance), @(0)];
     anim.repeatCount = count;
     anim.duration = duration;
-    [self addAnimation:anim forKey:@"xwAdd_shakeInXWithDistace"];
+    [self addAnimation:anim forKey:@"xw_shakeInXWithDistace"];
 }
 
-- (void)xwAdd_shakeInYWithDistace:(CGFloat)distance repeatCount:(NSUInteger)count duration:(NSTimeInterval)duration{
-    [self removeAnimationForKey:@"xwAdd_shakeInYWithDistace"];
+- (void)xw_shakeInYWithDistace:(CGFloat)distance repeatCount:(NSUInteger)count duration:(NSTimeInterval)duration{
+    [self removeAnimationForKey:@"xw_shakeInYWithDistace"];
     CAKeyframeAnimation* anim=[CAKeyframeAnimation animation];
     anim.keyPath=@"transform.translation.y";
     anim.values=@[@(0), @(distance),@(0),@(-distance), @(0)];
     anim.repeatCount = count;
     anim.duration = duration;
-    [self addAnimation:anim forKey:@"xwAdd_shakeInYWithDistace"];
+    [self addAnimation:anim forKey:@"xw_shakeInYWithDistace"];
 }
 
-- (void)xwAdd_rotationInZWithAngle:(CGFloat)angle repeatCount:(NSUInteger)count duration:(NSTimeInterval)duration{
-    [self removeAnimationForKey:@"xwAdd_rotationInZWithAngle"];
+- (void)xw_rotationInZWithAngle:(CGFloat)angle repeatCount:(NSUInteger)count duration:(NSTimeInterval)duration{
+    [self removeAnimationForKey:@"xw_rotationInZWithAngle"];
     CABasicAnimation *anim = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
     anim.fromValue = @(0);
     anim.toValue = @(angle);
     anim.duration = duration;
     anim.repeatCount = count;
-    [self addAnimation:anim forKey:@"xwAdd_rotationInZWithAngle"];
+    [self addAnimation:anim forKey:@"xw_rotationInZWithAngle"];
 }
 
 - (CGFloat)x{
@@ -303,46 +303,46 @@ XWSYNTH_DUMMY_CLASS(CALayer_XWAdd)
     self.transform = d;
 }
 
-- (void)xwAdd_anchorPointChangedToPoint:(CGPoint)point {
+- (void)xw_anchorPointChangedToPoint:(CGPoint)point {
     self.x += (point.x - self.anchorPoint.x) * self.width;
     self.y += (point.y - self.anchorPoint.y) * self.height;
     self.anchorPoint = point;
 }
 
-- (void)xwAdd_anchorPointChangedTotopLeft {
-    [self xwAdd_anchorPointChangedToPoint:CGPointMake(0, 0)];
+- (void)xw_anchorPointChangedTotopLeft {
+    [self xw_anchorPointChangedToPoint:CGPointMake(0, 0)];
 }
 
-- (void)xwAdd_anchorPointChangedTotopCenter {
-    [self xwAdd_anchorPointChangedToPoint:CGPointMake(0.5, 0)];
+- (void)xw_anchorPointChangedTotopCenter {
+    [self xw_anchorPointChangedToPoint:CGPointMake(0.5, 0)];
 }
 
-- (void)xwAdd_anchorPointChangedToTopRight {
-    [self xwAdd_anchorPointChangedToPoint:CGPointMake(1, 0)];
+- (void)xw_anchorPointChangedToTopRight {
+    [self xw_anchorPointChangedToPoint:CGPointMake(1, 0)];
 }
 
-- (void)xwAdd_anchorPointChangedToMidLeft {
-    [self xwAdd_anchorPointChangedToPoint:CGPointMake(0, 0.5)];
+- (void)xw_anchorPointChangedToMidLeft {
+    [self xw_anchorPointChangedToPoint:CGPointMake(0, 0.5)];
 }
 
-- (void)xwAdd_anchorPointChangedToMidCenter {
-    [self xwAdd_anchorPointChangedToPoint:CGPointMake(0.5, 0.5)];
+- (void)xw_anchorPointChangedToMidCenter {
+    [self xw_anchorPointChangedToPoint:CGPointMake(0.5, 0.5)];
 }
 
-- (void)xwAdd_anchorPointChangedToMidRight {
-    [self xwAdd_anchorPointChangedToPoint:CGPointMake(1, 0.5)];
+- (void)xw_anchorPointChangedToMidRight {
+    [self xw_anchorPointChangedToPoint:CGPointMake(1, 0.5)];
 }
 
-- (void)xwAdd_anchorPointChangedToBottomLeft {
-    [self xwAdd_anchorPointChangedToPoint:CGPointMake(0, 1)];
+- (void)xw_anchorPointChangedToBottomLeft {
+    [self xw_anchorPointChangedToPoint:CGPointMake(0, 1)];
 }
 
-- (void)xwAdd_anchorPointChangedToBottomCenter {
-    [self xwAdd_anchorPointChangedToPoint:CGPointMake(0.5, 1)];
+- (void)xw_anchorPointChangedToBottomCenter {
+    [self xw_anchorPointChangedToPoint:CGPointMake(0.5, 1)];
 }
 
-- (void)xwAdd_anchorPointChangedToBottomRight {
-    [self xwAdd_anchorPointChangedToPoint:CGPointMake(1, 1)];
+- (void)xw_anchorPointChangedToBottomRight {
+    [self xw_anchorPointChangedToPoint:CGPointMake(1, 1)];
 }
 
 @end

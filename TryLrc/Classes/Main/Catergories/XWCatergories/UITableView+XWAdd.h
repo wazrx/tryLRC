@@ -10,6 +10,6 @@
 
 @interface UITableView (XWAdd)
 
-- (void)xwAdd_updateWithBlock:(void (^)(UITableView *tableView))block;
+- (void)xw_updateWithBlock:(void (^)(UITableView *tableView))block;
 
 @end

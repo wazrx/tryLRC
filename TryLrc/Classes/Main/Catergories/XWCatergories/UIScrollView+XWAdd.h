@@ -12,14 +12,14 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface UIScrollView (XWAdd)
 
-- (void)xwAdd_scrollToTop;
-- (void)xwAdd_scrollToBottom;
-- (void)xwAdd_scrollToLeft;
-- (void)xwAdd_scrollToRight;
-- (void)xwAdd_scrollToTopAnimated:(BOOL)animated;
-- (void)xwAdd_scrollToBottomAnimated:(BOOL)animated;
-- (void)xwAdd_scrollToLeftAnimated:(BOOL)animated;
-- (void)xwAdd_scrollToRightAnimated:(BOOL)animated;
+- (void)xw_scrollToTop;
+- (void)xw_scrollToBottom;
+- (void)xw_scrollToLeft;
+- (void)xw_scrollToRight;
+- (void)xw_scrollToTopAnimated:(BOOL)animated;
+- (void)xw_scrollToBottomAnimated:(BOOL)animated;
+- (void)xw_scrollToLeftAnimated:(BOOL)animated;
+- (void)xw_scrollToRightAnimated:(BOOL)animated;
 
 @end
 

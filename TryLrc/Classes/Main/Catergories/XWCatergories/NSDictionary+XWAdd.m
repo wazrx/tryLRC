@@ -16,12 +16,12 @@ XWSYNTH_DUMMY_CLASS(NSDictionary_XWAdd)
 @implementation NSDictionary (XWAdd)
 
 
-- (BOOL)xwAdd_containsObjectForKey:(id)key {
+- (BOOL)xw_containsObjectForKey:(id)key {
     if (!key) return NO;
     return self[key] != nil;
 }
 
-- (NSString *)xwAdd_jsonStringEncoded {
+- (NSString *)xw_jsonStringEncoded {
     if ([NSJSONSerialization isValidJSONObject:self]) {
         NSError *error;
         NSData *jsonData = [NSJSONSerialization dataWithJSONObject:self options:0 error:&error];
@@ -31,7 +31,7 @@ XWSYNTH_DUMMY_CLASS(NSDictionary_XWAdd)
     return nil;
 }
 
-- (NSString *)xwAdd_jsonPrettyStringEncoded {
+- (NSString *)xw_jsonPrettyStringEncoded {
     if ([NSJSONSerialization isValidJSONObject:self]) {
         NSError *error;
         NSData *jsonData = [NSJSONSerialization dataWithJSONObject:self options:NSJSONWritingPrettyPrinted error:&error];
@@ -41,7 +41,7 @@ XWSYNTH_DUMMY_CLASS(NSDictionary_XWAdd)
     return nil;
 }
 
-- (NSDictionary *)xwAdd_entriesForKeys:(NSArray *)keys {
+- (NSDictionary *)xw_entriesForKeys:(NSArray *)keys {
     NSMutableDictionary *dic = [NSMutableDictionary new];
     for (id key in keys) {
         id value = self[key];
@@ -50,7 +50,7 @@ XWSYNTH_DUMMY_CLASS(NSDictionary_XWAdd)
     return dic;
 }
 
-- (NSDictionary *)xwAdd_dictionaryFromPlist:(NSString *)plistName{
+- (NSDictionary *)xw_dictionaryFromPlist:(NSString *)plistName{
     return [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:plistName ofType:@"plist"]];
 }
 @end

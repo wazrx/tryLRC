@@ -15,20 +15,20 @@ XWSYNTH_DUMMY_CLASS(UICollectionViewFlowLayout_XWAdd)
 @implementation UICollectionViewFlowLayout (XWAdd)
 
 +(void)load{
-    [self xwAdd_swizzleInstanceMethod:@selector(prepareLayout) with:@selector(_xwAdd_prepareLayout)];
+    [self xw_swizzleInstanceMethod:@selector(prepareLayout) with:@selector(_xw_prepareLayout)];
 }
 
-- (void)setFullItem:(BOOL)xwAdd_fullItem{
-    [self xwAdd_setAssociateValue:@(xwAdd_fullItem) withKey:"xwAdd_fullItem"];
+- (void)setFullItem:(BOOL)xw_fullItem{
+    [self xw_setAssociateValue:@(xw_fullItem) withKey:"xw_fullItem"];
 }
 
 - (BOOL)fullItem{
-    BOOL test = [[self xwAdd_getAssociatedValueForKey:"xwAdd_fullItem"] boolValue];
+    BOOL test = [[self xw_getAssociatedValueForKey:"xw_fullItem"] boolValue];
     return test;
 }
 
-- (void)_xwAdd_prepareLayout{
-    [self _xwAdd_prepareLayout];
+- (void)_xw_prepareLayout{
+    [self _xw_prepareLayout];
     if (self.fullItem) {
         self.itemSize = self.collectionView.bounds.size;
     }

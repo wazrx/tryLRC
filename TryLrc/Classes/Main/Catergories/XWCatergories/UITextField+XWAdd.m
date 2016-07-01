@@ -12,7 +12,7 @@
 @implementation UITextField (XWAdd)
 
 - (void)setLeftInsert:(CGFloat)leftInsert{
-    objc_setAssociatedObject(self, "xwAdd_leftInsert", @(leftInsert), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    objc_setAssociatedObject(self, "xw_leftInsert", @(leftInsert), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
     UIView *leftView = [UIView new];
     leftView.bounds = CGRectMake(0, 0, leftInsert, 1);
     self.leftView = leftView;
@@ -20,6 +20,6 @@
 }
 
 - (CGFloat)leftInsert{
-    return [objc_getAssociatedObject(self, "xwAdd_leftInsert") floatValue];
+    return [objc_getAssociatedObject(self, "xw_leftInsert") floatValue];
 }
 @end

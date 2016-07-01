@@ -12,13 +12,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface NSDictionary (XWAdd)
 
-- (nullable NSDictionary *)xwAdd_dictionaryFromPlist:(NSString *)plistName;
+- (nullable NSDictionary *)xw_dictionaryFromPlist:(NSString *)plistName;
 
-- (BOOL)xwAdd_containsObjectForKey:(id)key;
-- (nullable NSString *)xwAdd_jsonStringEncoded;
-- (nullable NSString *)xwAdd_jsonPrettyStringEncoded;
+- (BOOL)xw_containsObjectForKey:(id)key;
+- (nullable NSString *)xw_jsonStringEncoded;
+- (nullable NSString *)xw_jsonPrettyStringEncoded;
 /**根据keys数组返回对应的字典*/
-- (nullable NSDictionary *)xwAdd_entriesForKeys:(NSArray *)keys;
+- (nullable NSDictionary *)xw_entriesForKeys:(NSArray *)keys;
 
 @end
 

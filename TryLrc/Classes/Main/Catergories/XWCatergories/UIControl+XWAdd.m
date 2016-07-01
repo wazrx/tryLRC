@@ -29,12 +29,12 @@
 @implementation UIControl (XWAdd)
 
 
-- (void)xwAdd_addConfig:(void(^)(UIControl *control))config forControlEvents:(UIControlEvents)controlEvents {
+- (void)xw_addConfig:(void(^)(UIControl *control))config forControlEvents:(UIControlEvents)controlEvents {
     _XWControlTargetObject *target = [_XWControlTargetObject new];
     [self addTarget:target action:@selector(_xw_controlEvent) forControlEvents:controlEvents];
     target.control = self;
     target.config = config;
-    [self xwAdd_setAssociateValue:target withKey:_cmd];
+    [self xw_setAssociateValue:target withKey:_cmd];
 	
 }
 @end

@@ -22,10 +22,10 @@ XWSYNTH_DUMMY_CLASS(CALayer_XWAddForFrame)
 
 - (void)setXw_left:(CGFloat)xw_left {
     if (self.xw_left == xw_left) return;
-    [self xwAdd_setAssociateValue:@(xw_left) withKey:@"xw_left"];
-    NSNumber *xw_right = [self xwAdd_getAssociatedValueForKey:@"xw_right"];
-    NSNumber *xw_width = [self xwAdd_getAssociatedValueForKey:@"xw_width"];
-    NSNumber *xw_centerX = [self xwAdd_getAssociatedValueForKey:@"xw_centerX"];
+    [self xw_setAssociateValue:@(xw_left) withKey:@"xw_left"];
+    NSNumber *xw_right = [self xw_getAssociatedValueForKey:@"xw_right"];
+    NSNumber *xw_width = [self xw_getAssociatedValueForKey:@"xw_width"];
+    NSNumber *xw_centerX = [self xw_getAssociatedValueForKey:@"xw_centerX"];
     CGRect frame = self.frame;
     if (xw_right && !xw_width && !xw_centerX) {
         frame.size.width = xw_right.floatValue - xw_left;
@@ -42,10 +42,10 @@ XWSYNTH_DUMMY_CLASS(CALayer_XWAddForFrame)
 
 - (void)setXw_right:(CGFloat)xw_right {
     if (self.xw_right == xw_right) return;
-    [self xwAdd_setAssociateValue:@(xw_right) withKey:@"xw_right"];
-    NSNumber *xw_left = [self xwAdd_getAssociatedValueForKey:@"xw_left"];
-    NSNumber *xw_width = [self xwAdd_getAssociatedValueForKey:@"xw_width"];
-    NSNumber *xw_centerX = [self xwAdd_getAssociatedValueForKey:@"xw_centerX"];
+    [self xw_setAssociateValue:@(xw_right) withKey:@"xw_right"];
+    NSNumber *xw_left = [self xw_getAssociatedValueForKey:@"xw_left"];
+    NSNumber *xw_width = [self xw_getAssociatedValueForKey:@"xw_width"];
+    NSNumber *xw_centerX = [self xw_getAssociatedValueForKey:@"xw_centerX"];
     CGRect frame = self.frame;
     if (xw_centerX && !xw_width && !xw_left){
         frame.size.width = (xw_right - xw_centerX.floatValue) * 2.0f;
@@ -62,10 +62,10 @@ XWSYNTH_DUMMY_CLASS(CALayer_XWAddForFrame)
 
 - (void)setXw_width:(CGFloat)xw_width {
     if (self.xw_width == xw_width) return;
-    [self xwAdd_setAssociateValue:@(xw_width) withKey:@"xw_width"];
-    NSNumber *xw_left = [self xwAdd_getAssociatedValueForKey:@"xw_left"];
-    NSNumber *xw_right = [self xwAdd_getAssociatedValueForKey:@"xw_right"];
-    NSNumber *xw_centerX = [self xwAdd_getAssociatedValueForKey:@"xw_centerX"];
+    [self xw_setAssociateValue:@(xw_width) withKey:@"xw_width"];
+    NSNumber *xw_left = [self xw_getAssociatedValueForKey:@"xw_left"];
+    NSNumber *xw_right = [self xw_getAssociatedValueForKey:@"xw_right"];
+    NSNumber *xw_centerX = [self xw_getAssociatedValueForKey:@"xw_centerX"];
     CGRect frame = self.frame;
     if (!xw_left && !xw_right && xw_centerX) {
         frame.origin.x = xw_centerX.floatValue - xw_width / 2.0f;
@@ -82,10 +82,10 @@ XWSYNTH_DUMMY_CLASS(CALayer_XWAddForFrame)
 
 - (void)setXw_centerX:(CGFloat)xw_centerX {
     if (self.xw_centerX == xw_centerX) return;
-    [self xwAdd_setAssociateValue:@(xw_centerX) withKey:@"xw_centerX"];
-    NSNumber *xw_left = [self xwAdd_getAssociatedValueForKey:@"xw_left"];
-    NSNumber *xw_right = [self xwAdd_getAssociatedValueForKey:@"xw_right"];
-    NSNumber *xw_width = [self xwAdd_getAssociatedValueForKey:@"xw_width"];
+    [self xw_setAssociateValue:@(xw_centerX) withKey:@"xw_centerX"];
+    NSNumber *xw_left = [self xw_getAssociatedValueForKey:@"xw_left"];
+    NSNumber *xw_right = [self xw_getAssociatedValueForKey:@"xw_right"];
+    NSNumber *xw_width = [self xw_getAssociatedValueForKey:@"xw_width"];
     CGRect frame = self.frame;
     if (xw_right && !xw_left && !xw_width) {
         frame.size.width = (xw_right.floatValue - xw_centerX) * 2.0f;
@@ -103,10 +103,10 @@ XWSYNTH_DUMMY_CLASS(CALayer_XWAddForFrame)
 
 - (void)setXw_top:(CGFloat)xw_top {
     if (self.xw_top == xw_top) return;
-    [self xwAdd_setAssociateValue:@(xw_top) withKey:@"xw_top"];
-    NSNumber *xw_bottom = [self xwAdd_getAssociatedValueForKey:@"xw_bottom"];
-    NSNumber *xw_height = [self xwAdd_getAssociatedValueForKey:@"xw_height"];
-    NSNumber *xw_centerY = [self xwAdd_getAssociatedValueForKey:@"xw_centerY"];
+    [self xw_setAssociateValue:@(xw_top) withKey:@"xw_top"];
+    NSNumber *xw_bottom = [self xw_getAssociatedValueForKey:@"xw_bottom"];
+    NSNumber *xw_height = [self xw_getAssociatedValueForKey:@"xw_height"];
+    NSNumber *xw_centerY = [self xw_getAssociatedValueForKey:@"xw_centerY"];
     CGRect frame = self.frame;
     if (xw_bottom && !xw_height && !xw_centerY) {
         frame.size.height = xw_bottom.floatValue - xw_top;
@@ -123,10 +123,10 @@ XWSYNTH_DUMMY_CLASS(CALayer_XWAddForFrame)
 
 - (void)setXw_bottom:(CGFloat)xw_bottom {
     if (self.xw_bottom == xw_bottom) return;
-    [self xwAdd_setAssociateValue:@(xw_bottom) withKey:@"xw_bottom"];
-    NSNumber *xw_top = [self xwAdd_getAssociatedValueForKey:@"xw_top"];
-    NSNumber *xw_height = [self xwAdd_getAssociatedValueForKey:@"xw_height"];
-    NSNumber *xw_centerY = [self xwAdd_getAssociatedValueForKey:@"xw_centerY"];
+    [self xw_setAssociateValue:@(xw_bottom) withKey:@"xw_bottom"];
+    NSNumber *xw_top = [self xw_getAssociatedValueForKey:@"xw_top"];
+    NSNumber *xw_height = [self xw_getAssociatedValueForKey:@"xw_height"];
+    NSNumber *xw_centerY = [self xw_getAssociatedValueForKey:@"xw_centerY"];
     CGRect frame = self.frame;
     if (xw_centerY && !xw_height && !xw_top){
         frame.size.height = (xw_bottom - xw_centerY.floatValue) * 2.0f;
@@ -143,10 +143,10 @@ XWSYNTH_DUMMY_CLASS(CALayer_XWAddForFrame)
 
 - (void)setXw_height:(CGFloat)xw_height {
     if (self.xw_height == xw_height) return;
-    [self xwAdd_setAssociateValue:@(xw_height) withKey:@"xw_height"];
-    NSNumber *xw_top = [self xwAdd_getAssociatedValueForKey:@"xw_top"];
-    NSNumber *xw_bottom = [self xwAdd_getAssociatedValueForKey:@"xw_bottom"];
-    NSNumber *xw_centerY = [self xwAdd_getAssociatedValueForKey:@"xw_centerY"];
+    [self xw_setAssociateValue:@(xw_height) withKey:@"xw_height"];
+    NSNumber *xw_top = [self xw_getAssociatedValueForKey:@"xw_top"];
+    NSNumber *xw_bottom = [self xw_getAssociatedValueForKey:@"xw_bottom"];
+    NSNumber *xw_centerY = [self xw_getAssociatedValueForKey:@"xw_centerY"];
     CGRect frame = self.frame;
     if (!xw_top && !xw_bottom && xw_centerY) {
         frame.origin.y = xw_centerY.floatValue - xw_height / 2.0f;
@@ -163,10 +163,10 @@ XWSYNTH_DUMMY_CLASS(CALayer_XWAddForFrame)
 
 - (void)setXw_centerY:(CGFloat)xw_centerY {
     if (self.xw_centerY == xw_centerY) return;
-    [self xwAdd_setAssociateValue:@(xw_centerY) withKey:@"xw_centerY"];
-    NSNumber *xw_top = [self xwAdd_getAssociatedValueForKey:@"xw_top"];
-    NSNumber *xw_bottom = [self xwAdd_getAssociatedValueForKey:@"xw_bottom"];
-    NSNumber *xw_height = [self xwAdd_getAssociatedValueForKey:@"xw_height"];
+    [self xw_setAssociateValue:@(xw_centerY) withKey:@"xw_centerY"];
+    NSNumber *xw_top = [self xw_getAssociatedValueForKey:@"xw_top"];
+    NSNumber *xw_bottom = [self xw_getAssociatedValueForKey:@"xw_bottom"];
+    NSNumber *xw_height = [self xw_getAssociatedValueForKey:@"xw_height"];
     CGRect frame = self.frame;
     if (xw_bottom && !xw_top && !xw_height) {
         frame.size.height = (xw_bottom.floatValue - xw_centerY) * 2.0f;

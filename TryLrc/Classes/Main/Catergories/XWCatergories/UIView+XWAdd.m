@@ -18,155 +18,155 @@ XWSYNTH_DUMMY_CLASS(UIView_XWAdd)
 @implementation UIView (XWAdd)
 
 + (void)load{
-    [self xwAdd_swizzleInstanceMethod:@selector(layoutSublayersOfLayer:) with:@selector(_xwAdd_layoutSublayersOfLayer:)];
-    [self xwAdd_swizzleInstanceMethod:@selector(hitTest:withEvent:) with:@selector(_xwAdd_hitTest:withEvent:)];
-    [self xwAdd_swizzleInstanceMethod:@selector(pointInside:withEvent:) with:@selector(_xwAdd_pointInside:withEvent:)];
+    [self xw_swizzleInstanceMethod:@selector(layoutSublayersOfLayer:) with:@selector(_xw_layoutSublayersOfLayer:)];
+    [self xw_swizzleInstanceMethod:@selector(hitTest:withEvent:) with:@selector(_xw_hitTest:withEvent:)];
+    [self xw_swizzleInstanceMethod:@selector(pointInside:withEvent:) with:@selector(_xw_pointInside:withEvent:)];
 }
 
-//- (CGFloat)x {
-//    return self.frame.origin.x;
-//}
-//
-//- (void)setX:(CGFloat)x {
-//    CGRect frame = self.frame;
-//    frame.origin.x = x;
-//    self.frame = frame;
-//}
-//
-//- (CGFloat)y {
-//    return self.frame.origin.y;
-//}
-//
-//- (void)setY:(CGFloat)y {
-//    CGRect frame = self.frame;
-//    frame.origin.y = y;
-//    self.frame = frame;
-//}
-//
-//- (CGFloat)right {
-//    return self.frame.origin.x + self.frame.size.width;
-//}
-//
-//- (void)setRight:(CGFloat)right {
-//    CGRect frame = self.frame;
-//    frame.origin.x = right - frame.size.width;
-//    self.frame = frame;
-//}
-//
-//- (CGFloat)bottom {
-//    return self.frame.origin.y + self.frame.size.height;
-//}
-//
-//- (void)setBottom:(CGFloat)bottom {
-//    CGRect frame = self.frame;
-//    frame.origin.y = bottom - frame.size.height;
-//    self.frame = frame;
-//}
-//
-//- (CGFloat)width {
-//    return self.frame.size.width;
-//}
-//
-//- (void)setWidth:(CGFloat)width {
-//    CGRect frame = self.frame;
-//    frame.size.width = width;
-//    self.frame = frame;
-//}
-//
-//- (CGFloat)height {
-//    return self.frame.size.height;
-//}
-//
-//- (void)setHeight:(CGFloat)height {
-//    CGRect frame = self.frame;
-//    frame.size.height = height;
-//    self.frame = frame;
-//}
-//
-//- (CGFloat)centerX {
-//    return self.center.x;
-//}
-//
-//- (void)setCenterX:(CGFloat)centerX {
-//    self.center = CGPointMake(centerX, self.center.y);
-//}
-//
-//- (CGFloat)centerY {
-//    return self.center.y;
-//}
-//
-//- (void)setCenterY:(CGFloat)centerY {
-//    self.center = CGPointMake(self.center.x, centerY);
-//}
-//
-//- (CGPoint)origin {
-//    return self.frame.origin;
-//}
-//
-//- (void)setOrigin:(CGPoint)origin {
-//    CGRect frame = self.frame;
-//    frame.origin = origin;
-//    self.frame = frame;
-//}
-//
-//- (CGSize)size {
-//    return self.frame.size;
-//}
-//
-//- (void)setSize:(CGSize)size {
-//    CGRect frame = self.frame;
-//    frame.size = size;
-//    self.frame = frame;
-//}
-//
-//- (CGFloat)rightFromSuperView{
-//    if (!self.superview) return 0;
-//    return self.superview.width - self.right;
-//}
-//
-//- (void)setRightFromSuperView:(CGFloat)rightFromSuperView{
-//    if (!self.superview) return;
-//    self.y = self.superview.width - self.width - rightFromSuperView;
-//}
-//
-//- (CGFloat)bottomFromSuperView{
-//    if (!self.superview) return 0;
-//    return self.superview.height - self.bottom;
-//}
-//
-//- (void)setBottomFromSuperView:(CGFloat)bottomFromSuperView{
-//    if (!self.superview) return;
-//    self.y = self.superview.height - self.height - bottomFromSuperView;
-//}
+- (CGFloat)x {
+    return self.frame.origin.x;
+}
 
-- (void)setEndEditingBeforTouch:(BOOL)xwAdd_endEditingBeforTouch{
-    [self xwAdd_setAssociateValue:@(xwAdd_endEditingBeforTouch) withKey:"xwAdd_endEditingBeforTouch"];
+- (void)setX:(CGFloat)x {
+    CGRect frame = self.frame;
+    frame.origin.x = x;
+    self.frame = frame;
+}
+
+- (CGFloat)y {
+    return self.frame.origin.y;
+}
+
+- (void)setY:(CGFloat)y {
+    CGRect frame = self.frame;
+    frame.origin.y = y;
+    self.frame = frame;
+}
+
+- (CGFloat)right {
+    return self.frame.origin.x + self.frame.size.width;
+}
+
+- (void)setRight:(CGFloat)right {
+    CGRect frame = self.frame;
+    frame.origin.x = right - frame.size.width;
+    self.frame = frame;
+}
+
+- (CGFloat)bottom {
+    return self.frame.origin.y + self.frame.size.height;
+}
+
+- (void)setBottom:(CGFloat)bottom {
+    CGRect frame = self.frame;
+    frame.origin.y = bottom - frame.size.height;
+    self.frame = frame;
+}
+
+- (CGFloat)width {
+    return self.frame.size.width;
+}
+
+- (void)setWidth:(CGFloat)width {
+    CGRect frame = self.frame;
+    frame.size.width = width;
+    self.frame = frame;
+}
+
+- (CGFloat)height {
+    return self.frame.size.height;
+}
+
+- (void)setHeight:(CGFloat)height {
+    CGRect frame = self.frame;
+    frame.size.height = height;
+    self.frame = frame;
+}
+
+- (CGFloat)centerX {
+    return self.center.x;
+}
+
+- (void)setCenterX:(CGFloat)centerX {
+    self.center = CGPointMake(centerX, self.center.y);
+}
+
+- (CGFloat)centerY {
+    return self.center.y;
+}
+
+- (void)setCenterY:(CGFloat)centerY {
+    self.center = CGPointMake(self.center.x, centerY);
+}
+
+- (CGPoint)origin {
+    return self.frame.origin;
+}
+
+- (void)setOrigin:(CGPoint)origin {
+    CGRect frame = self.frame;
+    frame.origin = origin;
+    self.frame = frame;
+}
+
+- (CGSize)size {
+    return self.frame.size;
+}
+
+- (void)setSize:(CGSize)size {
+    CGRect frame = self.frame;
+    frame.size = size;
+    self.frame = frame;
+}
+
+- (CGFloat)rightFromSuperView{
+    if (!self.superview) return 0;
+    return self.superview.width - self.right;
+}
+
+- (void)setRightFromSuperView:(CGFloat)rightFromSuperView{
+    if (!self.superview) return;
+    self.y = self.superview.width - self.width - rightFromSuperView;
+}
+
+- (CGFloat)bottomFromSuperView{
+    if (!self.superview) return 0;
+    return self.superview.height - self.bottom;
+}
+
+- (void)setBottomFromSuperView:(CGFloat)bottomFromSuperView{
+    if (!self.superview) return;
+    self.y = self.superview.height - self.height - bottomFromSuperView;
+}
+
+- (void)setEndEditingBeforTouch:(BOOL)xw_endEditingBeforTouch{
+    [self xw_setAssociateValue:@(xw_endEditingBeforTouch) withKey:"xw_endEditingBeforTouch"];
 }
 
 - (void)setTouchBlock:(dispatch_block_t)touchBlock{
-    [self xwAdd_setAssociateCopyValue:touchBlock withKey:"xwAdd_touchBlock"];
+    [self xw_setAssociateCopyValue:touchBlock withKey:"xw_touchBlock"];
 }
 
 - (BOOL)endEditingBeforTouch{
-    return [[self xwAdd_getAssociatedValueForKey:"xwAdd_endEditingBeforTouch"] boolValue];
+    return [[self xw_getAssociatedValueForKey:"xw_endEditingBeforTouch"] boolValue];
 }
 
 - (dispatch_block_t)touchBlock{
-    return [self xwAdd_getAssociatedValueForKey:"xwAdd_touchBlock"];
+    return [self xw_getAssociatedValueForKey:"xw_touchBlock"];
 }
 
-+ (instancetype)xwAdd_tempViewForFrameWithBlock:(XWAddViewBlock)block{
++ (instancetype)xw_tempViewForFrameWithBlock:(XWAddViewBlock)block{
     UIView *view = [self new];
-    [view xwAdd_setAssociateValue:block withKey:"XWAddViewBlock"];
+    [view xw_setAssociateValue:block withKey:"XWAddViewBlock"];
     return view;
 }
 
 - (void)setExternalTouchInset:(UIEdgeInsets)externalTouchInset{
-    [self xwAdd_setAssociateValue:[NSValue valueWithUIEdgeInsets:externalTouchInset] withKey:"xw_externalTouchInset"];
+    [self xw_setAssociateValue:[NSValue valueWithUIEdgeInsets:externalTouchInset] withKey:"xw_externalTouchInset"];
 }
 
 - (UIEdgeInsets)externalTouchInset{
-    return [[self xwAdd_getAssociatedValueForKey:"xw_externalTouchInset"] UIEdgeInsetsValue];
+    return [[self xw_getAssociatedValueForKey:"xw_externalTouchInset"] UIEdgeInsetsValue];
 }
 
 - (NSData *)snapshotPDF {
@@ -194,7 +194,7 @@ XWSYNTH_DUMMY_CLASS(UIView_XWAdd)
     return snap;
 }
 
-- (UIImage *)xwAdd_snapshotImageAfterScreenUpdates:(BOOL)afterUpdates{
+- (UIImage *)xw_snapshotImageAfterScreenUpdates:(BOOL)afterUpdates{
     if (![self respondsToSelector:@selector(drawViewHierarchyInRect:afterScreenUpdates:)]) {
         return [self snapshotImage];
     }
@@ -205,15 +205,15 @@ XWSYNTH_DUMMY_CLASS(UIView_XWAdd)
     return snap;
 }
 
-- (void)xwAdd_shadowWithColor:(UIColor*)color offset:(CGSize)offset radius:(CGFloat)radius {
-    [self.layer xwAdd_shadowWithColor:color offset:offset radius:radius];
+- (void)xw_shadowWithColor:(UIColor*)color offset:(CGSize)offset radius:(CGFloat)radius {
+    [self.layer xw_shadowWithColor:color offset:offset radius:radius];
 }
 
-- (void)xwAdd_anchorPointChangedToPoint:(CGPoint)point {
-    [self.layer xwAdd_anchorPointChangedToPoint:point];
+- (void)xw_anchorPointChangedToPoint:(CGPoint)point {
+    [self.layer xw_anchorPointChangedToPoint:point];
 }
 
-- (void)xwAdd_removeAllSubviews {
+- (void)xw_removeAllSubviews {
     while (self.subviews.count) {
         [self.subviews.lastObject removeFromSuperview];
     }
@@ -252,9 +252,9 @@ XWSYNTH_DUMMY_CLASS(UIView_XWAdd)
 
 #pragma mark - exchanged methods
 
-- (void)_xwAdd_layoutSublayersOfLayer:(CALayer *)layer{
-    [self _xwAdd_layoutSublayersOfLayer:layer];
-    XWAddViewBlock block = [layer xwAdd_getAssociatedValueForKey:"XWAddViewBlock"];
+- (void)_xw_layoutSublayersOfLayer:(CALayer *)layer{
+    [self _xw_layoutSublayersOfLayer:layer];
+    XWAddViewBlock block = [layer xw_getAssociatedValueForKey:"XWAddViewBlock"];
     if (block) {
         block(self.frame);
         block = nil;
@@ -263,17 +263,17 @@ XWSYNTH_DUMMY_CLASS(UIView_XWAdd)
     }
 }
 
-- (BOOL)_xwAdd_pointInside:(CGPoint)point withEvent:(UIEvent *)event{
+- (BOOL)_xw_pointInside:(CGPoint)point withEvent:(UIEvent *)event{
     if (UIEdgeInsetsEqualToEdgeInsets(self.externalTouchInset, UIEdgeInsetsZero)) {
-        return [self _xwAdd_pointInside:point withEvent:event];
+        return [self _xw_pointInside:point withEvent:event];
     }
     CGRect externalFrame = CGRectMake(-self.externalTouchInset.left, -self.externalTouchInset.top, self.xw_width + (self.externalTouchInset.left + self.externalTouchInset.right), self.xw_height + self.externalTouchInset.top + self.externalTouchInset.bottom);
     return CGRectContainsPoint(externalFrame, point);
     
 }
 
-- (UIView *)_xwAdd_hitTest:(CGPoint)point withEvent:(UIEvent *)event{
-    UIView *view = [self _xwAdd_hitTest:point withEvent:event];
+- (UIView *)_xw_hitTest:(CGPoint)point withEvent:(UIEvent *)event{
+    UIView *view = [self _xw_hitTest:point withEvent:event];
     doBlock(self.touchBlock);
     if (self.endEditingBeforTouch) {
         if ([view isKindOfClass:[UITextField class]] || [view isKindOfClass:[UITextView class]]) {

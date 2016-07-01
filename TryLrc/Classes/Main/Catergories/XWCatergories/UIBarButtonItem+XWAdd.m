@@ -32,16 +32,16 @@ XWSYNTH_DUMMY_CLASS(UIBarButtonItem_XWAdd)
 
 @implementation UIBarButtonItem (XWAdd)
 
-+ (UIBarButtonItem *)xwAdd_itemWithTitle:(NSString *)title clickedHandle:(void(^)(UIBarButtonItem *barButtonItem))clickedConfg {
++ (UIBarButtonItem *)xw_itemWithTitle:(NSString *)title clickedHandle:(void(^)(UIBarButtonItem *barButtonItem))clickedConfg {
     _XWBarButtonItemTargetObject *target = [_XWBarButtonItemTargetObject new];
     UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:title style:UIBarButtonItemStylePlain target:target action:@selector(_xw_itemClicked)];
     target.item = item;
     target.clickedConfg = clickedConfg;
-    [item xwAdd_setAssociateValue:target withKey:_cmd];
+    [item xw_setAssociateValue:target withKey:_cmd];
     return item;
 }
 
-+ (UIBarButtonItem *)xwAdd_itemWithImage:(NSString *)image highImage:(NSString *)highImage clickedHandle:(void(^)(UIBarButtonItem *barButtonItem))clickedConfg {
++ (UIBarButtonItem *)xw_itemWithImage:(NSString *)image highImage:(NSString *)highImage clickedHandle:(void(^)(UIBarButtonItem *barButtonItem))clickedConfg {
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
     // 设置图片
     UIImage *img = [UIImage imageNamed:image];
@@ -54,7 +54,7 @@ XWSYNTH_DUMMY_CLASS(UIBarButtonItem_XWAdd)
     btn.imageEdgeInsets = UIEdgeInsetsMake(0, 24, 0, 0);
     UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithCustomView:btn];
     weakify(item);
-    [btn xwAdd_addConfig:^(UIControl *control) {
+    [btn xw_addConfig:^(UIControl *control) {
         strongify(item);
         doBlock(clickedConfg, item);
     } forControlEvents:UIControlEventTouchUpInside];

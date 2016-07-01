@@ -13,7 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface UIBezierPath (XWAdd)
 
 /**根据文字生成path，不支持emoji文字*/
-+ (nullable UIBezierPath *)xwAdd_bezierPathWithText:(NSString *)text font:(UIFont *)font;
++ (nullable UIBezierPath *)xw_bezierPathWithText:(NSString *)text font:(UIFont *)font;
 
 @end
 

@@ -15,26 +15,26 @@ XWSYNTH_DUMMY_CLASS(UIActivityIndicatorView_XWAdd)
 
 @implementation UIActivityIndicatorView (XWAdd)
 
-+ (void)xwAdd_showAnimationInView:(UIView *)view indicatorColor:(UIColor *)color{
-    UIActivityIndicatorView *indicator = [view xwAdd_getAssociatedValueForKey:"currentIndicator"];
++ (void)xw_showAnimationInView:(UIView *)view indicatorColor:(UIColor *)color{
+    UIActivityIndicatorView *indicator = [view xw_getAssociatedValueForKey:"currentIndicator"];
     if (!indicator) {
         indicator = [UIActivityIndicatorView new];
         indicator.color = color;
 //        indicator.center = CGPointMake(view.width / 2.0f, view.height / 2.0f);
         [view addSubview:indicator];
-        [view xwAdd_setAssociateValue:indicator withKey:"currentIndicator"];
+        [view xw_setAssociateValue:indicator withKey:"currentIndicator"];
     }
     if (!indicator.isAnimating) {
         [indicator startAnimating];
     }
 }
 
-+ (void)xwAdd_stopAnimationInView:(UIView *)view{
-    UIActivityIndicatorView *indicator = [view xwAdd_getAssociatedValueForKey:"currentIndicator"];
++ (void)xw_stopAnimationInView:(UIView *)view{
+    UIActivityIndicatorView *indicator = [view xw_getAssociatedValueForKey:"currentIndicator"];
     if (indicator) {
         [indicator stopAnimating];
         [indicator removeFromSuperview];
-        [view xwAdd_removeAssociateWithKey:"currentIndicator"];
+        [view xw_removeAssociateWithKey:"currentIndicator"];
     }
 }
 

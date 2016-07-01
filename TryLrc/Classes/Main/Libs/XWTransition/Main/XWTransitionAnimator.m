@@ -8,6 +8,7 @@
 
 #import "XWTransitionAnimator.h"
 #import <objc/runtime.h>
+#import <objc/message.h>
 
 #pragma mark - 私有转场动画管理者
 
@@ -64,11 +65,35 @@ typedef void(^XWTransitionAnimationConfig)(id<UIViewControllerContextTransitioni
 @implementation XWTransitionAnimator
 
 - (void)dealloc{
+    //在该效果器销毁的时候，如果之前已有效果器则切换为之前的效果器，避免以前的效果在pop的时候失效
     if (_saveNavigationController && _lastDelegate) {
         _saveNavigationController.delegate = _lastDelegate;
     }
     _lastDelegate = nil;
-    NSLog(@"animator销毁了");
+}
++ (void)test{
+    Class classToSwizzle = self.class;
+    SEL deallocSelector = sel_registerName("dealloc");
+    __block void (*originalDealloc)(__unsafe_unretained id, SEL) = NULL;
+    id newDealloc = ^(__unsafe_unretained id objSelf){
+        NSLog(@"NewDealloc, animator销毁了");
+        if (originalDealloc == NULL) {
+            struct objc_super superInfo = {
+                .receiver = objSelf,
+                .super_class = class_getSuperclass(classToSwizzle)
+            };
+            void (*msgSend)(struct objc_super *, SEL) = (__typeof__(msgSend))objc_msgSendSuper;
+            msgSend(&superInfo, deallocSelector);
+        }else{
+            originalDealloc(objSelf, deallocSelector);
+        }
+    };
+    IMP newDeallocIMP = imp_implementationWithBlock(newDealloc);
+    if (!class_addMethod(classToSwizzle, deallocSelector, newDeallocIMP, "v@:")) {
+        Method deallocMethod = class_getInstanceMethod(classToSwizzle, deallocSelector);
+        originalDealloc = (void(*)(__unsafe_unretained id, SEL))method_getImplementation(deallocMethod);
+        originalDealloc = (void(*)(__unsafe_unretained id, SEL))method_setImplementation(deallocMethod, newDeallocIMP);
+    }
 }
 
 

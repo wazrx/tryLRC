@@ -6,11 +6,15 @@
 //  Copyright © 2016年 wazrx. All rights reserved.
 //
 
-#import "XWTableViewModel.h"
+#import "XWBaseViewModel.h"
 #import "XWSearchTypeDefine.h"
 @class XWSearchResultModel;
 
-@interface XWSearchReslutViewModel : XWTableViewModel
+NS_ASSUME_NONNULL_BEGIN
+
+@interface XWSearchReslutViewModel : XWBaseViewModel
+
+@property (nullable, nonatomic, readonly) NSArray<XWSearchResultModel *> *data;
 
 + (instancetype)xw_viewModelWithSearchedData:(NSArray<XWSearchResultModel *>*)searchedData searchWord:(NSString *)word type:(XWSearchSearchType)type;
 
@@ -23,3 +27,5 @@
 - (void)xw_updateData:(NSArray<XWSearchResultModel *> *)dataArray;
 
 @end
+
+NS_ASSUME_NONNULL_END
