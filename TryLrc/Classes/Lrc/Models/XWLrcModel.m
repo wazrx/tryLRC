@@ -8,11 +8,13 @@
 
 #import "XWLrcModel.h"
 #import "XWCatergory.h"
+#import <MJExtension.h>
 
 @implementation XWLrcModel{
     NSAttributedString *_originalString;
 }
 
+MJCodingImplementation
 
 + (instancetype)xw_modelWithLrc:(NSString *)lrc {
     return [[self alloc] _initWithLrc:lrc];

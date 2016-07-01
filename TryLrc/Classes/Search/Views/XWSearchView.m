@@ -44,7 +44,7 @@
     _searchField = searchField;
     searchField.leftInsert = widthRatio(10);
     searchField.placeholder = @"请输入内容";
-    searchField.text = @"dear";
+    searchField.text = @"恋してる";
     searchField.layer.borderColor = XSkyBlueC.CGColor;
     searchField.layer.borderWidth = widthRatio(1.5);
     searchField.layer.cornerRadius = widthRatio(8);

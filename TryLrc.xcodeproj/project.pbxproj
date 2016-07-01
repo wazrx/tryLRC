@@ -13,6 +13,9 @@
 		8B30DBDA1D1BC42D0018CB1A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B30DBD91D1BC42D0018CB1A /* Assets.xcassets */; };
 		8B30DBDD1D1BC42D0018CB1A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B30DBDB1D1BC42D0018CB1A /* LaunchScreen.storyboard */; };
 		8BA5752D1D250B6D00DBA26C /* XWCacheTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BA5752C1D250B6D00DBA26C /* XWCacheTool.m */; };
+		8BE067251D26635300748B21 /* XWAppInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BE067241D26635300748B21 /* XWAppInfo.m */; };
+		8BE067281D26727F00748B21 /* XWTestA.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BE067271D26727F00748B21 /* XWTestA.m */; };
+		8BE0672B1D26728C00748B21 /* XWTestB.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BE0672A1D26728C00748B21 /* XWTestB.m */; };
 		8BED99451D24AB4F002B10B2 /* XWLrcController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BED98761D24AB4F002B10B2 /* XWLrcController.m */; };
 		8BED99461D24AB4F002B10B2 /* XWLrcModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BED98791D24AB4F002B10B2 /* XWLrcModel.m */; };
 		8BED99471D24AB4F002B10B2 /* XWLrcTimeTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BED987C1D24AB4F002B10B2 /* XWLrcTimeTool.m */; };
@@ -112,6 +115,12 @@
 		8B30DBDE1D1BC42D0018CB1A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8BA5752B1D250B6D00DBA26C /* XWCacheTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWCacheTool.h; sourceTree = "<group>"; };
 		8BA5752C1D250B6D00DBA26C /* XWCacheTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XWCacheTool.m; sourceTree = "<group>"; };
+		8BE067231D26635300748B21 /* XWAppInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWAppInfo.h; sourceTree = "<group>"; };
+		8BE067241D26635300748B21 /* XWAppInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XWAppInfo.m; sourceTree = "<group>"; };
+		8BE067261D26727F00748B21 /* XWTestA.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWTestA.h; sourceTree = "<group>"; };
+		8BE067271D26727F00748B21 /* XWTestA.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XWTestA.m; sourceTree = "<group>"; };
+		8BE067291D26728C00748B21 /* XWTestB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWTestB.h; sourceTree = "<group>"; };
+		8BE0672A1D26728C00748B21 /* XWTestB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XWTestB.m; sourceTree = "<group>"; };
 		8BED98751D24AB4F002B10B2 /* XWLrcController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWLrcController.h; sourceTree = "<group>"; };
 		8BED98761D24AB4F002B10B2 /* XWLrcController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XWLrcController.m; sourceTree = "<group>"; };
 		8BED98781D24AB4F002B10B2 /* XWLrcModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWLrcModel.h; sourceTree = "<group>"; };
@@ -692,6 +701,8 @@
 				8BED999D1D24ABFF002B10B2 /* XWAppDelegate.h */,
 				8BED991A1D24AB4F002B10B2 /* XWUrlDefine.h */,
 				8BED991B1D24AB4F002B10B2 /* XWUrlDefine.m */,
+				8BE067231D26635300748B21 /* XWAppInfo.h */,
+				8BE067241D26635300748B21 /* XWAppInfo.m */,
 			);
 			path = Others;
 			sourceTree = "<group>";
@@ -744,6 +755,10 @@
 			children = (
 				8BED99281D24AB4F002B10B2 /* XWSearchController.h */,
 				8BED99291D24AB4F002B10B2 /* XWSearchController.m */,
+				8BE067261D26727F00748B21 /* XWTestA.h */,
+				8BE067271D26727F00748B21 /* XWTestA.m */,
+				8BE067291D26728C00748B21 /* XWTestB.h */,
+				8BE0672A1D26728C00748B21 /* XWTestB.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1020,6 +1035,7 @@
 				8BED99651D24AB4F002B10B2 /* UILabel+XWAdd.m in Sources */,
 				8BED99601D24AB4F002B10B2 /* UIControl+XWAdd.m in Sources */,
 				8BED995C1D24AB4F002B10B2 /* UIBarButtonItem+XWAdd.m in Sources */,
+				8BE067251D26635300748B21 /* XWAppInfo.m in Sources */,
 				8BED99791D24AB4F002B10B2 /* XWCoolAnimator+XWExplode.m in Sources */,
 				8BED99861D24AB4F002B10B2 /* XWFilterAnimator+XWMask.m in Sources */,
 				8BED999A1D24AB4F002B10B2 /* XWSearchResultCell.m in Sources */,
@@ -1043,11 +1059,13 @@
 				8BED99841D24AB4F002B10B2 /* XWFilterAnimator+XWCopyMachine.m in Sources */,
 				8BED995E1D24AB4F002B10B2 /* UICollectionViewFlowLayout+XWAdd.m in Sources */,
 				8BED99471D24AB4F002B10B2 /* XWLrcTimeTool.m in Sources */,
+				8BE0672B1D26728C00748B21 /* XWTestB.m in Sources */,
 				8BED994C1D24AB4F002B10B2 /* CALayer+XWAddForFrame.m in Sources */,
 				8BED998F1D24AB4F002B10B2 /* XWNetTool.m in Sources */,
 				8BED996F1D24AB4F002B10B2 /* YYLabel+XWAddForFrame.m in Sources */,
 				8BED99521D24AB4F002B10B2 /* NSMutableArray+XWAdd.m in Sources */,
 				8BED998E1D24AB4F002B10B2 /* XWUrlDefine.m in Sources */,
+				8BE067281D26727F00748B21 /* XWTestA.m in Sources */,
 				8BED99581D24AB4F002B10B2 /* NSTimer+XWAdd.m in Sources */,
 				8BED997E1D24AB4F002B10B2 /* XWCoolAnimator+XWPortal.m in Sources */,
 				8BED99981D24AB4F002B10B2 /* XWSearchResultModel.m in Sources */,

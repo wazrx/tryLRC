@@ -16,6 +16,8 @@
 #import "UINavigationController+XWTransition.h"
 #import <Masonry.h>
 #import <TFHpple.h>
+#import "XWTestA.h"
+#import "XWCacheTool.h"
 
 @interface XWSearchController ()
 @property (nonatomic, strong) XWSearchViewModel *viewModel;
@@ -32,6 +34,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self test];
+    return;
     [self xw_initailizeUI];
 }
 
@@ -40,10 +44,18 @@
 - (void)xw_initailizeUI{
     self.view.backgroundColor = XWhiteC;
     self.title = @"歌词搜索";
-    self.view.endEditingBeforTouch = YES;
     [self.view xw_addTypeButtonTarget:self selector:@selector(xw_typeButtonSelect:)];
     [self.view.searchButton addTarget:self action:@selector(xw_search) forControlEvents:UIControlEventTouchUpInside];
     return;
+}
+
+- (void)test{
+    self.view.backgroundColor = XWhiteC;
+    XWTestA *testA = [XWTestA new];
+    XWCacheTool *cacheTool = [XWCacheTool xw_cacheToolWithType:XWCacheToolTypeDisk name:@"test"];
+//    [cacheTool xw_setObject:testA forKey:@"testA"];
+    XWTestA *readTestA = (XWTestA *)[cacheTool xw_objectForKey:@"testA"];
+    NSLog(@"%@", readTestA.name);
 }
 
 - (XWSearchViewModel *)viewModel{
@@ -88,7 +100,6 @@
     rVC.searchedData = _viewModel.searchData;
     rVC.searchWord = self.view.searchField.text;
     rVC.searchType = _viewModel.searchType;
-    self.view.searchField.text = @"";
     [self.navigationController xw_pushViewController:rVC withAnimator:animator];
 //    [self.navigationController pushViewController:rVC animated:YES];
 }

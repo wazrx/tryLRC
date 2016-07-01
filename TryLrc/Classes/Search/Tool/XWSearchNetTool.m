@@ -19,8 +19,34 @@
     void(^_successed)(NSArray<XWSearchResultModel *> *data);
     dispatch_block_t _failed;
     NSString *_searchTypeNumber;
+    XWNetTool *_netTool;
 }
 
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        [self _xw_setNetTool];
+    }
+    return self;
+}
+
+- (void)_xw_setNetTool{
+    _netTool = [XWNetTool new];
+    XWCacheTool *cacheTool = [XWCacheTool xw_cacheToolWithType:XWCacheToolTypeMemoryAndDisk name:@"searchResultCacheTool"];
+    _netTool.cacheTool = cacheTool;
+    _netTool.cacheNetType = XWNetToolCacheTypeWhenNetNotReachable;
+    _netTool.supportTextHtml = YES;
+    _netTool.support3840 = YES;
+    _netTool.requestHeader = @{@"Host" : @"www.uta-net.com",
+                               @"User-Agent": @"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.82 Safari/537.36 QQBrowser/4.0.4035.400",
+                               @"Accept": @"text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+                               @"Accept-Language": @"zh-CN,zh;q=0.8,en-US;q=0.5,en;q=0.3",
+                               @"Accept-Encoding": @"gzip, deflate",
+                               @"Cookie": @"uta_rec_id=UID_e1cabae9b621d7d0be97d89418283ffb; uta_history=114458; __utmt=1; __utma=164998139.772946311.1466817287.1466824007.1466831306.4; __utmb=164998139.1.10.1466831306; __utmc=164998139; __utmz=164998139.1466817287.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none)",
+                               @"Connection" : @"keep-alive"};
+    
+}
 
 - (void)xw_requestSearchResultWithSearchWord:(NSString *)word
                                   searchType:(XWSearchSearchType)type
@@ -30,24 +56,9 @@
     [self _xw_setSearchTypeStringWithType:type];
     _successed = successed;
     _failed = failed;
-    XWNetTool *tool = [XWNetTool xw_tool];
-    tool.supportTextHtml = YES;
-    tool.support3840 = YES;
-    tool.requestHeader = @{@"Host" : @"www.uta-net.com",
-                           @"User-Agent": @"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.82 Safari/537.36 QQBrowser/4.0.4035.400",
-                           @"Accept": @"text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
-                           @"Accept-Language": @"zh-CN,zh;q=0.8,en-US;q=0.5,en;q=0.3",
-                           @"Accept-Encoding": @"gzip, deflate",
-                           @"Cookie": @"uta_rec_id=UID_e1cabae9b621d7d0be97d89418283ffb; uta_history=114458; __utmt=1; __utma=164998139.772946311.1466817287.1466824007.1466831306.4; __utmb=164998139.1.10.1466831306; __utmc=164998139; __utmz=164998139.1466817287.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none)",
-                           @"Connection" : @"keep-alive"};
-    NSDictionary *params = @{@"Aselect" : _searchTypeNumber,
-                             @"Keyword" : word,
-                             @"Bselect" : @"3",
-                             @"x" : @"38",
-                             @"y" : @"13",
-                             @"pnum" : [NSString stringWithFormat:@"%zd", count]};
+    NSString *realSearchURL = [NSString stringWithFormat:@"http://www.uta-net.com/search/?Aselect=%@&Bselect=3&Keyword=%@&sort=&pnum=%zd", _searchTypeNumber, [word stringByAddingPercentEscapesUsingEncoding:NSShiftJISStringEncoding], count];
     weakify(self);
-    [tool xw_getRequestInfoWithURL:SearchURL params:params success:^(id  _Nonnull object) {
+    [_netTool xw_get:realSearchURL params:nil success:^(id  _Nonnull object) {
         strongify(self);
         [self _xw_handleSuccessedData:object];
     } fail:^(id  _Nonnull object) {
@@ -55,8 +66,6 @@
         strongify(self);
         [self _xw_handleFailed];
     }];
-
-	
 }
 
 - (void)_xw_handleSuccessedData:(id)object{

@@ -27,7 +27,6 @@
     UITableView *lrcListView = [UITableView new];
     lrcListView.backgroundColor = XWhiteC;
     _lrcListView = lrcListView;
-//    lrcListView.rowHeight = widthRatio(50);
     [self addSubview:lrcListView];
     [lrcListView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.top.equalTo(self);

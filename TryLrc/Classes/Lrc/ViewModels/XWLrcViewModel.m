@@ -11,6 +11,7 @@
 #import "XWNetTool.h"
 #import "XWUrlDefine.h"
 #import "XWDataTool.h"
+#import "XWAppInfo.h"
 #import "XWCatergory.h"
 #import <TFHpple.h>
 
@@ -22,8 +23,34 @@
     dispatch_block_t _successed;
     dispatch_block_t _failed;
     XWSearchResultModel *_searchResult;
+    XWNetTool *_netTool;
 }
 @dynamic data;
+
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        [self _xw_setNetTool];
+    }
+    return self;
+}
+
+- (void)_xw_setNetTool{
+    _netTool = [XWNetTool new];
+    _netTool.supportcontentType = @"image/svg+xml";
+    _netTool.support3840 = YES;
+    _netTool.cacheTool = [XWAppInfo shareAppInfo].lrcCacheTool;
+    _netTool.cacheNetType = XWNetToolCacheTypeAllNetStatus;
+    _netTool.requestHeader = @{@"Host" : @"www.uta-net.com",
+                              @"Upgrade-Insecure-Requests" : @"1",
+                              @"User-Agent": @"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.82 Safari/537.36 QQBrowser/4.0.4035.400",
+                              @"Accept": @"text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
+                              @"Accept-Language": @"zh-CN,zh;q=0.8",
+                              @"Accept-Encoding": @"gzip, deflate, sdch",
+                              @"Cookie": @"uta_rec_id=UID_e1cabae9b621d7d0be97d89418283ffb; uta_history=114458; __utmt=1; __utma=164998139.772946311.1466817287.1466819846.1466824007.3; __utmb=164998139.3.10.1466824007; __utmc=164998139; __utmz=164998139.1466817287.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none)"};
+    
+}
 
 - (void)xw_setLrcLoadSuccessedConfig:(dispatch_block_t)successed failed:(dispatch_block_t)failed {
     _successed = successed;
@@ -33,19 +60,9 @@
 - (void)xw_getLrcDataWithSearchResultModel:(XWSearchResultModel *)searchResult{
     if (!searchResult.songID.length) return;
     _searchResult = searchResult;
-    XWNetTool *netTool = [XWNetTool new];
-    netTool.supportcontentType = @"image/svg+xml";
-    netTool.support3840 = YES;
-    netTool.requestHeader = @{@"Host" : @"www.uta-net.com",
-                              @"Upgrade-Insecure-Requests" : @"1",
-                              @"User-Agent": @"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.82 Safari/537.36 QQBrowser/4.0.4035.400",
-                              @"Accept": @"text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
-                              @"Accept-Language": @"zh-CN,zh;q=0.8",
-                              @"Accept-Encoding": @"gzip, deflate, sdch",
-                              @"Cookie": @"uta_rec_id=UID_e1cabae9b621d7d0be97d89418283ffb; uta_history=114458; __utmt=1; __utma=164998139.772946311.1466817287.1466819846.1466824007.3; __utmb=164998139.3.10.1466824007; __utmc=164998139; __utmz=164998139.1466817287.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none)"};
     NSString *url = [NSString stringWithFormat:@"http://www.uta-net.com/user/phplib/svg/showkasi.php?ID=%@&WIDTH=560&HEIGHT=1911&FONTSIZE=15&t=1466825813", searchResult.songID];
     weakify(self);
-    [netTool xw_getRequestInfoWithURL:url params:nil success:^(id  _Nonnull object) {
+    [_netTool xw_get:url params:nil success:^(id  _Nonnull object) {
         strongify(self);
         [self _xw_handleSuccessedData:object];
     } fail:^(id  _Nonnull object) {
@@ -67,11 +84,15 @@
     XWLrcModel *endModel = [XWLrcModel xw_modelWithLrc:@"【終わり】"];
     [temp addObject:endModel];
     self.data = temp.copy;
-    doBlock(_successed);
+    dispatch_async(dispatch_get_main_queue(), ^{
+        doBlock(_successed);
+    });
 }
 
 - (void)_xw_handleFailed{
-    doBlock(_failed);
+    dispatch_async(dispatch_get_main_queue(), ^{
+        doBlock(_failed);
+    });
 }
 
 - (NSString *)xw_getAllLrcInfoString {

@@ -67,7 +67,7 @@ typedef NS_ENUM(NSUInteger, XWCacheToolType) {
 - (nullable id<NSCoding>)xw_objectForKey:(NSString *)key;
 
 
-- (void)xw_objectForKey:(NSString *)key withBlock:(nullable void(^)(NSString *key, id<NSCoding> object))block;
+- (void)xw_objectForKey:(NSString *)key withBlock:(nullable void(^)(NSString *key, __nullable id<NSCoding> object))block;
 
 #pragma mark - for memoryCache
 

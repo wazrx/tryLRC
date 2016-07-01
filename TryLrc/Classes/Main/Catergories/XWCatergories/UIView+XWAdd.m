@@ -19,7 +19,7 @@ XWSYNTH_DUMMY_CLASS(UIView_XWAdd)
 
 + (void)load{
     [self xw_swizzleInstanceMethod:@selector(layoutSublayersOfLayer:) with:@selector(_xw_layoutSublayersOfLayer:)];
-    [self xw_swizzleInstanceMethod:@selector(hitTest:withEvent:) with:@selector(_xw_hitTest:withEvent:)];
+//    [self xw_swizzleInstanceMethod:@selector(hitTest:withEvent:) with:@selector(_xw_hitTest:withEvent:)];
     [self xw_swizzleInstanceMethod:@selector(pointInside:withEvent:) with:@selector(_xw_pointInside:withEvent:)];
 }
 
@@ -272,19 +272,26 @@ XWSYNTH_DUMMY_CLASS(UIView_XWAdd)
     
 }
 
-- (UIView *)_xw_hitTest:(CGPoint)point withEvent:(UIEvent *)event{
-    UIView *view = [self _xw_hitTest:point withEvent:event];
-    doBlock(self.touchBlock);
-    if (self.endEditingBeforTouch) {
-        if ([view isKindOfClass:[UITextField class]] || [view isKindOfClass:[UITextView class]]) {
-            return view;
-        }else{
-            [self endEditing:YES];
-            return view;
-        }
-    }else{
-        return view;
-    }
-}
+//- (UIView *)_xw_hitTest:(CGPoint)point withEvent:(UIEvent *)event{
+//    if ([self isKindOfClass:NSClassFromString(@"XWSearchView")]) {
+//        NSLog(@"1");
+//    }
+//    
+//    UIView *view = [self _xw_hitTest:point withEvent:event];
+//    if ([view isKindOfClass:NSClassFromString(@"XWSearchView")]) {
+//        NSLog(@"2");
+//    }
+//    doBlock(self.touchBlock);
+//    if (self.endEditingBeforTouch) {
+//        if ([view isKindOfClass:[UITextField class]] || [view isKindOfClass:[UITextView class]] || [view isKindOfClass:NSClassFromString(@"UIRemoteKeyboardWindow")]) {
+//            return view;
+//        }else{
+//            [self endEditing:YES];
+//            return view;
+//        }
+//    }else{
+//        return view;
+//    }
+//}
 
 @end

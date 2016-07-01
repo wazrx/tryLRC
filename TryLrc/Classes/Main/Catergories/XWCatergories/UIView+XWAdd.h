@@ -55,9 +55,9 @@ typedef void(^XWAddViewBlock)(CGRect frame);
 /**可视透明度，值由自身hidden和alpha以及父视图的hidden和alpha决定*/
 @property (nonatomic, readonly) CGFloat visibleAlpha;
 /**触摸屏幕时先结束编辑*/
-@property (nonatomic, assign) BOOL endEditingBeforTouch;
+//@property (nonatomic, assign) BOOL endEditingBeforTouch;
 /**触摸时回调的block*/
-@property (nonatomic, copy) dispatch_block_t touchBlock;
+//@property (nonatomic, copy) dispatch_block_t touchBlock;
 /**扩大View的可点击区域，比如设置（10，10，10，10）则该view周围10的范围内依然可判定为view可以响应的点击区域*/
 @property (nonatomic, assign) UIEdgeInsets externalTouchInset;
 

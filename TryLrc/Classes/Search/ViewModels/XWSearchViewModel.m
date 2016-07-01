@@ -50,10 +50,14 @@
 
 - (void)_xw_handleSuccessedData:(NSArray *)data{
     _searchData = data;
-    doBlock(_successed);
+    dispatch_async(dispatch_get_main_queue(), ^{
+        doBlock(_successed);
+    });
 }
 
 - (void)_xw_handleFailed{
-    doBlock(_failed);
+    dispatch_async(dispatch_get_main_queue(), ^{
+        doBlock(_failed);
+    });
 }
 @end
