@@ -12,7 +12,9 @@
 #import "XWLrcCell.h"
 #import "XWLrcModel.h"
 #import "XWLrcViewModel.h"
+#import "XWCacheTool.h"
 #import "XWLrcTimeTool.h"
+#import "XWAppInfo.h"
 #import "XWCatergory.h"
 #import "XWSearchResultModel.h"
 #import "UIViewController+XWTransition.h"
@@ -139,13 +141,10 @@
 }
 
 - (void)xw_save{
-    NSData *allLrcInfoData = [[self.viewModel xw_getAllLrcInfoString] dataUsingEncoding:NSUTF8StringEncoding];
-    NSString *savePath = [[UIApplication sharedApplication].documentsPath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.lrc", _searchResultModel.songName]];
-    if ([allLrcInfoData writeToFile:savePath atomically:YES]) {
-        [XWSimpleTipView xw_showSimpleTipOnView:self.view WithTitle:@"保存成功"];
-    }else{
-        [XWSimpleTipView xw_showSimpleTipOnView:self.view WithTitle:@"保存失败"];
-    }
+    [_searchResultModel xw_addEditedLrcData:self.viewModel.data];
+    XWCacheTool *locaCacheTool = [XWAppInfo shareAppInfo].lrcCacheLocaleTool;
+    [locaCacheTool xw_setObject:_searchResultModel forKey:_searchResultModel.songID];
+    [XWSimpleTipView xw_showSimpleTipOnView:self.view WithTitle:@"保存成功"];
 }
 
 - (void)xw_copy{

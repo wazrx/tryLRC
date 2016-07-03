@@ -9,6 +9,7 @@
 #import "XWBaseViewModel.h"
 @class XWLrcModel;
 @class XWSearchResultModel;
+@class XWCacheTool;
 
 NS_ASSUME_NONNULL_BEGIN
 

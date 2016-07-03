@@ -14,8 +14,6 @@
     NSAttributedString *_originalString;
 }
 
-MJCodingImplementation
-
 + (instancetype)xw_modelWithLrc:(NSString *)lrc {
     return [[self alloc] _initWithLrc:lrc];
 }
@@ -47,4 +45,7 @@ MJCodingImplementation
     _lrcLabelFrame = CGRectMake(widthRatio(10), widthRatio(5), size.width, size.height);
     _cellHeight = size.height + widthRatio(10);
 }
+
+MJCodingImplementation
+
 @end

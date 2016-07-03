@@ -11,7 +11,7 @@
 #import "XWDataTool.h"
 #import "XWSearchResultModel.h"
 #import "XWCatergory.h"
-#import "XWUrlDefine.h"
+#import "XWConstantDefine.h"
 #import <TFHpple.h>
 #import <MJExtension.h>
 
@@ -33,7 +33,7 @@
 
 - (void)_xw_setNetTool{
     _netTool = [XWNetTool new];
-    XWCacheTool *cacheTool = [XWCacheTool xw_cacheToolWithType:XWCacheToolTypeMemoryAndDisk name:@"searchResultCacheTool"];
+    XWCacheTool *cacheTool = [XWCacheTool xw_cacheToolWithType:XWCacheToolTypeMemoryAndDisk name:CacheSearchResulutKey];
     _netTool.cacheTool = cacheTool;
     _netTool.cacheNetType = XWNetToolCacheTypeWhenNetNotReachable;
     _netTool.supportTextHtml = YES;

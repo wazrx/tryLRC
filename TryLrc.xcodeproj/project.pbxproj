@@ -14,8 +14,6 @@
 		8B30DBDD1D1BC42D0018CB1A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B30DBDB1D1BC42D0018CB1A /* LaunchScreen.storyboard */; };
 		8BA5752D1D250B6D00DBA26C /* XWCacheTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BA5752C1D250B6D00DBA26C /* XWCacheTool.m */; };
 		8BE067251D26635300748B21 /* XWAppInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BE067241D26635300748B21 /* XWAppInfo.m */; };
-		8BE067281D26727F00748B21 /* XWTestA.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BE067271D26727F00748B21 /* XWTestA.m */; };
-		8BE0672B1D26728C00748B21 /* XWTestB.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BE0672A1D26728C00748B21 /* XWTestB.m */; };
 		8BED99451D24AB4F002B10B2 /* XWLrcController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BED98761D24AB4F002B10B2 /* XWLrcController.m */; };
 		8BED99461D24AB4F002B10B2 /* XWLrcModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BED98791D24AB4F002B10B2 /* XWLrcModel.m */; };
 		8BED99471D24AB4F002B10B2 /* XWLrcTimeTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BED987C1D24AB4F002B10B2 /* XWLrcTimeTool.m */; };
@@ -89,7 +87,7 @@
 		8BED998B1D24AB4F002B10B2 /* XWFilterAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BED99121D24AB4F002B10B2 /* XWFilterAnimator.m */; };
 		8BED998C1D24AB4F002B10B2 /* XWFilterTransitionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BED99141D24AB4F002B10B2 /* XWFilterTransitionView.m */; };
 		8BED998D1D24AB4F002B10B2 /* XWMagicMoveAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BED99171D24AB4F002B10B2 /* XWMagicMoveAnimator.m */; };
-		8BED998E1D24AB4F002B10B2 /* XWUrlDefine.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BED991B1D24AB4F002B10B2 /* XWUrlDefine.m */; };
+		8BED998E1D24AB4F002B10B2 /* XWConstantDefine.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BED991B1D24AB4F002B10B2 /* XWConstantDefine.m */; };
 		8BED998F1D24AB4F002B10B2 /* XWNetTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BED991F1D24AB4F002B10B2 /* XWNetTool.m */; };
 		8BED99901D24AB4F002B10B2 /* XWBaseViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BED99221D24AB4F002B10B2 /* XWBaseViewModel.m */; };
 		8BED99911D24AB4F002B10B2 /* XWSimpleTipView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BED99251D24AB4F002B10B2 /* XWSimpleTipView.m */; };
@@ -117,10 +115,6 @@
 		8BA5752C1D250B6D00DBA26C /* XWCacheTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XWCacheTool.m; sourceTree = "<group>"; };
 		8BE067231D26635300748B21 /* XWAppInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWAppInfo.h; sourceTree = "<group>"; };
 		8BE067241D26635300748B21 /* XWAppInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XWAppInfo.m; sourceTree = "<group>"; };
-		8BE067261D26727F00748B21 /* XWTestA.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWTestA.h; sourceTree = "<group>"; };
-		8BE067271D26727F00748B21 /* XWTestA.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XWTestA.m; sourceTree = "<group>"; };
-		8BE067291D26728C00748B21 /* XWTestB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWTestB.h; sourceTree = "<group>"; };
-		8BE0672A1D26728C00748B21 /* XWTestB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XWTestB.m; sourceTree = "<group>"; };
 		8BED98751D24AB4F002B10B2 /* XWLrcController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWLrcController.h; sourceTree = "<group>"; };
 		8BED98761D24AB4F002B10B2 /* XWLrcController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XWLrcController.m; sourceTree = "<group>"; };
 		8BED98781D24AB4F002B10B2 /* XWLrcModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWLrcModel.h; sourceTree = "<group>"; };
@@ -266,8 +260,8 @@
 		8BED99141D24AB4F002B10B2 /* XWFilterTransitionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XWFilterTransitionView.m; sourceTree = "<group>"; };
 		8BED99161D24AB4F002B10B2 /* XWMagicMoveAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWMagicMoveAnimator.h; sourceTree = "<group>"; };
 		8BED99171D24AB4F002B10B2 /* XWMagicMoveAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XWMagicMoveAnimator.m; sourceTree = "<group>"; };
-		8BED991A1D24AB4F002B10B2 /* XWUrlDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWUrlDefine.h; sourceTree = "<group>"; };
-		8BED991B1D24AB4F002B10B2 /* XWUrlDefine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XWUrlDefine.m; sourceTree = "<group>"; };
+		8BED991A1D24AB4F002B10B2 /* XWConstantDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWConstantDefine.h; sourceTree = "<group>"; };
+		8BED991B1D24AB4F002B10B2 /* XWConstantDefine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XWConstantDefine.m; sourceTree = "<group>"; };
 		8BED991D1D24AB4F002B10B2 /* XWDataTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWDataTool.h; sourceTree = "<group>"; };
 		8BED991E1D24AB4F002B10B2 /* XWNetTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWNetTool.h; sourceTree = "<group>"; };
 		8BED991F1D24AB4F002B10B2 /* XWNetTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XWNetTool.m; sourceTree = "<group>"; };
@@ -699,8 +693,8 @@
 			children = (
 				8BED999C1D24ABFF002B10B2 /* XWAppDelegate.m */,
 				8BED999D1D24ABFF002B10B2 /* XWAppDelegate.h */,
-				8BED991A1D24AB4F002B10B2 /* XWUrlDefine.h */,
-				8BED991B1D24AB4F002B10B2 /* XWUrlDefine.m */,
+				8BED991A1D24AB4F002B10B2 /* XWConstantDefine.h */,
+				8BED991B1D24AB4F002B10B2 /* XWConstantDefine.m */,
 				8BE067231D26635300748B21 /* XWAppInfo.h */,
 				8BE067241D26635300748B21 /* XWAppInfo.m */,
 			);
@@ -755,10 +749,6 @@
 			children = (
 				8BED99281D24AB4F002B10B2 /* XWSearchController.h */,
 				8BED99291D24AB4F002B10B2 /* XWSearchController.m */,
-				8BE067261D26727F00748B21 /* XWTestA.h */,
-				8BE067271D26727F00748B21 /* XWTestA.m */,
-				8BE067291D26728C00748B21 /* XWTestB.h */,
-				8BE0672A1D26728C00748B21 /* XWTestB.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1059,13 +1049,11 @@
 				8BED99841D24AB4F002B10B2 /* XWFilterAnimator+XWCopyMachine.m in Sources */,
 				8BED995E1D24AB4F002B10B2 /* UICollectionViewFlowLayout+XWAdd.m in Sources */,
 				8BED99471D24AB4F002B10B2 /* XWLrcTimeTool.m in Sources */,
-				8BE0672B1D26728C00748B21 /* XWTestB.m in Sources */,
 				8BED994C1D24AB4F002B10B2 /* CALayer+XWAddForFrame.m in Sources */,
 				8BED998F1D24AB4F002B10B2 /* XWNetTool.m in Sources */,
 				8BED996F1D24AB4F002B10B2 /* YYLabel+XWAddForFrame.m in Sources */,
 				8BED99521D24AB4F002B10B2 /* NSMutableArray+XWAdd.m in Sources */,
-				8BED998E1D24AB4F002B10B2 /* XWUrlDefine.m in Sources */,
-				8BE067281D26727F00748B21 /* XWTestA.m in Sources */,
+				8BED998E1D24AB4F002B10B2 /* XWConstantDefine.m in Sources */,
 				8BED99581D24AB4F002B10B2 /* NSTimer+XWAdd.m in Sources */,
 				8BED997E1D24AB4F002B10B2 /* XWCoolAnimator+XWPortal.m in Sources */,
 				8BED99981D24AB4F002B10B2 /* XWSearchResultModel.m in Sources */,

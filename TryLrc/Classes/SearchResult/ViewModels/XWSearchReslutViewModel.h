@@ -16,9 +16,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nullable, nonatomic, readonly) NSArray<XWSearchResultModel *> *data;
 
-+ (instancetype)xw_viewModelWithSearchedData:(NSArray<XWSearchResultModel *>*)searchedData searchWord:(NSString *)word type:(XWSearchSearchType)type;
++ (instancetype)xw_viewModelWithlocaleType:(BOOL)localeType searchedData:(NSArray<XWSearchResultModel *>*)searchedData searchWord:(NSString *)word type:(XWSearchSearchType)type;
 
-- (void)xw_setSearchSuccessedConfig:(dispatch_block_t)successed failed:(dispatch_block_t)failed;
+- (void)xw_setDataLoadSuccessedConfig:(dispatch_block_t)successed failed:(dispatch_block_t)failed;
 
 - (void)xw_footerRefresh;
 

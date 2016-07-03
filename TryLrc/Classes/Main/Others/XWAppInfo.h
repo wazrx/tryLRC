@@ -12,7 +12,8 @@
 
 @interface XWAppInfo : NSObject
 
-@property (nonatomic, strong) XWCacheTool *lrcCacheTool;
+@property (strong, readonly) XWCacheTool *lrcCacheNetTool;
+@property (strong, readonly) XWCacheTool *lrcCacheLocaleTool;
 
 SingletonH(AppInfo)
 

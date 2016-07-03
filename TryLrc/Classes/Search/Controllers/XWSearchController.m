@@ -12,11 +12,11 @@
 #import "XWSearchViewModel.h"
 #import "XWCatergory.h"
 #import "XWCoolAnimator.h"
+#import "XWFilterAnimator.h"
 #import "XWCircleSpreadAnimator.h"
 #import "UINavigationController+XWTransition.h"
 #import <Masonry.h>
 #import <TFHpple.h>
-#import "XWTestA.h"
 #import "XWCacheTool.h"
 
 @interface XWSearchController ()
@@ -34,8 +34,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self test];
-    return;
     [self xw_initailizeUI];
 }
 
@@ -44,18 +42,10 @@
 - (void)xw_initailizeUI{
     self.view.backgroundColor = XWhiteC;
     self.title = @"歌词搜索";
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"本地歌词" style:UIBarButtonItemStylePlain target:self action:@selector(xw_goToLocaleLrc)];
     [self.view xw_addTypeButtonTarget:self selector:@selector(xw_typeButtonSelect:)];
     [self.view.searchButton addTarget:self action:@selector(xw_search) forControlEvents:UIControlEventTouchUpInside];
     return;
-}
-
-- (void)test{
-    self.view.backgroundColor = XWhiteC;
-    XWTestA *testA = [XWTestA new];
-    XWCacheTool *cacheTool = [XWCacheTool xw_cacheToolWithType:XWCacheToolTypeDisk name:@"test"];
-//    [cacheTool xw_setObject:testA forKey:@"testA"];
-    XWTestA *readTestA = (XWTestA *)[cacheTool xw_objectForKey:@"testA"];
-    NSLog(@"%@", readTestA.name);
 }
 
 - (XWSearchViewModel *)viewModel{
@@ -71,6 +61,14 @@
         }];
     }
     return _viewModel;
+}
+
+- (void)xw_goToLocaleLrc{
+    XWFilterAnimator *animator = [XWFilterAnimator xw_animatorWithType:XWFilterAnimatorTypeBoxBlur];
+    XWSearchResultController *localLrcVC = [XWSearchResultController new];
+    localLrcVC.localLrcType = YES;
+    [self.navigationController xw_pushViewController:localLrcVC withAnimator:animator];
+    
 }
 
 - (void)xw_typeButtonSelect:(UIButton *)button{
@@ -101,7 +99,6 @@
     rVC.searchWord = self.view.searchField.text;
     rVC.searchType = _viewModel.searchType;
     [self.navigationController xw_pushViewController:rVC withAnimator:animator];
-//    [self.navigationController pushViewController:rVC animated:YES];
 }
 
 - (void)xw_searchFailed{

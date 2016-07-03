@@ -10,6 +10,8 @@
 #import "XWSearchResultModel.h"
 #import "XWSearchNetTool.h"
 #import "XWCatergory.h"
+#import "XWCacheTool.h"
+#import "XWAppInfo.h"
 #import <objc/runtime.h>
 #import <objc/message.h>
 
@@ -35,23 +37,32 @@
     self.data = dataArray;
 }
 
-+ (instancetype)xw_viewModelWithSearchedData:(NSArray<XWSearchResultModel *>*)searchedData searchWord:(NSString *)word type:(XWSearchSearchType)type {
-    return [[self alloc] _initWithSearchedData:searchedData searchWord:word type:type];
++ (instancetype)xw_viewModelWithlocaleType:(BOOL)localeType searchedData:(NSArray<XWSearchResultModel *>*)searchedData searchWord:(NSString *)word type:(XWSearchSearchType)type {
+    return [[self alloc] _initWithlocaleType:(BOOL)localeType searchedData:searchedData searchWord:word type:type];
 }
 
-- (instancetype)_initWithSearchedData:(NSArray<XWSearchResultModel *>*)searchedData searchWord:(NSString *)word type:(XWSearchSearchType)type{
+- (instancetype)_initWithlocaleType:(BOOL)localeType searchedData:(NSArray<XWSearchResultModel *>*)searchedData searchWord:(NSString *)word type:(XWSearchSearchType)type{
     self = [super init];
     if (self) {
-        self.data = searchedData;
-        _word = word;
-        _type = type;
-        _netTool = [XWSearchNetTool new];
-        _pageCount = 1;
+        if (localeType) {
+            
+        }else{
+            self.data = searchedData;
+            _word = word;
+            _type = type;
+            _netTool = [XWSearchNetTool new];
+            _pageCount = 1;
+        }
     }
     return self;
 }
 
-- (void)xw_setSearchSuccessedConfig:(dispatch_block_t)successed failed:(dispatch_block_t)failed {
+- (void)_xw_getLoaclLrcData{
+//    NSArray *localeLrcData = [[XWAppInfo shareAppInfo].lrcCacheLocaleTool xw_object];
+    
+}
+
+- (void)xw_setDataLoadSuccessedConfig:(dispatch_block_t)successed failed:(dispatch_block_t)failed {
     _successed = successed;
     _failed = failed;
 }

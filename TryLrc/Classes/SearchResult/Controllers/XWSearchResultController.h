@@ -12,6 +12,7 @@
 
 @interface XWSearchResultController : UIViewController
 
+@property (nonatomic, assign) BOOL localLrcType;
 @property (nonatomic, copy) NSArray *searchedData;
 @property (nonatomic, copy) NSString *searchWord;
 @property (nonatomic, assign) XWSearchSearchType searchType;

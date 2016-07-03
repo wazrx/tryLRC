@@ -7,15 +7,20 @@
 //
 
 #import <Foundation/Foundation.h>
+@class XWLrcModel;
 
-@interface XWSearchResultModel : NSObject
+@interface XWSearchResultModel : NSObject<NSCoding>
 
-@property (nonatomic, copy) NSString *songName;
-@property (nonatomic, readonly) NSString *songID;
-@property (nonatomic, readonly) NSString *artist;
-@property (nonatomic, readonly) NSString *lyricist;
-@property (nonatomic, readonly) NSString *composer;
-@property (nonatomic, readonly) NSString *lrcFirstLine;
+@property (readonly, copy) NSString *songName;
+@property (readonly, copy) NSString *songID;
+@property (readonly, copy) NSString *artist;
+@property (readonly, copy) NSString *lyricist;
+@property (readonly, copy) NSString *composer;
+@property (readonly, copy) NSString *lrcFirstLine;
+
+@property (readonly, copy) NSArray<XWLrcModel *> *editedLrcData;
+
+- (void)xw_addEditedLrcData:(NSArray<XWLrcModel *> *)editedLrcData;
 
 
 @end

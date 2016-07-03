@@ -9,7 +9,7 @@
 #import "XWLrcModel.h"
 #import "XWSearchResultModel.h"
 #import "XWNetTool.h"
-#import "XWUrlDefine.h"
+#import "XWConstantDefine.h"
 #import "XWDataTool.h"
 #import "XWAppInfo.h"
 #import "XWCatergory.h"
@@ -40,7 +40,7 @@
     _netTool = [XWNetTool new];
     _netTool.supportcontentType = @"image/svg+xml";
     _netTool.support3840 = YES;
-    _netTool.cacheTool = [XWAppInfo shareAppInfo].lrcCacheTool;
+    _netTool.cacheTool = [XWAppInfo shareAppInfo].lrcCacheNetTool;
     _netTool.cacheNetType = XWNetToolCacheTypeAllNetStatus;
     _netTool.requestHeader = @{@"Host" : @"www.uta-net.com",
                               @"Upgrade-Insecure-Requests" : @"1",

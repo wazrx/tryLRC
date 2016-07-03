@@ -15,6 +15,9 @@
 #import "XWSearchResultCell.h"
 #import "XWCatergory.h"
 #import "XWCoolAnimator.h"
+#import "XWCacheTool.h"
+#import "XWAppInfo.h"
+#import "XWConstantDefine.h"
 #import "UINavigationController+XWTransition.h"
 #import "UIViewController+XWTransition.h"
 #import <Masonry.h>
@@ -52,10 +55,11 @@
 
 - (void)xw_initailizeUI{
     self.view.backgroundColor = XWhiteC;
-    self.title = @"搜索结果";
+    self.title = _localLrcType ? @"本地歌词" : @"搜索结果";
     self.view.resultListView.delegate = self;
     self.view.resultListView.dataSource = self.viewModel;
     self.view.resultListView.mj_footer = [MJRefreshAutoFooter footerWithRefreshingTarget:_viewModel refreshingAction:@selector(xw_footerRefresh)];
+    if (_localLrcType) return;
     self.view.resultListView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:_viewModel refreshingAction:@selector(xw_headerRefresh)];
 }
 
@@ -70,7 +74,7 @@
             return cell;
         }];
         weakify(self);
-        [viewModel xw_setSearchSuccessedConfig:^{
+        [viewModel xw_setDataLoadSuccessedConfig:^{
             strongify(self);
             [self xw_refreshDataSuccessed];
         } failed:^{

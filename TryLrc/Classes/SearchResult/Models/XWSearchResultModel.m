@@ -23,8 +23,14 @@
     _lrcFirstLine = [NSString stringWithFormat:@"歌詞:%@", _lrcFirstLine];
 }
 
+- (void)xw_addEditedLrcData:(NSArray<XWLrcModel *> *)editedLrcData{
+    _editedLrcData = editedLrcData;
+}
+
 - (NSString *)description{
     return [NSString stringWithFormat:@"{\n歌ID = %@\n歌名 = %@\n艺术家 = %@\n作曲家 = %@\n 歌词 = %@\n}\n}", _songID, _songName, _artist, _composer, _lrcFirstLine];
 }
+
+MJCodingImplementation
 
 @end
