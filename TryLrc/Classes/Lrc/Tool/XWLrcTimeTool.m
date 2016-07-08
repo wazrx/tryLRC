@@ -7,9 +7,11 @@
 //
 
 #import "XWLrcTimeTool.h"
+#import "XWCategoriesMacro.h"
 
 @implementation XWLrcTimeTool{
     CADisplayLink *_timer;
+    void(^_config)(NSTimeInterval currentTime);
 }
 
 
@@ -21,19 +23,23 @@
 }
 
 - (void)xw_changeBaseTime:(NSTimeInterval)time {
-    [self xw_lrcEditOver];
+    [self xw_end];
     _currentTime = time;
 }
 
 - (void)_xw_timerEvent{
     _currentTime += 1 / 60.0f;
-    NSLog(@"%.4f", _currentTime);
+    doBlock(_config, _currentTime);
 }
 
-- (void)xw_lrcEditOver {
+- (void)xw_end {
     if (_timer) {
         [_timer invalidate];
         _timer = nil;
     }
+}
+
+- (void)xw_setPlayingConfig:(void (^)(NSTimeInterval))config{
+    _config = config;
 }
 @end

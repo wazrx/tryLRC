@@ -65,7 +65,7 @@
 
 - (XWSearchReslutViewModel *)viewModel{
     if (!_viewModel) {
-        XWSearchReslutViewModel *viewModel = [XWSearchReslutViewModel xw_viewModelWithSearchedData:_searchedData searchWord:_searchWord type:_searchType];
+        XWSearchReslutViewModel *viewModel = [XWSearchReslutViewModel xw_viewModelWithlocaleType:_localLrcType searchedData:_searchedData searchWord:_searchWord type:_searchType];
         weakify(viewModel);
         [viewModel xw_configTableviewCell:^XWSearchResultCell * _Nonnull(UITableView * _Nonnull tableView, NSIndexPath * _Nonnull indexPath) {
             strongify(viewModel);

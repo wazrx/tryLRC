@@ -21,7 +21,8 @@ typedef NS_ENUM(NSUInteger, XWNetStatusType) {
 };
 
 typedef NS_ENUM(NSUInteger, XWNetToolCacheType) {
-    XWNetToolCacheTypeWhenNetNotReachable = 0, //只在无网络的时候才读取缓存
+    XWNetToolCacheTypeNone = 0, //不进行接口缓存
+    XWNetToolCacheTypeWhenNetNotReachable, //只在无网络的时候才读取缓存
     XWNetToolCacheTypeWhenCellNetOrNetNotReachable,//无网络和蜂窝网络都优先读取缓存
     XWNetToolCacheTypeAllNetStatus//所有情况下都优先读取缓存
 };
@@ -40,17 +41,11 @@ typedef NS_ENUM(NSUInteger, XWNetToolCacheType) {
 @property (nonatomic, copy) NSDictionary *requestHeader;
 /**超时时间， 默认15秒*/
 @property (nonatomic, assign) NSTimeInterval timeoutInterval;
-/**缓存工具，如果需要缓存请求设置该工具*/
-@property (nonatomic, strong) XWCacheTool *cacheTool;
 /**读取缓存时机类型，默认无网络才会读取缓存数据，*/
 @property (nonatomic, assign) XWNetToolCacheType cacheNetType;
 
 
-
-/**
- *  创建网络工具实例对象
- */
-+ (XWNetTool *)xw_tool;
++ (XWCacheTool *)xw_netCacheTool;
 
 /**
  *  获取当前网络状态

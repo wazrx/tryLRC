@@ -12,6 +12,7 @@
 #import "XWSearchResultModel.h"
 #import "XWCatergory.h"
 #import "XWConstantDefine.h"
+#import "XWAppInfo.h"
 #import <TFHpple.h>
 #import <MJExtension.h>
 
@@ -33,8 +34,6 @@
 
 - (void)_xw_setNetTool{
     _netTool = [XWNetTool new];
-    XWCacheTool *cacheTool = [XWCacheTool xw_cacheToolWithType:XWCacheToolTypeMemoryAndDisk name:CacheSearchResulutKey];
-    _netTool.cacheTool = cacheTool;
     _netTool.cacheNetType = XWNetToolCacheTypeWhenNetNotReachable;
     _netTool.supportTextHtml = YES;
     _netTool.support3840 = YES;
@@ -88,6 +87,11 @@
             TFHppleElement *e4 = XWValidateArrayObjAtIdx(element.children, 2);
             NSString *lyricist = e4.text;
             NSMutableDictionary *temp = @{}.mutableCopy;
+            XWSearchResultModel *locaModel = (XWSearchResultModel *)[[XWAppInfo shareAppInfo].lrcCacheLocaleTool xw_objectForKey:[songID componentsSeparatedByString:@"/"][2]];
+            if (locaModel) {
+                [tempArray addObject:locaModel];
+                return;
+            }
             [temp setObject:songID forKey:@"songID"];
             [temp setObject:songName forKey:@"songName"];
             if (artist.length) [temp setObject:artist forKey:@"artist"];

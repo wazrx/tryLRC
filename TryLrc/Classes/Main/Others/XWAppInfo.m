@@ -8,6 +8,7 @@
 
 #import "XWAppInfo.h"
 #import "XWConstantDefine.h"
+#import "UIApplication+XWAdd.h"
 #import "XWCacheTool.h"
 
 @implementation XWAppInfo
@@ -18,11 +19,7 @@ SingletonM(AppInfo)
 {
     self = [super init];
     if (self) {
-        _lrcCacheNetTool = [XWCacheTool xw_cacheToolWithType:XWCacheToolTypeMemoryAndDisk name:CacheLrcNetKey];
-        _lrcCacheNetTool.memoryCostLimit = 30;
-        _lrcCacheNetTool.diskCostLimit = 100;
-        _lrcCacheLocaleTool = [XWCacheTool xw_cacheToolWithType:XWCacheToolTypeDisk name:CacheLrcLocaleKey];
-        _lrcCacheLocaleTool.memoryCostLimit = 50;
+        _lrcCacheLocaleTool = [XWCacheTool xw_cacheToolWithType:XWCacheToolTypeDisk path:[[UIApplication sharedApplication].documentsPath stringByAppendingPathComponent:CacheLrcLocaleKey]];
     }
     return self;
 }

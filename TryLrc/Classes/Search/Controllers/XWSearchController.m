@@ -17,7 +17,7 @@
 #import "UINavigationController+XWTransition.h"
 #import <Masonry.h>
 #import <TFHpple.h>
-#import "XWCacheTool.h"
+#import "XWAppInfo.h"
 
 @interface XWSearchController ()
 @property (nonatomic, strong) XWSearchViewModel *viewModel;
@@ -40,6 +40,7 @@
 #pragma mark - initialize methods
 
 - (void)xw_initailizeUI{
+    NSLog(@"%@", [UIApplication sharedApplication].documentsPath);
     self.view.backgroundColor = XWhiteC;
     self.title = @"歌词搜索";
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"本地歌词" style:UIBarButtonItemStylePlain target:self action:@selector(xw_goToLocaleLrc)];
@@ -64,7 +65,7 @@
 }
 
 - (void)xw_goToLocaleLrc{
-    XWFilterAnimator *animator = [XWFilterAnimator xw_animatorWithType:XWFilterAnimatorTypeBoxBlur];
+    XWCoolAnimator *animator = [XWCoolAnimator xw_animatorWithType:XWCoolTransitionAnimatorTypeVerticalLines];
     XWSearchResultController *localLrcVC = [XWSearchResultController new];
     localLrcVC.localLrcType = YES;
     [self.navigationController xw_pushViewController:localLrcVC withAnimator:animator];

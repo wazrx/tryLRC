@@ -251,6 +251,34 @@ static void _YYDiskCacheSetGlobal(YYDiskCache *cache) {
     return object;
 }
 
+- (NSArray *)allObjects{
+    Lock();
+    NSArray *items = [_kv getAllItem];
+    Unlock();
+    NSMutableArray *temp = @[].mutableCopy;
+    [items enumerateObjectsUsingBlock:^(YYKVStorageItem *item, NSUInteger idx, BOOL * _Nonnull stop) {
+        if (!item.value) {
+            return;
+        }
+        id object = [NSKeyedUnarchiver unarchiveObjectWithData:item.value];
+        if (object && item.extendedData) {
+            [YYDiskCache setExtendedData:item.extendedData toObject:object];
+        }
+        [temp addObject:object];
+    }];
+    return temp.copy;
+}
+
+- (void)allObjectsWithBlock:(void(^)(NSArray *objects))block{
+    if (!block) return;
+    __weak typeof(self)_self = self;
+    dispatch_async(_queue, ^{
+        __strong typeof(_self) self = _self;
+        NSArray *objects = [self allObjects];
+        block(objects);
+    });
+}
+
 - (void)objectForKey:(NSString *)key withBlock:(void(^)(NSString *key, id<NSCoding> object))block {
     if (!block) return;
     __weak typeof(self) _self = self;

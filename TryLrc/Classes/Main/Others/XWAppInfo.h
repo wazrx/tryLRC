@@ -6,13 +6,12 @@
 //  Copyright © 2016年 wazrx. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 #import "XWSingleton.h"
 @class XWCacheTool;
 
 @interface XWAppInfo : NSObject
 
-@property (strong, readonly) XWCacheTool *lrcCacheNetTool;
 @property (strong, readonly) XWCacheTool *lrcCacheLocaleTool;
 
 SingletonH(AppInfo)

@@ -33,10 +33,6 @@
     NSLog(@"viewmodel销毁了");
 }
 
-- (void)xw_updateData:(NSArray<XWSearchResultModel *> *)dataArray {
-    self.data = dataArray;
-}
-
 + (instancetype)xw_viewModelWithlocaleType:(BOOL)localeType searchedData:(NSArray<XWSearchResultModel *>*)searchedData searchWord:(NSString *)word type:(XWSearchSearchType)type {
     return [[self alloc] _initWithlocaleType:(BOOL)localeType searchedData:searchedData searchWord:word type:type];
 }
@@ -44,22 +40,27 @@
 - (instancetype)_initWithlocaleType:(BOOL)localeType searchedData:(NSArray<XWSearchResultModel *>*)searchedData searchWord:(NSString *)word type:(XWSearchSearchType)type{
     self = [super init];
     if (self) {
+        self.data = searchedData;
+        _word = word;
+        _type = type;
+        _netTool = [XWSearchNetTool new];
+        _pageCount = 1;
         if (localeType) {
-            
-        }else{
-            self.data = searchedData;
-            _word = word;
-            _type = type;
-            _netTool = [XWSearchNetTool new];
-            _pageCount = 1;
+            [self xw_getLoaclLrcData];
         }
     }
     return self;
 }
 
-- (void)_xw_getLoaclLrcData{
-//    NSArray *localeLrcData = [[XWAppInfo shareAppInfo].lrcCacheLocaleTool xw_object];
-    
+- (void)xw_getLoaclLrcData{
+    self.data = [[XWAppInfo shareAppInfo].lrcCacheLocaleTool xw_allObjects];
+}
+
+- (void)_xw_loadLoacalLrcDataSuccessed:(NSArray *)objects{
+    self.data = objects;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        doBlock(_successed);
+    });
 }
 
 - (void)xw_setDataLoadSuccessedConfig:(dispatch_block_t)successed failed:(dispatch_block_t)failed {

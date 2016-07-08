@@ -12,11 +12,15 @@
 #import <AFNetworkReachabilityManager.h>
 #import <AFNetworking.h>
 
+static XWCacheTool *netCacheTool;
 __attribute__((constructor))
 static void XWStartMonitoringNetStatus(){
-    XWLog(@"开启网络监听");
+    XWLog(@"开启网络监听,初始化网络缓存工具");
     AFNetworkReachabilityManager *manager = [AFNetworkReachabilityManager sharedManager];
     [manager startMonitoring];
+    netCacheTool = [XWCacheTool xw_cacheToolWithType:XWCacheToolTypeMemoryAndDisk name:@"XWNetCache"];
+    netCacheTool.shouldRemoveAllObjectsOnMemoryWarning = YES;
+    netCacheTool.shouldRemoveAllObjectsWhenEnteringBackground = NO;
 }
 
 @implementation XWNetTool{
@@ -25,9 +29,8 @@ static void XWStartMonitoringNetStatus(){
     AFHTTPSessionManager *_manager;
 }
 
-+ (XWNetTool *)xw_tool{
-    XWNetTool *tool = [XWNetTool new];
-    return tool;
++ (XWCacheTool *)xw_netCacheTool{
+    return netCacheTool;
 }
 
 - (instancetype)init
@@ -51,7 +54,6 @@ static void XWStartMonitoringNetStatus(){
     [self _xw_searchCache:url params:params success:success fail:^{
         strongify(self);
         [self _xw_get:url params:params success:success fail:fail];
-        
     }];
 }
 
@@ -168,7 +170,8 @@ static void XWStartMonitoringNetStatus(){
 }
 
 - (BOOL)_xw_isNeedSearchCache{
-    if (!_cacheTool) return NO;
+    if (!netCacheTool) return NO;
+    if (_cacheNetType == XWNetToolCacheTypeNone) return NO;
     XWNetStatusType netStatus = [XWNetTool xw_getNetStatus];
     switch (netStatus) {
         case XWNetStatusTypeUnKnown: {
@@ -196,7 +199,7 @@ static void XWStartMonitoringNetStatus(){
         doBlock(fail);
         return;
     }
-    [_cacheTool xw_objectForKey:key withBlock:^(NSString * _Nonnull key, id<NSCoding>  _Nullable object) {
+    [netCacheTool xw_objectForKey:key withBlock:^(NSString * _Nonnull key, id<NSCoding> _Nullable object) {
         if (object) {
             doBlock(success, object);
         }else{
@@ -206,10 +209,10 @@ static void XWStartMonitoringNetStatus(){
 }
 
 - (void)_xw_saveCache:(NSString *)url params:(NSDictionary *)params value:(id)object{
-    if (!object || !_cacheTool) return;
+    if (!object || !netCacheTool || _cacheNetType == XWNetToolCacheTypeNone) return;
     NSString *key = [self _xw_getCacheKeyWithUrl:url params:params];
     if (!key.length) return;
-    [_cacheTool xw_setObject:object forKey:key];
+    [netCacheTool xw_setObject:object forKey:key];
 }
 
 - (NSString *)_xw_getCacheKeyWithUrl:(NSString *)url params:(NSDictionary *)params{

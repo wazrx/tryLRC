@@ -107,6 +107,15 @@ static NSString * XWCacheToolExtendedDataKey = @"XWCacheToolExtendedDataKey";
     }
 }
 
+- (NSArray *)xw_allObjects {
+    return [_diskCache allObjects];
+}
+
+- (void)xw_allObjectsWithBlock:(void(^)(NSArray *objects))block{
+    if (!block || !_diskCache) return;
+    [_diskCache allObjectsWithBlock:block];
+}
+
 - (void)xw_setObject:(id<NSCoding>)object forKey:(NSString *)key {
     [_memoryCache setObject:object forKey:key];
     [_diskCache setObject:object forKey:key];

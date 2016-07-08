@@ -24,7 +24,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)xw_headerRefresh;
 
-- (void)xw_updateData:(NSArray<XWSearchResultModel *> *)dataArray;
+- (void)xw_getLoaclLrcData;
 
 @end
 

@@ -320,6 +320,8 @@ typedef NS_ENUM(NSUInteger, YYKVStorageType) {
  */
 - (int)getItemsSize;
 
+- (NSArray<YYKVStorageItem *> *)getAllItem;
+
 @end
 
 NS_ASSUME_NONNULL_END

@@ -19,5 +19,5 @@ NSString * const CacheSearchResulutKey = @"CacheSearchResulutKey";
 
 NSString * const CacheLrcNetKey = @"CacheLrcNetKey";
 
-NSString * const CacheLrcLocaleKey = @"CacheLrcLocaleKey";
+NSString * const CacheLrcLocaleKey = @"XWLocalLrcData";
 @end

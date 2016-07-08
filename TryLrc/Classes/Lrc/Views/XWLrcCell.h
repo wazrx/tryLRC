@@ -16,4 +16,8 @@
 
 + (instancetype)xw_cellWithTableView:(UITableView *)tableView;
 
+- (void)xw_setLongTapEditConfig:(void(^)(NSIndexPath *indexPath))config;
+
+
+
 @end

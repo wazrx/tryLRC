@@ -407,6 +407,12 @@ NS_ASSUME_NONNULL_BEGIN
  */
 + (void)setExtendedData:(nullable NSData *)extendedData toObject:(id)object;
 
+
+
+- (nullable NSArray *)allObjects;
+
+- (void)allObjectsWithBlock:(void(^)( NSArray * _Nullable objects))block;
+
 @end
 
 NS_ASSUME_NONNULL_END

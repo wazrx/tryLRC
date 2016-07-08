@@ -17,6 +17,10 @@
 
 - (void)xw_changeBaseTime:(NSTimeInterval)time;
 
-- (void)xw_lrcEditOver;
+- (void)xw_end;
+
+- (void)xw_setPlayingConfig:(void(^)(NSTimeInterval currentTime))config;
+
+
 
 @end

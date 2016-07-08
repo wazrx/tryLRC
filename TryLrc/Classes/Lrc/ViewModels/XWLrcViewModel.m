@@ -24,6 +24,7 @@
     dispatch_block_t _failed;
     XWSearchResultModel *_searchResult;
     XWNetTool *_netTool;
+    NSInteger _startPlayIndex;
 }
 @dynamic data;
 
@@ -40,7 +41,6 @@
     _netTool = [XWNetTool new];
     _netTool.supportcontentType = @"image/svg+xml";
     _netTool.support3840 = YES;
-    _netTool.cacheTool = [XWAppInfo shareAppInfo].lrcCacheNetTool;
     _netTool.cacheNetType = XWNetToolCacheTypeAllNetStatus;
     _netTool.requestHeader = @{@"Host" : @"www.uta-net.com",
                               @"Upgrade-Insecure-Requests" : @"1",
@@ -59,6 +59,16 @@
 
 - (void)xw_getLrcDataWithSearchResultModel:(XWSearchResultModel *)searchResult{
     if (!searchResult.songID.length) return;
+    if (searchResult.editedLrcData) {
+        _editingMode = NO;
+        self.data = searchResult.editedLrcData;
+        [self.data enumerateObjectsUsingBlock:^(XWLrcModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            [obj xw_changeEditMode:NO];
+        }];
+        doBlock(_successed);
+        return;
+    }
+    _editingMode = YES;
     _searchResult = searchResult;
     NSString *url = [NSString stringWithFormat:@"http://www.uta-net.com/user/phplib/svg/showkasi.php?ID=%@&WIDTH=560&HEIGHT=1911&FONTSIZE=15&t=1466825813", searchResult.songID];
     weakify(self);
@@ -79,9 +89,11 @@
     [dataArray enumerateObjectsUsingBlock:^(TFHppleElement *element, NSUInteger idx, BOOL * _Nonnull stop) {
         NSString *lrc = XWValidateString(element.text);
         XWLrcModel *model = [XWLrcModel xw_modelWithLrc:lrc];
+        [model xw_changeEditMode:_editingMode];
         [temp addObject:model];
     }];
     XWLrcModel *endModel = [XWLrcModel xw_modelWithLrc:@"【終わり】"];
+    [endModel xw_changeEditMode:_editingMode];
     [temp addObject:endModel];
     self.data = temp.copy;
     dispatch_async(dispatch_get_main_queue(), ^{
@@ -98,7 +110,7 @@
 - (NSString *)xw_getAllLrcInfoString {
     NSMutableString *temp = [self _xw_makeLrcHeaderInfo].mutableCopy;
     [self.data enumerateObjectsUsingBlock:^(XWLrcModel * _Nonnull model, NSUInteger idx, BOOL * _Nonnull stop) {
-        [temp appendString:[NSString stringWithFormat:@"\n%@", model.timeLrcString.string]];
+        [temp appendString:[NSString stringWithFormat:@"\n%@", model.lrcString.string]];
     }];
     return temp.copy;
 }
@@ -127,6 +139,65 @@
         [temp addObject:[NSString stringWithFormat:@"[00:%02zd.%02zd]", timeTemp * 4 / 60,(timeTemp * 4) % 60]];
     }
     return [temp componentsJoinedByString:@"\n"];
+}
+
+- (void)xw_changeEditMode {
+    _editingMode = !_editingMode;
+    [self.data enumerateObjectsUsingBlock:^(XWLrcModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        [obj xw_changeEditMode:_editingMode];
+    }];
+}
+
+- (NSIndexPath *)xw_currentPlayIndexPathWithTime:(NSTimeInterval)currentTime {
+    __block NSIndexPath *indexPath = nil;
+    __block NSInteger count = 0;
+	[self.data enumerateObjectsAtIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(_startPlayIndex, self.data.count - _startPlayIndex)]
+                                 options:0
+                              usingBlock:^(XWLrcModel * _Nonnull lrcModel, NSUInteger idx, BOOL * _Nonnull stop) {
+                                  NSTimeInterval nextLrcTime = CGFLOAT_MAX;
+                                  if (idx < self.data.count - 1) {
+                                      XWLrcModel *nextLrcModel = self.data[idx + 1];
+                                      nextLrcTime = nextLrcModel.startTime;
+                                  }
+                                  count ++;
+                                  if (currentTime >= lrcModel.startTime && currentTime < nextLrcTime) {
+                                      indexPath = [NSIndexPath indexPathForRow:idx inSection:0];
+                                      _startPlayIndex = idx;
+                                      *stop = YES;
+                                  }
+    }];
+    return indexPath;
+}
+
+- (void)xw_startPlayAtIndex:(NSInteger)startIndex {
+    _startPlayIndex = startIndex;
+}
+
+- (void)xw_changeStartTimeAtIndexPath:(NSIndexPath *)indexPath timeString:(NSString *)timeString {
+    XWLrcModel *model = self.data[indexPath.row];
+    if (![timeString containsString:@"["] || ![timeString containsString:@"]"] || ![timeString containsString:@"["] || ![timeString containsString:@"["]) {
+        timeString = @"[00:00.00]";
+    }
+    [model xw_updateStartTimeString:timeString];
+    
+}
+
+- (void)xw_changeLrcAtIndexPath:(NSIndexPath *)indexPath lrc:(NSString *)lrc {
+    XWLrcModel *model = self.data[indexPath.row];
+    [model xw_updateLrc:lrc];
+}
+
+- (void)xw_translationAllTimeAfterLrcAtIndexPath:(NSIndexPath *)indexPath time:(NSTimeInterval)time {
+	[self.data enumerateObjectsAtIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(indexPath.row, self.data.count - indexPath.row)] options:NSEnumerationConcurrent usingBlock:^(XWLrcModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        [obj xw_updateStartTime:obj.startTime + time / 60.0f];
+    }];
+}
+
+- (void)xw_translationTimeAfterLrcAtIndexPath:(NSIndexPath *)indexPath toCount:(NSUInteger)count time:(NSTimeInterval)time {
+    if (indexPath.row + count > self.data.count) count = self.data.count - indexPath.row;
+    [self.data enumerateObjectsAtIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(indexPath.row, count)] options:NSEnumerationConcurrent usingBlock:^(XWLrcModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        [obj xw_updateStartTime:obj.startTime + time / 60.0f];
+    }];
 }
 
 @end

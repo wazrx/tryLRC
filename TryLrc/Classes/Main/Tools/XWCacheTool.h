@@ -66,6 +66,10 @@ typedef NS_ENUM(NSUInteger, XWCacheToolType) {
 
 - (nullable id<NSCoding>)xw_objectForKey:(NSString *)key;
 
+- (nullable NSArray *)xw_allObjects;
+
+- (void)xw_allObjectsWithBlock:(void(^)(NSArray * __nullable objects))block;
+
 
 - (void)xw_objectForKey:(NSString *)key withBlock:(nullable void(^)(NSString *key, __nullable id<NSCoding> object))block;
 

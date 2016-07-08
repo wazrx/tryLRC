@@ -19,6 +19,7 @@ static NSString *XWSearchResultCellIdentifier = @"XWSearchResultCellIdentifier";
     UILabel *_artistLabel;
     UILabel *_composerLabel;
     UILabel *_lrcFirstLineLabel;
+    UILabel *_finishTipLabel;
 }
 
 + (instancetype)xw_cellWithTableView:(UITableView *)tableView {
@@ -74,6 +75,16 @@ static NSString *XWSearchResultCellIdentifier = @"XWSearchResultCellIdentifier";
         make.left.equalTo(songNameLabel);
         make.top.equalTo(composerLabel.mas_bottom).offset(widthRatio(2.5));
     }];
+    UILabel *finishTipLabel = [UILabel new];
+    _finishTipLabel = finishTipLabel;
+    finishTipLabel.font = XFont(11);
+    finishTipLabel.text = @"已制作";
+    finishTipLabel.textColor = XRedC;
+    [self.contentView addSubview:finishTipLabel];
+    [finishTipLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(self).offset(widthRatio(-10));
+        make.bottom.equalTo(lrcFirstLineLabel);
+    }];
 }
 
 - (void)setData:(XWSearchResultModel *)data{
@@ -82,6 +93,7 @@ static NSString *XWSearchResultCellIdentifier = @"XWSearchResultCellIdentifier";
     _artistLabel.text = data.artist;
     _composerLabel.text = data.composer;
     _lrcFirstLineLabel.text = data.lrcFirstLine;
+    _finishTipLabel.hidden = !(BOOL)data.editedLrcData.count;
 }
 
 

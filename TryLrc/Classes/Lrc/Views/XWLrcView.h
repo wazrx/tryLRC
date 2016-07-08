@@ -12,7 +12,14 @@
 
 @property (nonatomic, weak, readonly) UITableView *lrcListView;
 @property (nonatomic, weak, readonly) UIButton *editButton;
+@property (nonatomic, weak, readonly) UIButton *playButton;
 @property (nonatomic, weak, readonly) UIButton *duplicateButton;
 @property (nonatomic, weak, readonly) UIButton *saveButton;
+
+- (void)xw_updateUIWithEdit:(BOOL)edit;
+
+- (void)xw_showEditView;
+
+- (void)xw_setEditViewButtonConfig:(void(^)(NSInteger index))config;
 
 @end

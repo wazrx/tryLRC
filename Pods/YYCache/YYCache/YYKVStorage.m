@@ -418,6 +418,33 @@ static UIApplication *_YYSharedApplication() {
     return items;
 }
 
+
+
+- (NSMutableArray<YYKVStorageItem *> *)_dbGetAllItems{
+    NSString *sql = @"select * From manifest";
+    sqlite3_stmt *stmt = NULL;
+    int result = sqlite3_prepare_v2(_db, sql.UTF8String, -1, &stmt, NULL);
+    if (result != SQLITE_OK) {
+        if (_errorLogsEnabled) NSLog(@"%s line:%d sqlite stmt prepare error (%d): %s", __FUNCTION__, __LINE__, result, sqlite3_errmsg(_db));
+        return nil;
+    }
+    NSMutableArray *items = [NSMutableArray new];
+    do {
+        result = sqlite3_step(stmt);
+        if (result == SQLITE_ROW) {
+            YYKVStorageItem *item = [self _dbGetItemFromStmt:stmt excludeInlineData:NO];
+            if (item) [items addObject:item];
+        } else if (result == SQLITE_DONE) {
+            break;
+        } else {
+            if (_errorLogsEnabled) NSLog(@"%s line:%d sqlite query error (%d): %s", __FUNCTION__, __LINE__, result, sqlite3_errmsg(_db));
+            items = nil;
+            break;
+        }
+    } while (1);
+    return items;
+}
+
 - (NSData *)_dbGetValueWithKey:(NSString *)key {
     NSString *sql = @"select inline_data from manifest where key = ?1;";
     sqlite3_stmt *stmt = [self _dbPrepareStmt:sql];
@@ -967,6 +994,25 @@ static UIApplication *_YYSharedApplication() {
         }
     }
     return item;
+}
+
+- (NSArray<YYKVStorageItem *> *)getAllItem{
+    NSMutableArray<YYKVStorageItem *> *items = [self _dbGetAllItems];
+    if (_type != YYKVStorageTypeSQLite) {
+        for (NSInteger i = 0, max = items.count; i < max; i++) {
+            YYKVStorageItem *item = items[i];
+            if (item.filename) {
+                item.value = [self _fileReadWithName:item.filename];
+                if (!item.value) {
+                    if (item.key) [self _dbDeleteItemWithKey:item.key];
+                    [items removeObjectAtIndex:i];
+                    i--;
+                    max--;
+                }
+            }
+        }
+    }
+    return items.count ? items : nil;
 }
 
 - (YYKVStorageItem *)getItemInfoForKey:(NSString *)key {

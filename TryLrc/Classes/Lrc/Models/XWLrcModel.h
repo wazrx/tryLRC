@@ -8,18 +8,26 @@
 
 #import <UIKit/UIKit.h>
 
-@interface XWLrcModel : NSObject
+@interface XWLrcModel : NSObject<NSCoding>
 
-@property (nonatomic, readonly) NSString *lrc;
-@property (nonatomic, readonly) NSAttributedString *timeLrcString;
-@property (nonatomic, readonly) NSTimeInterval startTime;
-
-@property (nonatomic, readonly) CGRect lrcLabelFrame;
-@property (nonatomic, readonly) CGFloat cellHeight;
+@property (copy, readonly) NSString *lrc;
+@property (copy, readonly) NSString *startTimeString;
+@property (copy, readonly) NSAttributedString *lrcString;
+@property (readonly)       NSTimeInterval startTime;
+@property (readonly)       BOOL editMode;
+@property (readonly)       BOOL isPlaying;
+@property (readonly)       CGRect lrcLabelFrame;
+@property (readonly)       CGFloat cellHeight;
 
 + (instancetype)xw_modelWithLrc:(NSString *)lrc;
 
 - (void)xw_updateStartTime:(NSTimeInterval)startTime;
+- (void)xw_updateStartTimeString:(NSString *)startTimeString;
+- (void)xw_updateLrc:(NSString *)lrc;
+
+- (void)xw_changeEditMode:(BOOL)edit;
+
+- (void)xw_changePlaying:(BOOL)playing;
 
 
 @end

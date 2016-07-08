@@ -12,6 +12,7 @@
 		8B30DBD81D1BC42D0018CB1A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B30DBD61D1BC42D0018CB1A /* Main.storyboard */; };
 		8B30DBDA1D1BC42D0018CB1A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B30DBD91D1BC42D0018CB1A /* Assets.xcassets */; };
 		8B30DBDD1D1BC42D0018CB1A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B30DBDB1D1BC42D0018CB1A /* LaunchScreen.storyboard */; };
+		8B4DC3F31D2DF99F00198E2C /* XWLrcEditView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B4DC3F21D2DF99F00198E2C /* XWLrcEditView.m */; };
 		8BA5752D1D250B6D00DBA26C /* XWCacheTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BA5752C1D250B6D00DBA26C /* XWCacheTool.m */; };
 		8BE067251D26635300748B21 /* XWAppInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BE067241D26635300748B21 /* XWAppInfo.m */; };
 		8BED99451D24AB4F002B10B2 /* XWLrcController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BED98761D24AB4F002B10B2 /* XWLrcController.m */; };
@@ -111,6 +112,8 @@
 		8B30DBD91D1BC42D0018CB1A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8B30DBDC1D1BC42D0018CB1A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8B30DBDE1D1BC42D0018CB1A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8B4DC3F11D2DF99F00198E2C /* XWLrcEditView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWLrcEditView.h; sourceTree = "<group>"; };
+		8B4DC3F21D2DF99F00198E2C /* XWLrcEditView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XWLrcEditView.m; sourceTree = "<group>"; };
 		8BA5752B1D250B6D00DBA26C /* XWCacheTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWCacheTool.h; sourceTree = "<group>"; };
 		8BA5752C1D250B6D00DBA26C /* XWCacheTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XWCacheTool.m; sourceTree = "<group>"; };
 		8BE067231D26635300748B21 /* XWAppInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWAppInfo.h; sourceTree = "<group>"; };
@@ -428,6 +431,8 @@
 				8BED98821D24AB4F002B10B2 /* XWLrcCell.m */,
 				8BED98831D24AB4F002B10B2 /* XWLrcView.h */,
 				8BED98841D24AB4F002B10B2 /* XWLrcView.m */,
+				8B4DC3F11D2DF99F00198E2C /* XWLrcEditView.h */,
+				8B4DC3F21D2DF99F00198E2C /* XWLrcEditView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -997,6 +1002,7 @@
 				8BED99801D24AB4F002B10B2 /* XWCoolAnimator.m in Sources */,
 				8BED99821D24AB4F002B10B2 /* XWFilterAnimator+XWBarSwipe.m in Sources */,
 				8BED99911D24AB4F002B10B2 /* XWSimpleTipView.m in Sources */,
+				8B4DC3F31D2DF99F00198E2C /* XWLrcEditView.m in Sources */,
 				8BED998B1D24AB4F002B10B2 /* XWFilterAnimator.m in Sources */,
 				8BED99511D24AB4F002B10B2 /* NSDictionary+XWAdd.m in Sources */,
 				8BED99741D24AB4F002B10B2 /* XWTransitionAnimator.m in Sources */,
